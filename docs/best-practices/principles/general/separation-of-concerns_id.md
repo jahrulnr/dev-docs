@@ -113,9 +113,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 └─────────┬─────────┬─────────┬───────┘
           │         │         │
     ┌─────┴─────┐ ┌─┴───────┐ ┌┴──────┐
-    │ Primary  │ │Secondary│ │Driving│
-    │Adapters  │ │Adapters │ │Ports  │
-    │(UI, API) │ │(DB, Ext)│ │       │
+    │ Primary   │ │Secondary│ │Driving│
+    │Adapters   │ │Adapters │ │Ports  │
+    │(UI, API)  │ │(DB, Ext)│ │       │
     └───────────┘ └─────────┘ └───────┘
 ```
 
