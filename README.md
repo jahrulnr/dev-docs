@@ -1,0 +1,108 @@
+# Technical Development Documentation
+
+Welcome to the comprehensive documentation hub for developing scalable applications. This repository contains guidelines, best practices, and overviews for building robust, secure, and maintainable systems using Golang, AWS, Azure, Google Cloud, CLI tools, and PHP.
+
+## Table of Contents
+- [Architecture](#architecture) - Architectural styles and patterns
+- [Coding Rules](#coding-rules) - Mandatory rules for code generation and architecture
+- [Principles](#principles) - Software development principles and architecture
+- [Patterns](#patterns) - Design and resilience patterns
+- [Best Practices](#best-practices) - Development practices, anti-patterns, and architecture patterns
+- [Infrastructure](#infrastructure) - AWS services and deployment
+- [Ecosystem](#ecosystem) - Cloud platform services (AWS, Azure, Google Cloud)
+- [Technologies](#technologies) - Infrastructure, protocols, and tools
+- [Contributing](#contributing)
+
+## Architecture
+Explore architectural styles and patterns for system design:
+- [Architectural Styles](docs/best-practices/architecture/styles/) - High-level paradigms (Monolithic, Microservices, SOA, Event-Driven, Serverless)
+- [Architectural Patterns](docs/best-practices/architecture/patterns/) - Reusable solutions (Clean, Hexagonal, Layered, Onion, MVC, BFF, DDD)
+
+## Coding Rules
+All development must follow the [Coding Rules](docs/best-practices/principles/), which enforce Domain-Driven Design (DDD), Clean Architecture, SOLID principles, Test-Driven Development (TDD), and zero-trust security. These rules ensure consistency across various programming languages and frameworks.
+
+Key highlights:
+- **DDD & Clean Architecture**: Layer separation with domain at the core.
+- **TDD Mandatory**: 100% domain coverage, 90% overall.
+- **Zero Trust**: Always validate and normalize inputs.
+- **SOLID Compliance**: Single responsibility, open/closed, Liskov, interface segregation, dependency inversion.
+
+## Principles
+Explore software development principles and architecture patterns in [Principles](docs/best-practices/principles/), including SOLID, KISS, DRY, and more for building maintainable code.
+
+### Subcategories
+- [OOP Principles](docs/best-practices/principles/oop/) - SOLID, GRASP principles
+- [Code Quality](docs/best-practices/principles/code-quality/) - DRY, KISS, YAGNI
+- [General](docs/best-practices/principles/general/) - Separation of Concerns, Fail Fast
+- [Security](docs/best-practices/principles/security/) - Zero Trust, Least Privilege
+- [Distributed Systems](docs/best-practices/principles/distributed/) - CAP Theorem, Eventual Consistency
+
+## Patterns
+Discover design patterns and resilience patterns in [Patterns](docs/best-practices/patterns/), such as Factory, Repository, Circuit Breaker, and Retry for robust application development.
+
+### Pattern Categories
+- [Design Patterns](docs/best-practices/patterns/design/) - GoF patterns (Factory, Adapter, Strategy)
+- [Domain Patterns](docs/best-practices/patterns/domain/) - DDD, Specification, Policy
+- [Data Access](docs/best-practices/patterns/data-access/) - Repository, Unit of Work, CQRS
+- [Transaction](docs/best-practices/patterns/transaction/) - Saga, 2PC, Compensation
+- [Integration](docs/best-practices/patterns/integration/) - Pub/Sub, Message Broker
+- [Scalability](docs/best-practices/patterns/scalability/) - Caching, Sharding, Throttling
+- [Reliability](docs/best-practices/patterns/reliability/) - Circuit Breaker, Retry, Timeout
+- [Security](docs/best-practices/patterns/security/) - Auth patterns, OAuth2
+- [Observability](docs/best-practices/patterns/observability/) - Logging, Tracing, Metrics
+
+## Best Practices
+Explore development practices, anti-patterns, and architecture patterns in [Best Practices](docs/best-practices/), including CI/CD, blue-green deployment, feature toggles, and common pitfalls to avoid.
+
+### Best Practice Categories
+- [Principles](docs/best-practices/principles/) - SOLID, DRY, KISS, YAGNI, and more
+- [Patterns](docs/best-practices/patterns/) - Design, domain, data-access, transaction, integration, scalability, reliability, security, observability patterns
+- [Practices](docs/best-practices/practices/) - CI/CD, deployment strategies, feature management, infrastructure practices
+- [Anti-patterns](docs/best-practices/anti-patterns/) - Common pitfalls and how to avoid them
+
+## Infrastructure
+- [AWS Services](docs/ecosystem/aws/) - Services like EC2, Lambda, RDS for scalable applications.
+
+## Ecosystem
+Comprehensive documentation for cloud platform services:
+- [AWS Ecosystem](docs/ecosystem/aws/) - Compute, storage, analytics, event-driven, database, and serverless services
+- [Azure Ecosystem](docs/ecosystem/azure/) - Virtual machines, containers, functions, storage, and database services
+- [Google Cloud Ecosystem](docs/ecosystem/google-cloud/) - Compute Engine, App Engine, Cloud Storage, BigQuery, and more
+
+## Technologies
+
+### Infrastructure Tools
+- [Ansible](docs/technologies/infrastructure/ansible_en.md) / [Ansible](docs/technologies/infrastructure/ansible_id.md) - Configuration management and automation tool.
+- [Containerd](docs/technologies/infrastructure/containerd_en.md) / [Containerd](docs/technologies/infrastructure/containerd_id.md) - Industry-standard container runtime for Kubernetes and orchestration.
+- [Docker](docs/technologies/infrastructure/docker_en.md) / [Docker](docs/technologies/infrastructure/docker_id.md) - Containerization platform for application packaging and deployment.
+- [Docker Swarm](docs/technologies/infrastructure/docker-swarm_en.md) / [Docker Swarm](docs/technologies/infrastructure/docker-swarm_id.md) - Native Docker clustering and orchestration solution.
+- [ELK Stack](docs/technologies/infrastructure/elk-stack_en.md) / [ELK Stack](docs/technologies/infrastructure/elk-stack_id.md) - Elasticsearch, Logstash, Kibana for log aggregation and analysis.
+- [Grafana](docs/technologies/infrastructure/grafana_en.md) / [Grafana](docs/technologies/infrastructure/grafana_id.md) - Visualization platform for metrics and monitoring dashboards.
+- [Helm](docs/technologies/infrastructure/helm_en.md) / [Helm](docs/technologies/infrastructure/helm_id.md) - Package manager for Kubernetes applications.
+- [Istio](docs/technologies/infrastructure/istio_en.md) / [Istio](docs/technologies/infrastructure/istio_id.md) - Service mesh for microservices observability and traffic management.
+- [Apache Kafka](docs/technologies/infrastructure/kafka_en.md) / [Apache Kafka](docs/technologies/infrastructure/kafka_id.md) - Distributed event streaming platform for real-time data processing.
+- [Kubernetes](docs/technologies/infrastructure/kubernetes_en.md) / [Kubernetes](docs/technologies/infrastructure/kubernetes_id.md) - Container orchestration platform for scalable applications.
+- [Nginx](docs/technologies/infrastructure/nginx_en.md) / [Nginx](docs/technologies/infrastructure/nginx_id.md) - High-performance web server, reverse proxy, and load balancer.
+- [Prometheus](docs/technologies/infrastructure/prometheus_en.md) / [Prometheus](docs/technologies/infrastructure/prometheus_id.md) - Monitoring and alerting toolkit for metrics collection.
+- [RabbitMQ](docs/technologies/infrastructure/rabbitmq_en.md) / [RabbitMQ](docs/technologies/infrastructure/rabbitmq_id.md) - Message broker implementing AMQP for reliable messaging.
+- [Terraform](docs/technologies/infrastructure/terraform_en.md) / [Terraform](docs/technologies/infrastructure/terraform_id.md) - Infrastructure as code tool for multi-cloud deployments.
+
+### Communication Protocols
+- [AMQP](docs/technologies/protocols/amqp_en.md) / [AMQP](docs/technologies/protocols/amqp_id.md) - Advanced Message Queuing Protocol for reliable messaging.
+- [GraphQL](docs/technologies/protocols/graphql_en.md) / [GraphQL](docs/technologies/protocols/graphql_id.md) - Query language for APIs with flexible data fetching.
+- [gRPC](docs/technologies/protocols/grpc_en.md) / [gRPC](docs/technologies/protocols/grpc_id.md) - High-performance RPC framework using HTTP/2.
+- [HTTP](docs/technologies/protocols/http_en.md) / [HTTP](docs/technologies/protocols/http_id.md) - HTTP/1.1, HTTP/2, HTTP/3 protocols for web APIs and communication.
+- [MQTT](docs/technologies/protocols/mqtt_en.md) / [MQTT](docs/technologies/protocols/mqtt_id.md) - Lightweight messaging protocol for IoT and mobile applications.
+- [Server-Sent Events](docs/technologies/protocols/sse_en.md) / [Server-Sent Events](docs/technologies/protocols/sse_id.md) - Server-push technology for real-time web applications.
+- [STOMP](docs/technologies/protocols/stomp_en.md) / [STOMP](docs/technologies/protocols/stomp_id.md) - Simple Text Oriented Messaging Protocol for messaging.
+- [TCP/IP](docs/technologies/protocols/tcpip_en.md) / [TCP/IP](docs/technologies/protocols/tcpip_id.md) - Transmission Control Protocol/Internet Protocol suite.
+- [UDP](docs/technologies/protocols/udp_en.md) / [UDP](docs/technologies/protocols/udp_id.md) - User Datagram Protocol for connectionless communications.
+- [WebRTC](docs/technologies/protocols/webrtc_en.md) / [WebRTC](docs/technologies/protocols/webrtc_id.md) - Real-time communication protocol for web browsers.
+- [WebSocket](docs/technologies/protocols/websocket_en.md) / [WebSocket](docs/technologies/protocols/websocket_id.md) - Full-duplex communication protocol over TCP.
+
+## Contributing
+- Follow the coding rules strictly.
+- Update docs for any architectural changes.
+- Use GitHub/GitLab issues for feedback.
+
+For hosting, this docs structure is compatible with GitHub Pages or GitLab Wiki (enable in repo settings).
