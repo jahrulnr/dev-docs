@@ -1,0 +1,2394 @@
+{
+  "version": 1,
+  "base": "/home/jahrulnr/.agents/skills/dev-docs",
+  "generated": "2026-06-08T18:45:30.966Z",
+  "count": 165,
+  "entries": [
+    {
+      "id": "big-ball-of-mud",
+      "slug": "best-practices/anti-patterns/big-ball-of-mud",
+      "path_en": "docs/best-practices/anti-patterns/big-ball-of-mud_en.md",
+      "path_id": "docs/best-practices/anti-patterns/big-ball-of-mud_id.md",
+      "title": "Big Ball of Mud",
+      "pillar": "anti-patterns",
+      "subpillar": null,
+      "keywords": [
+        "ball",
+        "big",
+        "big ball of mud",
+        "mud",
+        "of"
+      ]
+    },
+    {
+      "id": "chatty-services",
+      "slug": "best-practices/anti-patterns/chatty-services",
+      "path_en": "docs/best-practices/anti-patterns/chatty-services_en.md",
+      "path_id": "docs/best-practices/anti-patterns/chatty-services_id.md",
+      "title": "Chatty Services Anti-Pattern",
+      "pillar": "anti-patterns",
+      "subpillar": null,
+      "keywords": [
+        "chatty",
+        "chatty services",
+        "chatty services anti-pattern",
+        "services"
+      ]
+    },
+    {
+      "id": "distributed-monolith",
+      "slug": "best-practices/anti-patterns/distributed-monolith",
+      "path_en": "docs/best-practices/anti-patterns/distributed-monolith_en.md",
+      "path_id": "docs/best-practices/anti-patterns/distributed-monolith_id.md",
+      "title": "Distributed Monolith Anti-Pattern",
+      "pillar": "anti-patterns",
+      "subpillar": null,
+      "keywords": [
+        "distributed",
+        "distributed monolith",
+        "distributed monolith anti-pattern",
+        "monolith"
+      ]
+    },
+    {
+      "id": "god-object",
+      "slug": "best-practices/anti-patterns/god-object",
+      "path_en": "docs/best-practices/anti-patterns/god-object_en.md",
+      "path_id": "docs/best-practices/anti-patterns/god-object_id.md",
+      "title": "God Object Anti-Pattern",
+      "pillar": "anti-patterns",
+      "subpillar": null,
+      "keywords": [
+        "god",
+        "god object",
+        "god object anti-pattern",
+        "object"
+      ]
+    },
+    {
+      "id": "shared-database-in-microservices",
+      "slug": "best-practices/anti-patterns/shared-database-in-microservices",
+      "path_en": "docs/best-practices/anti-patterns/shared-database-in-microservices_en.md",
+      "path_id": "docs/best-practices/anti-patterns/shared-database-in-microservices_id.md",
+      "title": "Shared Database in Microservices",
+      "pillar": "anti-patterns",
+      "subpillar": null,
+      "keywords": [
+        "database",
+        "in",
+        "microservices",
+        "shared",
+        "shared database in microservices"
+      ]
+    },
+    {
+      "id": "spaghetti-code",
+      "slug": "best-practices/anti-patterns/spaghetti-code",
+      "path_en": "docs/best-practices/anti-patterns/spaghetti-code_en.md",
+      "path_id": "docs/best-practices/anti-patterns/spaghetti-code_id.md",
+      "title": "Spaghetti Code Anti-Pattern",
+      "pillar": "anti-patterns",
+      "subpillar": null,
+      "keywords": [
+        "code",
+        "spaghetti",
+        "spaghetti code",
+        "spaghetti code anti-pattern"
+      ]
+    },
+    {
+      "id": "bff",
+      "slug": "best-practices/architecture/patterns/bff",
+      "path_en": "docs/best-practices/architecture/patterns/bff_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/bff_id.md",
+      "title": "Backend-for-Frontend (BFF)",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "backend-for-frontend (bff)",
+        "bff"
+      ]
+    },
+    {
+      "id": "clean-architecture",
+      "slug": "best-practices/architecture/patterns/clean-architecture",
+      "path_en": "docs/best-practices/architecture/patterns/clean-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/clean-architecture_id.md",
+      "title": "Clean Architecture",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "architecture",
+        "clean",
+        "clean arch",
+        "clean architecture",
+        "ports adapters layers",
+        "uncle bob"
+      ]
+    },
+    {
+      "id": "ddd",
+      "slug": "best-practices/architecture/patterns/ddd",
+      "path_en": "docs/best-practices/architecture/patterns/ddd_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/ddd_id.md",
+      "title": "Domain-Driven Design (DDD)",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "aggregate",
+        "bounded context",
+        "ddd",
+        "domain driven design",
+        "domain-driven design (ddd)"
+      ]
+    },
+    {
+      "id": "hexagonal-architecture",
+      "slug": "best-practices/architecture/patterns/hexagonal-architecture",
+      "path_en": "docs/best-practices/architecture/patterns/hexagonal-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/hexagonal-architecture_id.md",
+      "title": "Hexagonal Architecture",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "architecture",
+        "hex arch",
+        "hexagonal",
+        "hexagonal architecture",
+        "ports and adapters"
+      ]
+    },
+    {
+      "id": "layered-architecture",
+      "slug": "best-practices/architecture/patterns/layered-architecture",
+      "path_en": "docs/best-practices/architecture/patterns/layered-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/layered-architecture_id.md",
+      "title": "Layered Architecture",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "architecture",
+        "layered",
+        "layered architecture"
+      ]
+    },
+    {
+      "id": "mvc",
+      "slug": "best-practices/architecture/patterns/mvc",
+      "path_en": "docs/best-practices/architecture/patterns/mvc_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/mvc_id.md",
+      "title": "MVC (Model-View-Controller)",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "mvc",
+        "mvc (model-view-controller)"
+      ]
+    },
+    {
+      "id": "mvp",
+      "slug": "best-practices/architecture/patterns/mvp",
+      "path_en": "docs/best-practices/architecture/patterns/mvp_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/mvp_id.md",
+      "title": "MVP (Model-View-Presenter)",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "mvp",
+        "mvp (model-view-presenter)"
+      ]
+    },
+    {
+      "id": "mvvm",
+      "slug": "best-practices/architecture/patterns/mvvm",
+      "path_en": "docs/best-practices/architecture/patterns/mvvm_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/mvvm_id.md",
+      "title": "MVVM (Model-View-ViewModel)",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "mvvm",
+        "mvvm (model-view-viewmodel)"
+      ]
+    },
+    {
+      "id": "onion-architecture",
+      "slug": "best-practices/architecture/patterns/onion-architecture",
+      "path_en": "docs/best-practices/architecture/patterns/onion-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/onion-architecture_id.md",
+      "title": "Onion Architecture",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "architecture",
+        "onion",
+        "onion architecture"
+      ]
+    },
+    {
+      "id": "event-driven-architecture",
+      "slug": "best-practices/architecture/styles/event-driven-architecture",
+      "path_en": "docs/best-practices/architecture/styles/event-driven-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/styles/event-driven-architecture_id.md",
+      "title": "Event-Driven Architecture",
+      "pillar": "architecture",
+      "subpillar": "styles",
+      "keywords": [
+        "architecture",
+        "driven",
+        "eda",
+        "event",
+        "event driven",
+        "event driven architecture",
+        "event-driven architecture"
+      ]
+    },
+    {
+      "id": "microservices-architecture",
+      "slug": "best-practices/architecture/styles/microservices-architecture",
+      "path_en": "docs/best-practices/architecture/styles/microservices-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/styles/microservices-architecture_id.md",
+      "title": "Microservices Architecture",
+      "pillar": "architecture",
+      "subpillar": "styles",
+      "keywords": [
+        "architecture",
+        "micro services",
+        "microservice",
+        "microservices",
+        "microservices architecture",
+        "msa"
+      ]
+    },
+    {
+      "id": "monolithic-architecture",
+      "slug": "best-practices/architecture/styles/monolithic-architecture",
+      "path_en": "docs/best-practices/architecture/styles/monolithic-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/styles/monolithic-architecture_id.md",
+      "title": "Monolithic Architecture",
+      "pillar": "architecture",
+      "subpillar": "styles",
+      "keywords": [
+        "architecture",
+        "monolithic",
+        "monolithic architecture"
+      ]
+    },
+    {
+      "id": "serverless-architecture",
+      "slug": "best-practices/architecture/styles/serverless-architecture",
+      "path_en": "docs/best-practices/architecture/styles/serverless-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/styles/serverless-architecture_id.md",
+      "title": "Serverless Architecture",
+      "pillar": "architecture",
+      "subpillar": "styles",
+      "keywords": [
+        "architecture",
+        "faas",
+        "lambda architecture",
+        "serverless",
+        "serverless architecture"
+      ]
+    },
+    {
+      "id": "soa-architecture",
+      "slug": "best-practices/architecture/styles/soa-architecture",
+      "path_en": "docs/best-practices/architecture/styles/soa-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/styles/soa-architecture_id.md",
+      "title": "Service-Oriented Architecture (SOA)",
+      "pillar": "architecture",
+      "subpillar": "styles",
+      "keywords": [
+        "architecture",
+        "service-oriented architecture (soa)",
+        "soa",
+        "soa architecture"
+      ]
+    },
+    {
+      "id": "active-record",
+      "slug": "best-practices/patterns/data-access/active-record",
+      "path_en": "docs/best-practices/patterns/data-access/active-record_en.md",
+      "path_id": "docs/best-practices/patterns/data-access/active-record_id.md",
+      "title": "Active Record",
+      "pillar": "patterns",
+      "subpillar": "data-access",
+      "keywords": [
+        "active",
+        "active record",
+        "record"
+      ]
+    },
+    {
+      "id": "data-mapper",
+      "slug": "best-practices/patterns/data-access/data-mapper",
+      "path_en": "docs/best-practices/patterns/data-access/data-mapper_en.md",
+      "path_id": "docs/best-practices/patterns/data-access/data-mapper_id.md",
+      "title": "Data Mapper",
+      "pillar": "patterns",
+      "subpillar": "data-access",
+      "keywords": [
+        "data",
+        "data mapper",
+        "mapper"
+      ]
+    },
+    {
+      "id": "unit-of-work",
+      "slug": "best-practices/patterns/data-access/unit-of-work",
+      "path_en": "docs/best-practices/patterns/data-access/unit-of-work_en.md",
+      "path_id": "docs/best-practices/patterns/data-access/unit-of-work_id.md",
+      "title": "Unit of Work",
+      "pillar": "patterns",
+      "subpillar": "data-access",
+      "keywords": [
+        "of",
+        "unit",
+        "unit of work",
+        "work"
+      ]
+    },
+    {
+      "id": "abstract-factory",
+      "slug": "best-practices/patterns/design/abstract-factory",
+      "path_en": "docs/best-practices/patterns/design/abstract-factory_en.md",
+      "path_id": "docs/best-practices/patterns/design/abstract-factory_id.md",
+      "title": "Abstract Factory",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "abstract",
+        "abstract factory",
+        "factory"
+      ]
+    },
+    {
+      "id": "adapter",
+      "slug": "best-practices/patterns/design/adapter",
+      "path_en": "docs/best-practices/patterns/design/adapter_en.md",
+      "path_id": "docs/best-practices/patterns/design/adapter_id.md",
+      "title": "Adapter Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "adapter",
+        "adapter pattern"
+      ]
+    },
+    {
+      "id": "builder",
+      "slug": "best-practices/patterns/design/builder",
+      "path_en": "docs/best-practices/patterns/design/builder_en.md",
+      "path_id": "docs/best-practices/patterns/design/builder_id.md",
+      "title": "Builder",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "builder"
+      ]
+    },
+    {
+      "id": "chain-of-responsibility",
+      "slug": "best-practices/patterns/design/chain-of-responsibility",
+      "path_en": "docs/best-practices/patterns/design/chain-of-responsibility_en.md",
+      "path_id": "docs/best-practices/patterns/design/chain-of-responsibility_id.md",
+      "title": "Chain of Responsibility",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "chain",
+        "chain of responsibility",
+        "of",
+        "responsibility"
+      ]
+    },
+    {
+      "id": "command",
+      "slug": "best-practices/patterns/design/command",
+      "path_en": "docs/best-practices/patterns/design/command_en.md",
+      "path_id": "docs/best-practices/patterns/design/command_id.md",
+      "title": "Command Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "command",
+        "command pattern"
+      ]
+    },
+    {
+      "id": "composite",
+      "slug": "best-practices/patterns/design/composite",
+      "path_en": "docs/best-practices/patterns/design/composite_en.md",
+      "path_id": "docs/best-practices/patterns/design/composite_id.md",
+      "title": "Composite",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "composite"
+      ]
+    },
+    {
+      "id": "decorator",
+      "slug": "best-practices/patterns/design/decorator",
+      "path_en": "docs/best-practices/patterns/design/decorator_en.md",
+      "path_id": "docs/best-practices/patterns/design/decorator_id.md",
+      "title": "Decorator Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "decorator",
+        "decorator pattern"
+      ]
+    },
+    {
+      "id": "facade",
+      "slug": "best-practices/patterns/design/facade",
+      "path_en": "docs/best-practices/patterns/design/facade_en.md",
+      "path_id": "docs/best-practices/patterns/design/facade_id.md",
+      "title": "Facade Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "facade",
+        "facade pattern"
+      ]
+    },
+    {
+      "id": "factory-method",
+      "slug": "best-practices/patterns/design/factory-method",
+      "path_en": "docs/best-practices/patterns/design/factory-method_en.md",
+      "path_id": "docs/best-practices/patterns/design/factory-method_id.md",
+      "title": "Factory Method",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "factory",
+        "factory method",
+        "method"
+      ]
+    },
+    {
+      "id": "factory",
+      "slug": "best-practices/patterns/design/factory",
+      "path_en": "docs/best-practices/patterns/design/factory_en.md",
+      "path_id": "docs/best-practices/patterns/design/factory_id.md",
+      "title": "Factory Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "factory",
+        "factory pattern"
+      ]
+    },
+    {
+      "id": "mediator",
+      "slug": "best-practices/patterns/design/mediator",
+      "path_en": "docs/best-practices/patterns/design/mediator_en.md",
+      "path_id": "docs/best-practices/patterns/design/mediator_id.md",
+      "title": "Mediator Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "mediator",
+        "mediator pattern"
+      ]
+    },
+    {
+      "id": "observer",
+      "slug": "best-practices/patterns/design/observer",
+      "path_en": "docs/best-practices/patterns/design/observer_en.md",
+      "path_id": "docs/best-practices/patterns/design/observer_id.md",
+      "title": "Observer Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "observer",
+        "observer pattern"
+      ]
+    },
+    {
+      "id": "proxy",
+      "slug": "best-practices/patterns/design/proxy",
+      "path_en": "docs/best-practices/patterns/design/proxy_en.md",
+      "path_id": "docs/best-practices/patterns/design/proxy_id.md",
+      "title": "Proxy Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "proxy",
+        "proxy pattern"
+      ]
+    },
+    {
+      "id": "repository",
+      "slug": "best-practices/patterns/design/repository",
+      "path_en": "docs/best-practices/patterns/design/repository_en.md",
+      "path_id": "docs/best-practices/patterns/design/repository_id.md",
+      "title": "Repository Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "repository",
+        "repository pattern"
+      ]
+    },
+    {
+      "id": "singleton",
+      "slug": "best-practices/patterns/design/singleton",
+      "path_en": "docs/best-practices/patterns/design/singleton_en.md",
+      "path_id": "docs/best-practices/patterns/design/singleton_id.md",
+      "title": "Singleton",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "singleton"
+      ]
+    },
+    {
+      "id": "state",
+      "slug": "best-practices/patterns/design/state",
+      "path_en": "docs/best-practices/patterns/design/state_en.md",
+      "path_id": "docs/best-practices/patterns/design/state_id.md",
+      "title": "State Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "state",
+        "state pattern"
+      ]
+    },
+    {
+      "id": "strategy",
+      "slug": "best-practices/patterns/design/strategy",
+      "path_en": "docs/best-practices/patterns/design/strategy_en.md",
+      "path_id": "docs/best-practices/patterns/design/strategy_id.md",
+      "title": "Strategy Pattern",
+      "pillar": "patterns",
+      "subpillar": "design",
+      "keywords": [
+        "strategy",
+        "strategy pattern"
+      ]
+    },
+    {
+      "id": "policy",
+      "slug": "best-practices/patterns/domain/policy",
+      "path_en": "docs/best-practices/patterns/domain/policy_en.md",
+      "path_id": "docs/best-practices/patterns/domain/policy_id.md",
+      "title": "Policy Pattern",
+      "pillar": "patterns",
+      "subpillar": "domain",
+      "keywords": [
+        "policy",
+        "policy pattern"
+      ]
+    },
+    {
+      "id": "specification",
+      "slug": "best-practices/patterns/domain/specification",
+      "path_en": "docs/best-practices/patterns/domain/specification_en.md",
+      "path_id": "docs/best-practices/patterns/domain/specification_id.md",
+      "title": "Specification Pattern",
+      "pillar": "patterns",
+      "subpillar": "domain",
+      "keywords": [
+        "specification",
+        "specification pattern"
+      ]
+    },
+    {
+      "id": "use-case-interactor",
+      "slug": "best-practices/patterns/domain/use-case-interactor",
+      "path_en": "docs/best-practices/patterns/domain/use-case-interactor_en.md",
+      "path_id": "docs/best-practices/patterns/domain/use-case-interactor_id.md",
+      "title": "Use Case Interactor Pattern",
+      "pillar": "patterns",
+      "subpillar": "domain",
+      "keywords": [
+        "case",
+        "interactor",
+        "use",
+        "use case interactor",
+        "use case interactor pattern"
+      ]
+    },
+    {
+      "id": "anti-corruption-layer",
+      "slug": "best-practices/patterns/integration/anti-corruption-layer",
+      "path_en": "docs/best-practices/patterns/integration/anti-corruption-layer_en.md",
+      "path_id": "docs/best-practices/patterns/integration/anti-corruption-layer_id.md",
+      "title": "Anti-Corruption Layer (ACL)",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "anti",
+        "anti corruption layer",
+        "anti-corruption layer (acl)",
+        "corruption",
+        "layer"
+      ]
+    },
+    {
+      "id": "api-gateway",
+      "slug": "best-practices/patterns/integration/api-gateway",
+      "path_en": "docs/best-practices/patterns/integration/api-gateway_en.md",
+      "path_id": "docs/best-practices/patterns/integration/api-gateway_id.md",
+      "title": "API Gateway",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "api",
+        "api gateway",
+        "bff gateway",
+        "edge gateway",
+        "gateway"
+      ]
+    },
+    {
+      "id": "cqrs",
+      "slug": "best-practices/patterns/integration/cqrs",
+      "path_en": "docs/best-practices/patterns/integration/cqrs_en.md",
+      "path_id": "docs/best-practices/patterns/integration/cqrs_id.md",
+      "title": "CQRS (Command Query Responsibility Segregation)",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "command query separation",
+        "cqrs",
+        "cqrs (command query responsibility segregation)"
+      ]
+    },
+    {
+      "id": "event-carried-state-transfer",
+      "slug": "best-practices/patterns/integration/event-carried-state-transfer",
+      "path_en": "docs/best-practices/patterns/integration/event-carried-state-transfer_en.md",
+      "path_id": "docs/best-practices/patterns/integration/event-carried-state-transfer_id.md",
+      "title": "Event Carried State Transfer",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "carried",
+        "event",
+        "event carried state transfer",
+        "state",
+        "transfer"
+      ]
+    },
+    {
+      "id": "event-notification",
+      "slug": "best-practices/patterns/integration/event-notification",
+      "path_en": "docs/best-practices/patterns/integration/event-notification_en.md",
+      "path_id": "docs/best-practices/patterns/integration/event-notification_id.md",
+      "title": "Event Notification",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "event",
+        "event notification",
+        "notification"
+      ]
+    },
+    {
+      "id": "event-sourcing",
+      "slug": "best-practices/patterns/integration/event-sourcing",
+      "path_en": "docs/best-practices/patterns/integration/event-sourcing_en.md",
+      "path_id": "docs/best-practices/patterns/integration/event-sourcing_id.md",
+      "title": "Event Sourcing",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "event",
+        "event sourcing",
+        "event store",
+        "sourcing"
+      ]
+    },
+    {
+      "id": "message-broker",
+      "slug": "best-practices/patterns/integration/message-broker",
+      "path_en": "docs/best-practices/patterns/integration/message-broker_en.md",
+      "path_id": "docs/best-practices/patterns/integration/message-broker_id.md",
+      "title": "Message Broker",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "broker",
+        "message",
+        "message broker"
+      ]
+    },
+    {
+      "id": "publish-subscribe",
+      "slug": "best-practices/patterns/integration/publish-subscribe",
+      "path_en": "docs/best-practices/patterns/integration/publish-subscribe_en.md",
+      "path_id": "docs/best-practices/patterns/integration/publish-subscribe_id.md",
+      "title": "Publish / Subscribe",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "publish",
+        "publish / subscribe",
+        "publish subscribe",
+        "subscribe"
+      ]
+    },
+    {
+      "id": "centralized-logging",
+      "slug": "best-practices/patterns/observability/centralized-logging",
+      "path_en": "docs/best-practices/patterns/observability/centralized-logging_en.md",
+      "path_id": "docs/best-practices/patterns/observability/centralized-logging_id.md",
+      "title": "Centralized Logging",
+      "pillar": "patterns",
+      "subpillar": "observability",
+      "keywords": [
+        "centralized",
+        "centralized logging",
+        "logging"
+      ]
+    },
+    {
+      "id": "correlation-id",
+      "slug": "best-practices/patterns/observability/correlation-id",
+      "path_en": "docs/best-practices/patterns/observability/correlation-id_en.md",
+      "path_id": "docs/best-practices/patterns/observability/correlation-id_id.md",
+      "title": "Correlation ID",
+      "pillar": "patterns",
+      "subpillar": "observability",
+      "keywords": [
+        "correlation",
+        "correlation id",
+        "id"
+      ]
+    },
+    {
+      "id": "distributed-tracing",
+      "slug": "best-practices/patterns/observability/distributed-tracing",
+      "path_en": "docs/best-practices/patterns/observability/distributed-tracing_en.md",
+      "path_id": "docs/best-practices/patterns/observability/distributed-tracing_id.md",
+      "title": "Distributed Tracing",
+      "pillar": "patterns",
+      "subpillar": "observability",
+      "keywords": [
+        "distributed",
+        "distributed tracing",
+        "tracing"
+      ]
+    },
+    {
+      "id": "health-check",
+      "slug": "best-practices/patterns/observability/health-check",
+      "path_en": "docs/best-practices/patterns/observability/health-check_en.md",
+      "path_id": "docs/best-practices/patterns/observability/health-check_id.md",
+      "title": "Health Check",
+      "pillar": "patterns",
+      "subpillar": "observability",
+      "keywords": [
+        "check",
+        "health",
+        "health check"
+      ]
+    },
+    {
+      "id": "metrics-collection",
+      "slug": "best-practices/patterns/observability/metrics-collection",
+      "path_en": "docs/best-practices/patterns/observability/metrics-collection_en.md",
+      "path_id": "docs/best-practices/patterns/observability/metrics-collection_id.md",
+      "title": "Metrics Collection",
+      "pillar": "patterns",
+      "subpillar": "observability",
+      "keywords": [
+        "collection",
+        "metrics",
+        "metrics collection"
+      ]
+    },
+    {
+      "id": "structured-logging",
+      "slug": "best-practices/patterns/observability/structured-logging",
+      "path_en": "docs/best-practices/patterns/observability/structured-logging_en.md",
+      "path_id": "docs/best-practices/patterns/observability/structured-logging_id.md",
+      "title": "Structured Logging",
+      "pillar": "patterns",
+      "subpillar": "observability",
+      "keywords": [
+        "logging",
+        "structured",
+        "structured logging"
+      ]
+    },
+    {
+      "id": "bulkhead",
+      "slug": "best-practices/patterns/reliability/bulkhead",
+      "path_en": "docs/best-practices/patterns/reliability/bulkhead_en.md",
+      "path_id": "docs/best-practices/patterns/reliability/bulkhead_id.md",
+      "title": "Bulkhead Pattern",
+      "pillar": "patterns",
+      "subpillar": "reliability",
+      "keywords": [
+        "bulkhead",
+        "bulkhead pattern",
+        "isolation",
+        "thread pool isolation"
+      ]
+    },
+    {
+      "id": "circuit-breaker",
+      "slug": "best-practices/patterns/reliability/circuit-breaker",
+      "path_en": "docs/best-practices/patterns/reliability/circuit-breaker_en.md",
+      "path_id": "docs/best-practices/patterns/reliability/circuit-breaker_id.md",
+      "title": "Circuit Breaker Pattern",
+      "pillar": "patterns",
+      "subpillar": "reliability",
+      "keywords": [
+        "breaker",
+        "circuit",
+        "circuit breaker",
+        "circuit breaker pattern",
+        "fallback",
+        "hystrix",
+        "resilience"
+      ]
+    },
+    {
+      "id": "dead-letter-queue",
+      "slug": "best-practices/patterns/reliability/dead-letter-queue",
+      "path_en": "docs/best-practices/patterns/reliability/dead-letter-queue_en.md",
+      "path_id": "docs/best-practices/patterns/reliability/dead-letter-queue_id.md",
+      "title": "Dead Letter Queue (DLQ)",
+      "pillar": "patterns",
+      "subpillar": "reliability",
+      "keywords": [
+        "dead",
+        "dead letter queue",
+        "dead letter queue (dlq)",
+        "letter",
+        "queue"
+      ]
+    },
+    {
+      "id": "fallback",
+      "slug": "best-practices/patterns/reliability/fallback",
+      "path_en": "docs/best-practices/patterns/reliability/fallback_en.md",
+      "path_id": "docs/best-practices/patterns/reliability/fallback_id.md",
+      "title": "Fallback",
+      "pillar": "patterns",
+      "subpillar": "reliability",
+      "keywords": [
+        "fallback"
+      ]
+    },
+    {
+      "id": "retry",
+      "slug": "best-practices/patterns/reliability/retry",
+      "path_en": "docs/best-practices/patterns/reliability/retry_en.md",
+      "path_id": "docs/best-practices/patterns/reliability/retry_id.md",
+      "title": "Retry Pattern",
+      "pillar": "patterns",
+      "subpillar": "reliability",
+      "keywords": [
+        "exponential backoff",
+        "retries",
+        "retry",
+        "retry pattern"
+      ]
+    },
+    {
+      "id": "timeout",
+      "slug": "best-practices/patterns/reliability/timeout",
+      "path_en": "docs/best-practices/patterns/reliability/timeout_en.md",
+      "path_id": "docs/best-practices/patterns/reliability/timeout_id.md",
+      "title": "Timeout",
+      "pillar": "patterns",
+      "subpillar": "reliability",
+      "keywords": [
+        "deadline",
+        "timeout",
+        "timeouts"
+      ]
+    },
+    {
+      "id": "cache-aside",
+      "slug": "best-practices/patterns/scalability/cache-aside",
+      "path_en": "docs/best-practices/patterns/scalability/cache-aside_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/cache-aside_id.md",
+      "title": "Cache-Aside Pattern",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "aside",
+        "cache",
+        "cache aside",
+        "cache-aside pattern"
+      ]
+    },
+    {
+      "id": "database-sharding",
+      "slug": "best-practices/patterns/scalability/database-sharding",
+      "path_en": "docs/best-practices/patterns/scalability/database-sharding_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/database-sharding_id.md",
+      "title": "Database Sharding",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "database",
+        "database sharding",
+        "sharding"
+      ]
+    },
+    {
+      "id": "load-balancer",
+      "slug": "best-practices/patterns/scalability/load-balancer",
+      "path_en": "docs/best-practices/patterns/scalability/load-balancer_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/load-balancer_id.md",
+      "title": "Load Balancer Pattern",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "balancer",
+        "load",
+        "load balancer",
+        "load balancer pattern"
+      ]
+    },
+    {
+      "id": "read-replicas",
+      "slug": "best-practices/patterns/scalability/read-replicas",
+      "path_en": "docs/best-practices/patterns/scalability/read-replicas_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/read-replicas_id.md",
+      "title": "Read Replicas",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "read",
+        "read replicas",
+        "replicas"
+      ]
+    },
+    {
+      "id": "throttling",
+      "slug": "best-practices/patterns/scalability/throttling",
+      "path_en": "docs/best-practices/patterns/scalability/throttling_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/throttling_id.md",
+      "title": "Throttling",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "throttling"
+      ]
+    },
+    {
+      "id": "write-behind",
+      "slug": "best-practices/patterns/scalability/write-behind",
+      "path_en": "docs/best-practices/patterns/scalability/write-behind_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/write-behind_id.md",
+      "title": "Write-Behind Cache",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "behind",
+        "write",
+        "write behind",
+        "write-behind cache"
+      ]
+    },
+    {
+      "id": "write-through",
+      "slug": "best-practices/patterns/scalability/write-through",
+      "path_en": "docs/best-practices/patterns/scalability/write-through_en.md",
+      "path_id": "docs/best-practices/patterns/scalability/write-through_id.md",
+      "title": "Write-Through Cache",
+      "pillar": "patterns",
+      "subpillar": "scalability",
+      "keywords": [
+        "through",
+        "write",
+        "write through",
+        "write-through cache"
+      ]
+    },
+    {
+      "id": "authentication",
+      "slug": "best-practices/patterns/security/authentication",
+      "path_en": "docs/best-practices/patterns/security/authentication_en.md",
+      "path_id": "docs/best-practices/patterns/security/authentication_id.md",
+      "title": "Authentication Pattern",
+      "pillar": "patterns",
+      "subpillar": "security",
+      "keywords": [
+        "authentication",
+        "authentication pattern"
+      ]
+    },
+    {
+      "id": "authorization",
+      "slug": "best-practices/patterns/security/authorization",
+      "path_en": "docs/best-practices/patterns/security/authorization_en.md",
+      "path_id": "docs/best-practices/patterns/security/authorization_id.md",
+      "title": "Authorization Pattern",
+      "pillar": "patterns",
+      "subpillar": "security",
+      "keywords": [
+        "authorization",
+        "authorization pattern"
+      ]
+    },
+    {
+      "id": "jwt",
+      "slug": "best-practices/patterns/security/jwt",
+      "path_en": "docs/best-practices/patterns/security/jwt_en.md",
+      "path_id": "docs/best-practices/patterns/security/jwt_id.md",
+      "title": "Token-Based Authentication (JWT)",
+      "pillar": "patterns",
+      "subpillar": "security",
+      "keywords": [
+        "jwt",
+        "token-based authentication (jwt)"
+      ]
+    },
+    {
+      "id": "mtls",
+      "slug": "best-practices/patterns/security/mtls",
+      "path_en": "docs/best-practices/patterns/security/mtls_en.md",
+      "path_id": "docs/best-practices/patterns/security/mtls_id.md",
+      "title": "Mutual TLS (mTLS)",
+      "pillar": "patterns",
+      "subpillar": "security",
+      "keywords": [
+        "mtls",
+        "mutual tls (mtls)"
+      ]
+    },
+    {
+      "id": "oauth2",
+      "slug": "best-practices/patterns/security/oauth2",
+      "path_en": "docs/best-practices/patterns/security/oauth2_en.md",
+      "path_id": "docs/best-practices/patterns/security/oauth2_id.md",
+      "title": "OAuth2 / OpenID Connect",
+      "pillar": "patterns",
+      "subpillar": "security",
+      "keywords": [
+        "oauth2",
+        "oauth2 / openid connect"
+      ]
+    },
+    {
+      "id": "pep",
+      "slug": "best-practices/patterns/security/pep",
+      "path_en": "docs/best-practices/patterns/security/pep_en.md",
+      "path_id": "docs/best-practices/patterns/security/pep_id.md",
+      "title": "Policy Enforcement Point (PEP)",
+      "pillar": "patterns",
+      "subpillar": "security",
+      "keywords": [
+        "pep",
+        "policy enforcement point (pep)"
+      ]
+    },
+    {
+      "id": "compensation",
+      "slug": "best-practices/patterns/transaction/compensation",
+      "path_en": "docs/best-practices/patterns/transaction/compensation_en.md",
+      "path_id": "docs/best-practices/patterns/transaction/compensation_id.md",
+      "title": "Compensation Transaction Pattern",
+      "pillar": "patterns",
+      "subpillar": "transaction",
+      "keywords": [
+        "compensation",
+        "compensation transaction pattern"
+      ]
+    },
+    {
+      "id": "saga",
+      "slug": "best-practices/patterns/transaction/saga",
+      "path_en": "docs/best-practices/patterns/transaction/saga_en.md",
+      "path_id": "docs/best-practices/patterns/transaction/saga_id.md",
+      "title": "Saga Pattern",
+      "pillar": "patterns",
+      "subpillar": "transaction",
+      "keywords": [
+        "saga",
+        "saga pattern"
+      ]
+    },
+    {
+      "id": "two-phase-commit",
+      "slug": "best-practices/patterns/transaction/two-phase-commit",
+      "path_en": "docs/best-practices/patterns/transaction/two-phase-commit_en.md",
+      "path_id": "docs/best-practices/patterns/transaction/two-phase-commit_id.md",
+      "title": "Two-Phase Commit Pattern",
+      "pillar": "patterns",
+      "subpillar": "transaction",
+      "keywords": [
+        "commit",
+        "phase",
+        "two",
+        "two phase commit",
+        "two-phase commit pattern"
+      ]
+    },
+    {
+      "id": "ab-testing-deployment",
+      "slug": "best-practices/practices/deployment/ab-testing-deployment",
+      "path_en": "docs/best-practices/practices/deployment/ab-testing-deployment_en.md",
+      "path_id": "docs/best-practices/practices/deployment/ab-testing-deployment_id.md",
+      "title": "A/B Testing Deployment",
+      "pillar": "practices",
+      "subpillar": "deployment",
+      "keywords": [
+        "a/b testing deployment",
+        "ab",
+        "ab testing deployment",
+        "deployment",
+        "testing"
+      ]
+    },
+    {
+      "id": "blue-green-deployment",
+      "slug": "best-practices/practices/deployment/blue-green-deployment",
+      "path_en": "docs/best-practices/practices/deployment/blue-green-deployment_en.md",
+      "path_id": "docs/best-practices/practices/deployment/blue-green-deployment_id.md",
+      "title": "Blue-Green Deployment",
+      "pillar": "practices",
+      "subpillar": "deployment",
+      "keywords": [
+        "blue",
+        "blue green deployment",
+        "blue-green deployment",
+        "deployment",
+        "green"
+      ]
+    },
+    {
+      "id": "canary-deployment",
+      "slug": "best-practices/practices/deployment/canary-deployment",
+      "path_en": "docs/best-practices/practices/deployment/canary-deployment_en.md",
+      "path_id": "docs/best-practices/practices/deployment/canary-deployment_id.md",
+      "title": "Canary Deployment",
+      "pillar": "practices",
+      "subpillar": "deployment",
+      "keywords": [
+        "canary",
+        "canary deployment",
+        "deployment"
+      ]
+    },
+    {
+      "id": "recreate-deployment",
+      "slug": "best-practices/practices/deployment/recreate-deployment",
+      "path_en": "docs/best-practices/practices/deployment/recreate-deployment_en.md",
+      "path_id": "docs/best-practices/practices/deployment/recreate-deployment_id.md",
+      "title": "Recreate Deployment",
+      "pillar": "practices",
+      "subpillar": "deployment",
+      "keywords": [
+        "deployment",
+        "recreate",
+        "recreate deployment"
+      ]
+    },
+    {
+      "id": "rolling-deployment",
+      "slug": "best-practices/practices/deployment/rolling-deployment",
+      "path_en": "docs/best-practices/practices/deployment/rolling-deployment_en.md",
+      "path_id": "docs/best-practices/practices/deployment/rolling-deployment_id.md",
+      "title": "Rolling Deployment",
+      "pillar": "practices",
+      "subpillar": "deployment",
+      "keywords": [
+        "deployment",
+        "rolling",
+        "rolling deployment"
+      ]
+    },
+    {
+      "id": "shadow-deployment",
+      "slug": "best-practices/practices/deployment/shadow-deployment",
+      "path_en": "docs/best-practices/practices/deployment/shadow-deployment_en.md",
+      "path_id": "docs/best-practices/practices/deployment/shadow-deployment_id.md",
+      "title": "Shadow Deployment",
+      "pillar": "practices",
+      "subpillar": "deployment",
+      "keywords": [
+        "deployment",
+        "shadow",
+        "shadow deployment"
+      ]
+    },
+    {
+      "id": "feature-toggle",
+      "slug": "best-practices/practices/feature-management/feature-toggle",
+      "path_en": "docs/best-practices/practices/feature-management/feature-toggle_en.md",
+      "path_id": "docs/best-practices/practices/feature-management/feature-toggle_id.md",
+      "title": "Feature Toggle Pattern",
+      "pillar": "practices",
+      "subpillar": "feature-management",
+      "keywords": [
+        "feature",
+        "feature toggle",
+        "feature toggle pattern",
+        "toggle"
+      ]
+    },
+    {
+      "id": "infrastructure-as-code",
+      "slug": "best-practices/practices/infrastructure/infrastructure-as-code",
+      "path_en": "docs/best-practices/practices/infrastructure/infrastructure-as-code_en.md",
+      "path_id": "docs/best-practices/practices/infrastructure/infrastructure-as-code_id.md",
+      "title": "Infrastructure as Code (IaC)",
+      "pillar": "practices",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "as",
+        "code",
+        "infrastructure",
+        "infrastructure as code",
+        "infrastructure as code (iac)"
+      ]
+    },
+    {
+      "id": "ci-cd",
+      "slug": "best-practices/practices/integration/ci-cd",
+      "path_en": "docs/best-practices/practices/integration/ci-cd_en.md",
+      "path_id": "docs/best-practices/practices/integration/ci-cd_id.md",
+      "title": "CI/CD (Continuous Integration / Continuous Delivery)",
+      "pillar": "practices",
+      "subpillar": "integration",
+      "keywords": [
+        "cd",
+        "ci",
+        "ci cd",
+        "ci/cd (continuous integration / continuous delivery)"
+      ]
+    },
+    {
+      "id": "test-driven-development",
+      "slug": "best-practices/practices/integration/test-driven-development",
+      "path_en": "docs/best-practices/practices/integration/test-driven-development_en.md",
+      "path_id": "docs/best-practices/practices/integration/test-driven-development_id.md",
+      "title": "Test-Driven Development (TDD)",
+      "pillar": "practices",
+      "subpillar": "integration",
+      "keywords": [
+        "development",
+        "driven",
+        "test",
+        "test driven development",
+        "test-driven development (tdd)"
+      ]
+    },
+    {
+      "id": "trunk-based-development",
+      "slug": "best-practices/practices/integration/trunk-based-development",
+      "path_en": "docs/best-practices/practices/integration/trunk-based-development_en.md",
+      "path_id": "docs/best-practices/practices/integration/trunk-based-development_id.md",
+      "title": "Trunk-Based Development",
+      "pillar": "practices",
+      "subpillar": "integration",
+      "keywords": [
+        "based",
+        "development",
+        "trunk",
+        "trunk based development",
+        "trunk-based development"
+      ]
+    },
+    {
+      "id": "clean-code",
+      "slug": "best-practices/principles/code-quality/clean-code",
+      "path_en": "docs/best-practices/principles/code-quality/clean-code_en.md",
+      "path_id": "docs/best-practices/principles/code-quality/clean-code_id.md",
+      "title": "Clean Code Principles",
+      "pillar": "principles",
+      "subpillar": "code-quality",
+      "keywords": [
+        "clean",
+        "clean code",
+        "clean code principles",
+        "code"
+      ]
+    },
+    {
+      "id": "backward-compatibility",
+      "slug": "best-practices/principles/distributed/backward-compatibility",
+      "path_en": "docs/best-practices/principles/distributed/backward-compatibility_en.md",
+      "path_id": "docs/best-practices/principles/distributed/backward-compatibility_id.md",
+      "title": "Backward Compatibility Principle",
+      "pillar": "principles",
+      "subpillar": "distributed",
+      "keywords": [
+        "backward",
+        "backward compatibility",
+        "backward compatibility principle",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "cap-theorem",
+      "slug": "best-practices/principles/distributed/cap-theorem",
+      "path_en": "docs/best-practices/principles/distributed/cap-theorem_en.md",
+      "path_id": "docs/best-practices/principles/distributed/cap-theorem_id.md",
+      "title": "CAP Theorem",
+      "pillar": "principles",
+      "subpillar": "distributed",
+      "keywords": [
+        "cap",
+        "cap theorem",
+        "theorem"
+      ]
+    },
+    {
+      "id": "eventual-consistency",
+      "slug": "best-practices/principles/distributed/eventual-consistency",
+      "path_en": "docs/best-practices/principles/distributed/eventual-consistency_en.md",
+      "path_id": "docs/best-practices/principles/distributed/eventual-consistency_id.md",
+      "title": "Eventual Consistency Principle",
+      "pillar": "principles",
+      "subpillar": "distributed",
+      "keywords": [
+        "consistency",
+        "eventual",
+        "eventual consistency",
+        "eventual consistency principle"
+      ]
+    },
+    {
+      "id": "idempotency",
+      "slug": "best-practices/principles/distributed/idempotency",
+      "path_en": "docs/best-practices/principles/distributed/idempotency_en.md",
+      "path_id": "docs/best-practices/principles/distributed/idempotency_id.md",
+      "title": "Idempotency Principle",
+      "pillar": "principles",
+      "subpillar": "distributed",
+      "keywords": [
+        "idempotency",
+        "idempotency principle"
+      ]
+    },
+    {
+      "id": "dry",
+      "slug": "best-practices/principles/dry",
+      "path_en": "docs/best-practices/principles/dry_en.md",
+      "path_id": "docs/best-practices/principles/dry_id.md",
+      "title": "DRY Principle",
+      "pillar": "principles",
+      "subpillar": "dry",
+      "keywords": [
+        "dry",
+        "dry principle"
+      ]
+    },
+    {
+      "id": "fail-fast",
+      "slug": "best-practices/principles/fail-fast",
+      "path_en": "docs/best-practices/principles/fail-fast_en.md",
+      "path_id": "docs/best-practices/principles/fail-fast_id.md",
+      "title": "Fail-Fast Principle",
+      "pillar": "principles",
+      "subpillar": "fail-fast",
+      "keywords": [
+        "fail",
+        "fail fast",
+        "fail-fast principle",
+        "fast"
+      ]
+    },
+    {
+      "id": "composition-over-inheritance",
+      "slug": "best-practices/principles/general/composition-over-inheritance",
+      "path_en": "docs/best-practices/principles/general/composition-over-inheritance_en.md",
+      "path_id": "docs/best-practices/principles/general/composition-over-inheritance_id.md",
+      "title": "Composition over Inheritance",
+      "pillar": "principles",
+      "subpillar": "general",
+      "keywords": [
+        "composition",
+        "composition over inheritance",
+        "inheritance",
+        "over"
+      ]
+    },
+    {
+      "id": "convention-over-configuration",
+      "slug": "best-practices/principles/general/convention-over-configuration",
+      "path_en": "docs/best-practices/principles/general/convention-over-configuration_en.md",
+      "path_id": "docs/best-practices/principles/general/convention-over-configuration_id.md",
+      "title": "Convention over Configuration",
+      "pillar": "principles",
+      "subpillar": "general",
+      "keywords": [
+        "configuration",
+        "convention",
+        "convention over configuration",
+        "over"
+      ]
+    },
+    {
+      "id": "fail-fast",
+      "slug": "best-practices/principles/general/fail-fast",
+      "path_en": "docs/best-practices/principles/general/fail-fast_en.md",
+      "path_id": "docs/best-practices/principles/general/fail-fast_id.md",
+      "title": "Fail-Fast Principle",
+      "pillar": "principles",
+      "subpillar": "general",
+      "keywords": [
+        "fail",
+        "fail fast",
+        "fail-fast principle",
+        "fast"
+      ]
+    },
+    {
+      "id": "high-cohesion-low-coupling",
+      "slug": "best-practices/principles/general/high-cohesion-low-coupling",
+      "path_en": "docs/best-practices/principles/general/high-cohesion-low-coupling_en.md",
+      "path_id": "docs/best-practices/principles/general/high-cohesion-low-coupling_id.md",
+      "title": "High Cohesion, Low Coupling",
+      "pillar": "principles",
+      "subpillar": "general",
+      "keywords": [
+        "cohesion",
+        "coupling",
+        "high",
+        "high cohesion low coupling",
+        "high cohesion, low coupling",
+        "low"
+      ]
+    },
+    {
+      "id": "separation-of-concerns",
+      "slug": "best-practices/principles/general/separation-of-concerns",
+      "path_en": "docs/best-practices/principles/general/separation-of-concerns_en.md",
+      "path_id": "docs/best-practices/principles/general/separation-of-concerns_id.md",
+      "title": "Separation of Concerns",
+      "pillar": "principles",
+      "subpillar": "general",
+      "keywords": [
+        "concerns",
+        "of",
+        "separation",
+        "separation of concerns"
+      ]
+    },
+    {
+      "id": "kiss",
+      "slug": "best-practices/principles/kiss",
+      "path_en": "docs/best-practices/principles/kiss_en.md",
+      "path_id": "docs/best-practices/principles/kiss_id.md",
+      "title": "KISS Principle",
+      "pillar": "principles",
+      "subpillar": "kiss",
+      "keywords": [
+        "kiss",
+        "kiss principle"
+      ]
+    },
+    {
+      "id": "law-of-demeter",
+      "slug": "best-practices/principles/law-of-demeter",
+      "path_en": "docs/best-practices/principles/law-of-demeter_en.md",
+      "path_id": "docs/best-practices/principles/law-of-demeter_id.md",
+      "title": "Law of Demeter",
+      "pillar": "principles",
+      "subpillar": "law-of-demeter",
+      "keywords": [
+        "demeter",
+        "law",
+        "law of demeter",
+        "of"
+      ]
+    },
+    {
+      "id": "grasp",
+      "slug": "best-practices/principles/oop/grasp",
+      "path_en": "docs/best-practices/principles/oop/grasp_en.md",
+      "path_id": "docs/best-practices/principles/oop/grasp_id.md",
+      "title": "GRASP Principles",
+      "pillar": "principles",
+      "subpillar": "oop",
+      "keywords": [
+        "grasp",
+        "grasp principles"
+      ]
+    },
+    {
+      "id": "assume-breach",
+      "slug": "best-practices/principles/security/assume-breach",
+      "path_en": "docs/best-practices/principles/security/assume-breach_en.md",
+      "path_id": "docs/best-practices/principles/security/assume-breach_id.md",
+      "title": "Assume Breach Principle",
+      "pillar": "principles",
+      "subpillar": "security",
+      "keywords": [
+        "assume",
+        "assume breach",
+        "assume breach principle",
+        "breach"
+      ]
+    },
+    {
+      "id": "defense-in-depth",
+      "slug": "best-practices/principles/security/defense-in-depth",
+      "path_en": "docs/best-practices/principles/security/defense-in-depth_en.md",
+      "path_id": "docs/best-practices/principles/security/defense-in-depth_id.md",
+      "title": "Defense in Depth Principle",
+      "pillar": "principles",
+      "subpillar": "security",
+      "keywords": [
+        "defense",
+        "defense in depth",
+        "defense in depth principle",
+        "depth",
+        "in"
+      ]
+    },
+    {
+      "id": "least-privilege",
+      "slug": "best-practices/principles/security/least-privilege",
+      "path_en": "docs/best-practices/principles/security/least-privilege_en.md",
+      "path_id": "docs/best-practices/principles/security/least-privilege_id.md",
+      "title": "Least Privilege Principle",
+      "pillar": "principles",
+      "subpillar": "security",
+      "keywords": [
+        "least",
+        "least privilege",
+        "least privilege principle",
+        "privilege"
+      ]
+    },
+    {
+      "id": "secure-by-default",
+      "slug": "best-practices/principles/security/secure-by-default",
+      "path_en": "docs/best-practices/principles/security/secure-by-default_en.md",
+      "path_id": "docs/best-practices/principles/security/secure-by-default_id.md",
+      "title": "Secure by Default Principle",
+      "pillar": "principles",
+      "subpillar": "security",
+      "keywords": [
+        "by",
+        "default",
+        "secure",
+        "secure by default",
+        "secure by default principle"
+      ]
+    },
+    {
+      "id": "zero-trust",
+      "slug": "best-practices/principles/security/zero-trust",
+      "path_en": "docs/best-practices/principles/security/zero-trust_en.md",
+      "path_id": "docs/best-practices/principles/security/zero-trust_id.md",
+      "title": "Zero Trust Principle",
+      "pillar": "principles",
+      "subpillar": "security",
+      "keywords": [
+        "never trust always verify",
+        "trust",
+        "zero",
+        "zero trust",
+        "zero trust principle",
+        "ztna"
+      ]
+    },
+    {
+      "id": "separation-of-concerns",
+      "slug": "best-practices/principles/separation-of-concerns",
+      "path_en": "docs/best-practices/principles/separation-of-concerns_en.md",
+      "path_id": "docs/best-practices/principles/separation-of-concerns_id.md",
+      "title": "Separation of Concerns",
+      "pillar": "principles",
+      "subpillar": "separation-of-concerns",
+      "keywords": [
+        "concerns",
+        "of",
+        "separation",
+        "separation of concerns"
+      ]
+    },
+    {
+      "id": "solid",
+      "slug": "best-practices/principles/solid",
+      "path_en": "docs/best-practices/principles/solid_en.md",
+      "path_id": "docs/best-practices/principles/solid_id.md",
+      "title": "SOLID Principles",
+      "pillar": "principles",
+      "subpillar": "solid",
+      "keywords": [
+        "dip",
+        "isp",
+        "lsp",
+        "ocp",
+        "solid",
+        "solid principles",
+        "srp"
+      ]
+    },
+    {
+      "id": "yagni",
+      "slug": "best-practices/principles/yagni",
+      "path_en": "docs/best-practices/principles/yagni_en.md",
+      "path_id": "docs/best-practices/principles/yagni_id.md",
+      "title": "YAGNI Principle",
+      "pillar": "principles",
+      "subpillar": "yagni",
+      "keywords": [
+        "yagni",
+        "yagni principle"
+      ]
+    },
+    {
+      "id": "analytics",
+      "slug": "ecosystem/aws/analytics",
+      "path_en": "docs/ecosystem/aws/analytics_en.md",
+      "path_id": "docs/ecosystem/aws/analytics_id.md",
+      "title": "Analytics & Big Data",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "analytics",
+        "analytics & big data"
+      ]
+    },
+    {
+      "id": "backup",
+      "slug": "ecosystem/aws/backup",
+      "path_en": "docs/ecosystem/aws/backup_en.md",
+      "path_id": "docs/ecosystem/aws/backup_id.md",
+      "title": "Backup & Recovery",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "backup",
+        "backup & recovery"
+      ]
+    },
+    {
+      "id": "compute",
+      "slug": "ecosystem/aws/compute",
+      "path_en": "docs/ecosystem/aws/compute_en.md",
+      "path_id": "docs/ecosystem/aws/compute_id.md",
+      "title": "AWS Compute Services",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "aws compute",
+        "aws compute services",
+        "compute",
+        "ec2",
+        "ecs",
+        "fargate",
+        "lambda"
+      ]
+    },
+    {
+      "id": "database",
+      "slug": "ecosystem/aws/database",
+      "path_en": "docs/ecosystem/aws/database_en.md",
+      "path_id": "docs/ecosystem/aws/database_id.md",
+      "title": "AWS Database Services",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "aurora",
+        "aws database services",
+        "database",
+        "dynamodb",
+        "elasticache",
+        "rds"
+      ]
+    },
+    {
+      "id": "deployment",
+      "slug": "ecosystem/aws/deployment",
+      "path_en": "docs/ecosystem/aws/deployment_en.md",
+      "path_id": "docs/ecosystem/aws/deployment_id.md",
+      "title": "Deployment & CI/CD",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "cicd aws",
+        "codedeploy",
+        "codepipeline",
+        "deployment",
+        "deployment & ci/cd"
+      ]
+    },
+    {
+      "id": "edge-computing",
+      "slug": "ecosystem/aws/edge-computing",
+      "path_en": "docs/ecosystem/aws/edge-computing_en.md",
+      "path_id": "docs/ecosystem/aws/edge-computing_id.md",
+      "title": "Edge Computing",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "computing",
+        "edge",
+        "edge computing"
+      ]
+    },
+    {
+      "id": "event-driven",
+      "slug": "ecosystem/aws/event-driven",
+      "path_en": "docs/ecosystem/aws/event-driven_en.md",
+      "path_id": "docs/ecosystem/aws/event-driven_id.md",
+      "title": "Event Driven & Messaging Services",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "driven",
+        "event",
+        "event driven",
+        "event driven & messaging services",
+        "eventbridge",
+        "kinesis",
+        "sns",
+        "sqs"
+      ]
+    },
+    {
+      "id": "iot",
+      "slug": "ecosystem/aws/iot",
+      "path_en": "docs/ecosystem/aws/iot_en.md",
+      "path_id": "docs/ecosystem/aws/iot_id.md",
+      "title": "AWS IoT Services",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "aws iot services",
+        "iot"
+      ]
+    },
+    {
+      "id": "machine-learning",
+      "slug": "ecosystem/aws/machine-learning",
+      "path_en": "docs/ecosystem/aws/machine-learning_en.md",
+      "path_id": "docs/ecosystem/aws/machine-learning_id.md",
+      "title": "Machine Learning",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "learning",
+        "machine",
+        "machine learning"
+      ]
+    },
+    {
+      "id": "managed-blockchain",
+      "slug": "ecosystem/aws/managed-blockchain",
+      "path_en": "docs/ecosystem/aws/managed-blockchain_en.md",
+      "path_id": "docs/ecosystem/aws/managed-blockchain_id.md",
+      "title": "Amazon Managed Blockchain",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "amazon managed blockchain",
+        "blockchain",
+        "managed",
+        "managed blockchain"
+      ]
+    },
+    {
+      "id": "management",
+      "slug": "ecosystem/aws/management",
+      "path_en": "docs/ecosystem/aws/management_en.md",
+      "path_id": "docs/ecosystem/aws/management_id.md",
+      "title": "Management & Governance",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "management",
+        "management & governance"
+      ]
+    },
+    {
+      "id": "monitoring",
+      "slug": "ecosystem/aws/monitoring",
+      "path_en": "docs/ecosystem/aws/monitoring_en.md",
+      "path_id": "docs/ecosystem/aws/monitoring_id.md",
+      "title": "Monitoring & Logging",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "cloudwatch",
+        "monitoring",
+        "monitoring & logging",
+        "x-ray"
+      ]
+    },
+    {
+      "id": "networking",
+      "slug": "ecosystem/aws/networking",
+      "path_en": "docs/ecosystem/aws/networking_en.md",
+      "path_id": "docs/ecosystem/aws/networking_id.md",
+      "title": "Networking & Content Delivery",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "alb",
+        "cloudfront",
+        "networking",
+        "networking & content delivery",
+        "route53",
+        "vpc"
+      ]
+    },
+    {
+      "id": "security",
+      "slug": "ecosystem/aws/security",
+      "path_en": "docs/ecosystem/aws/security_en.md",
+      "path_id": "docs/ecosystem/aws/security_id.md",
+      "title": "Security & Identity",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "cognito",
+        "iam",
+        "kms",
+        "security",
+        "security & identity",
+        "waf"
+      ]
+    },
+    {
+      "id": "storage",
+      "slug": "ecosystem/aws/storage",
+      "path_en": "docs/ecosystem/aws/storage_en.md",
+      "path_id": "docs/ecosystem/aws/storage_id.md",
+      "title": "AWS Storage Services",
+      "pillar": "ecosystem",
+      "subpillar": "aws",
+      "keywords": [
+        "aws storage services",
+        "ebs",
+        "efs",
+        "glacier",
+        "s3",
+        "storage"
+      ]
+    },
+    {
+      "id": "analytics",
+      "slug": "ecosystem/azure/analytics",
+      "path_en": "docs/ecosystem/azure/analytics_en.md",
+      "path_id": "docs/ecosystem/azure/analytics_id.md",
+      "title": "Azure Analytics Services",
+      "pillar": "ecosystem",
+      "subpillar": "azure",
+      "keywords": [
+        "analytics",
+        "azure analytics services"
+      ]
+    },
+    {
+      "id": "compute",
+      "slug": "ecosystem/azure/compute",
+      "path_en": "docs/ecosystem/azure/compute_en.md",
+      "path_id": "docs/ecosystem/azure/compute_id.md",
+      "title": "Azure Compute Services",
+      "pillar": "ecosystem",
+      "subpillar": "azure",
+      "keywords": [
+        "aks",
+        "azure compute services",
+        "azure functions",
+        "azure vm",
+        "compute"
+      ]
+    },
+    {
+      "id": "database",
+      "slug": "ecosystem/azure/database",
+      "path_en": "docs/ecosystem/azure/database_en.md",
+      "path_id": "docs/ecosystem/azure/database_id.md",
+      "title": "Azure Database Services",
+      "pillar": "ecosystem",
+      "subpillar": "azure",
+      "keywords": [
+        "azure database services",
+        "azure sql",
+        "cosmos db",
+        "database"
+      ]
+    },
+    {
+      "id": "event-driven",
+      "slug": "ecosystem/azure/event-driven",
+      "path_en": "docs/ecosystem/azure/event-driven_en.md",
+      "path_id": "docs/ecosystem/azure/event-driven_id.md",
+      "title": "Azure Event-Driven Services",
+      "pillar": "ecosystem",
+      "subpillar": "azure",
+      "keywords": [
+        "azure event-driven services",
+        "driven",
+        "event",
+        "event driven"
+      ]
+    },
+    {
+      "id": "serverless",
+      "slug": "ecosystem/azure/serverless",
+      "path_en": "docs/ecosystem/azure/serverless_en.md",
+      "path_id": "docs/ecosystem/azure/serverless_id.md",
+      "title": "Azure Serverless Services",
+      "pillar": "ecosystem",
+      "subpillar": "azure",
+      "keywords": [
+        "azure serverless services",
+        "serverless"
+      ]
+    },
+    {
+      "id": "storage",
+      "slug": "ecosystem/azure/storage",
+      "path_en": "docs/ecosystem/azure/storage_en.md",
+      "path_id": "docs/ecosystem/azure/storage_id.md",
+      "title": "Azure Storage Services",
+      "pillar": "ecosystem",
+      "subpillar": "azure",
+      "keywords": [
+        "azure storage services",
+        "storage"
+      ]
+    },
+    {
+      "id": "analytics",
+      "slug": "ecosystem/google-cloud/analytics",
+      "path_en": "docs/ecosystem/google-cloud/analytics_en.md",
+      "path_id": "docs/ecosystem/google-cloud/analytics_id.md",
+      "title": "Google BigQuery",
+      "pillar": "ecosystem",
+      "subpillar": "google-cloud",
+      "keywords": [
+        "analytics",
+        "google bigquery"
+      ]
+    },
+    {
+      "id": "compute",
+      "slug": "ecosystem/google-cloud/compute",
+      "path_en": "docs/ecosystem/google-cloud/compute_en.md",
+      "path_id": "docs/ecosystem/google-cloud/compute_id.md",
+      "title": "Google Cloud Platform Compute Services",
+      "pillar": "ecosystem",
+      "subpillar": "google-cloud",
+      "keywords": [
+        "cloud run",
+        "compute",
+        "gce",
+        "gke",
+        "google cloud platform compute services"
+      ]
+    },
+    {
+      "id": "database",
+      "slug": "ecosystem/google-cloud/database",
+      "path_en": "docs/ecosystem/google-cloud/database_en.md",
+      "path_id": "docs/ecosystem/google-cloud/database_id.md",
+      "title": "Google Cloud SQL",
+      "pillar": "ecosystem",
+      "subpillar": "google-cloud",
+      "keywords": [
+        "cloud sql",
+        "database",
+        "firestore",
+        "google cloud sql",
+        "spanner"
+      ]
+    },
+    {
+      "id": "event-driven",
+      "slug": "ecosystem/google-cloud/event-driven",
+      "path_en": "docs/ecosystem/google-cloud/event-driven_en.md",
+      "path_id": "docs/ecosystem/google-cloud/event-driven_id.md",
+      "title": "Google Cloud Pub/Sub",
+      "pillar": "ecosystem",
+      "subpillar": "google-cloud",
+      "keywords": [
+        "driven",
+        "event",
+        "event driven",
+        "google cloud pub/sub"
+      ]
+    },
+    {
+      "id": "serverless",
+      "slug": "ecosystem/google-cloud/serverless",
+      "path_en": "docs/ecosystem/google-cloud/serverless_en.md",
+      "path_id": "docs/ecosystem/google-cloud/serverless_id.md",
+      "title": "Google Cloud Run",
+      "pillar": "ecosystem",
+      "subpillar": "google-cloud",
+      "keywords": [
+        "google cloud run",
+        "serverless"
+      ]
+    },
+    {
+      "id": "storage",
+      "slug": "ecosystem/google-cloud/storage",
+      "path_en": "docs/ecosystem/google-cloud/storage_en.md",
+      "path_id": "docs/ecosystem/google-cloud/storage_id.md",
+      "title": "Google Cloud Storage",
+      "pillar": "ecosystem",
+      "subpillar": "google-cloud",
+      "keywords": [
+        "cloud storage",
+        "gcs",
+        "google cloud storage",
+        "storage"
+      ]
+    },
+    {
+      "id": "ansible",
+      "slug": "technologies/infrastructure/ansible",
+      "path_en": "docs/technologies/infrastructure/ansible_en.md",
+      "path_id": "docs/technologies/infrastructure/ansible_id.md",
+      "title": "Ansible",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "ansible"
+      ]
+    },
+    {
+      "id": "containerd",
+      "slug": "technologies/infrastructure/containerd",
+      "path_en": "docs/technologies/infrastructure/containerd_en.md",
+      "path_id": "docs/technologies/infrastructure/containerd_id.md",
+      "title": "Containerd",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "containerd"
+      ]
+    },
+    {
+      "id": "docker-swarm",
+      "slug": "technologies/infrastructure/docker-swarm",
+      "path_en": "docs/technologies/infrastructure/docker-swarm_en.md",
+      "path_id": "docs/technologies/infrastructure/docker-swarm_id.md",
+      "title": "Docker Swarm",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "docker",
+        "docker swarm",
+        "swarm"
+      ]
+    },
+    {
+      "id": "docker",
+      "slug": "technologies/infrastructure/docker",
+      "path_en": "docs/technologies/infrastructure/docker_en.md",
+      "path_id": "docs/technologies/infrastructure/docker_id.md",
+      "title": "Docker",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "container",
+        "docker",
+        "dockerfile",
+        "oci image"
+      ]
+    },
+    {
+      "id": "elk-stack",
+      "slug": "technologies/infrastructure/elk-stack",
+      "path_en": "docs/technologies/infrastructure/elk-stack_en.md",
+      "path_id": "docs/technologies/infrastructure/elk-stack_id.md",
+      "title": "ELK Stack",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "elastic",
+        "elasticsearch",
+        "elk",
+        "elk stack",
+        "kibana",
+        "logstash",
+        "stack"
+      ]
+    },
+    {
+      "id": "grafana",
+      "slug": "technologies/infrastructure/grafana",
+      "path_en": "docs/technologies/infrastructure/grafana_en.md",
+      "path_id": "docs/technologies/infrastructure/grafana_id.md",
+      "title": "Grafana",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "grafana"
+      ]
+    },
+    {
+      "id": "helm",
+      "slug": "technologies/infrastructure/helm",
+      "path_en": "docs/technologies/infrastructure/helm_en.md",
+      "path_id": "docs/technologies/infrastructure/helm_id.md",
+      "title": "Helm",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "helm"
+      ]
+    },
+    {
+      "id": "istio",
+      "slug": "technologies/infrastructure/istio",
+      "path_en": "docs/technologies/infrastructure/istio_en.md",
+      "path_id": "docs/technologies/infrastructure/istio_id.md",
+      "title": "Istio",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "envoy sidecar",
+        "istio",
+        "service mesh"
+      ]
+    },
+    {
+      "id": "kafka",
+      "slug": "technologies/infrastructure/kafka",
+      "path_en": "docs/technologies/infrastructure/kafka_en.md",
+      "path_id": "docs/technologies/infrastructure/kafka_id.md",
+      "title": "Apache Kafka",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "apache kafka",
+        "confluent",
+        "event streaming",
+        "kafka"
+      ]
+    },
+    {
+      "id": "kubernetes",
+      "slug": "technologies/infrastructure/kubernetes",
+      "path_en": "docs/technologies/infrastructure/kubernetes_en.md",
+      "path_id": "docs/technologies/infrastructure/kubernetes_id.md",
+      "title": "Kubernetes",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "helm charts runtime",
+        "k8s",
+        "kube",
+        "kubernetes",
+        "pods"
+      ]
+    },
+    {
+      "id": "nginx",
+      "slug": "technologies/infrastructure/nginx",
+      "path_en": "docs/technologies/infrastructure/nginx_en.md",
+      "path_id": "docs/technologies/infrastructure/nginx_id.md",
+      "title": "Nginx",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "load balancer",
+        "nginx",
+        "reverse proxy"
+      ]
+    },
+    {
+      "id": "prometheus",
+      "slug": "technologies/infrastructure/prometheus",
+      "path_en": "docs/technologies/infrastructure/prometheus_en.md",
+      "path_id": "docs/technologies/infrastructure/prometheus_id.md",
+      "title": "Prometheus",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "metrics",
+        "prometheus",
+        "promql"
+      ]
+    },
+    {
+      "id": "rabbitmq",
+      "slug": "technologies/infrastructure/rabbitmq",
+      "path_en": "docs/technologies/infrastructure/rabbitmq_en.md",
+      "path_id": "docs/technologies/infrastructure/rabbitmq_id.md",
+      "title": "RabbitMQ",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "amqp broker",
+        "message queue",
+        "rabbitmq"
+      ]
+    },
+    {
+      "id": "terraform",
+      "slug": "technologies/infrastructure/terraform",
+      "path_en": "docs/technologies/infrastructure/terraform_en.md",
+      "path_id": "docs/technologies/infrastructure/terraform_id.md",
+      "title": "Terraform",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "hcl",
+        "iac",
+        "terraform",
+        "tfstate"
+      ]
+    },
+    {
+      "id": "amqp",
+      "slug": "technologies/protocols/amqp",
+      "path_en": "docs/technologies/protocols/amqp_en.md",
+      "path_id": "docs/technologies/protocols/amqp_id.md",
+      "title": "AMQP (Advanced Message Queuing Protocol)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "amqp",
+        "amqp (advanced message queuing protocol)"
+      ]
+    },
+    {
+      "id": "graphql",
+      "slug": "technologies/protocols/graphql",
+      "path_en": "docs/technologies/protocols/graphql_en.md",
+      "path_id": "docs/technologies/protocols/graphql_id.md",
+      "title": "GraphQL",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "apollo",
+        "gql",
+        "graphql"
+      ]
+    },
+    {
+      "id": "grpc",
+      "slug": "technologies/protocols/grpc",
+      "path_en": "docs/technologies/protocols/grpc_en.md",
+      "path_id": "docs/technologies/protocols/grpc_id.md",
+      "title": "gRPC",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "grpc",
+        "http2 rpc",
+        "protobuf rpc"
+      ]
+    },
+    {
+      "id": "http",
+      "slug": "technologies/protocols/http",
+      "path_en": "docs/technologies/protocols/http_en.md",
+      "path_id": "docs/technologies/protocols/http_id.md",
+      "title": "HTTP Protocols",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "http",
+        "http protocols",
+        "http2",
+        "http3",
+        "https",
+        "rest"
+      ]
+    },
+    {
+      "id": "mqtt",
+      "slug": "technologies/protocols/mqtt",
+      "path_en": "docs/technologies/protocols/mqtt_en.md",
+      "path_id": "docs/technologies/protocols/mqtt_id.md",
+      "title": "MQTT (Message Queuing Telemetry Transport)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "iot messaging",
+        "mqtt",
+        "mqtt (message queuing telemetry transport)",
+        "pubsub mqtt"
+      ]
+    },
+    {
+      "id": "sse",
+      "slug": "technologies/protocols/sse",
+      "path_en": "docs/technologies/protocols/sse_en.md",
+      "path_id": "docs/technologies/protocols/sse_id.md",
+      "title": "Server-Sent Events (SSE)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "event stream",
+        "server sent events",
+        "server-sent events (sse)",
+        "sse"
+      ]
+    },
+    {
+      "id": "stomp",
+      "slug": "technologies/protocols/stomp",
+      "path_en": "docs/technologies/protocols/stomp_en.md",
+      "path_id": "docs/technologies/protocols/stomp_id.md",
+      "title": "STOMP (Streaming Text Oriented Messaging Protocol)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "stomp",
+        "stomp (streaming text oriented messaging protocol)"
+      ]
+    },
+    {
+      "id": "tcpip",
+      "slug": "technologies/protocols/tcpip",
+      "path_en": "docs/technologies/protocols/tcpip_en.md",
+      "path_id": "docs/technologies/protocols/tcpip_id.md",
+      "title": "TCP/IP (Transmission Control Protocol/Internet Protocol)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "tcp/ip (transmission control protocol/internet protocol)",
+        "tcpip"
+      ]
+    },
+    {
+      "id": "udp",
+      "slug": "technologies/protocols/udp",
+      "path_en": "docs/technologies/protocols/udp_en.md",
+      "path_id": "docs/technologies/protocols/udp_id.md",
+      "title": "UDP (User Datagram Protocol)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "udp",
+        "udp (user datagram protocol)"
+      ]
+    },
+    {
+      "id": "webrtc",
+      "slug": "technologies/protocols/webrtc",
+      "path_en": "docs/technologies/protocols/webrtc_en.md",
+      "path_id": "docs/technologies/protocols/webrtc_id.md",
+      "title": "WebRTC (Web Real-Time Communication)",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "webrtc",
+        "webrtc (web real-time communication)"
+      ]
+    },
+    {
+      "id": "websocket",
+      "slug": "technologies/protocols/websocket",
+      "path_en": "docs/technologies/protocols/websocket_en.md",
+      "path_id": "docs/technologies/protocols/websocket_id.md",
+      "title": "WebSocket",
+      "pillar": "technologies",
+      "subpillar": "protocols",
+      "keywords": [
+        "full duplex",
+        "websocket",
+        "ws"
+      ]
+    }
+  ]
+}
