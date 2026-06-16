@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions for Technical Documentation
+# Instructions for Technical Documentation
 
 ## Repository Overview
 This repository serves as a comprehensive knowledge base for technical documentation. It focuses on clear, consistent writing practices for multilingual technical content (English/Indonesian).
