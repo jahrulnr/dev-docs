@@ -107,4 +107,22 @@ Comprehensive documentation for cloud platform services:
 - Update docs for any architectural changes.
 - Use GitHub/GitLab issues for feedback.
 
-For hosting, this docs structure is compatible with GitHub Pages or GitLab Wiki (enable in repo settings).
+For hosting, this docs structure is compatible with **GitHub Wiki** (automated) or GitHub Pages.
+
+### GitHub Wiki (automated)
+
+On push to `master`, [`.github/workflows/wiki.yml`](.github/workflows/wiki.yml) runs:
+
+1. `node scripts/build-index.mjs`
+2. `node scripts/export-wiki.mjs` → `wiki-export/` (gitignored)
+3. `scripts/push-wiki.sh` → pushes to `dev-docs.wiki` using `GITHUB_TOKEN`
+
+**One-time setup:** enable Wiki in repo Settings → enable Wikis → create an initial page (e.g. `Home`) so the `.wiki` git repo exists.
+
+**Local preview:**
+
+```bash
+node scripts/build-index.mjs
+node scripts/export-wiki.mjs
+ls wiki-export | head
+```

@@ -1,0 +1,48 @@
+name: Sync GitHub Wiki
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'docs/**'
+      - 'scripts/build-index.mjs'
+      - 'scripts/export-wiki.mjs'
+      - 'scripts/push-wiki.sh'
+      - 'index.json'
+      - 'README.md'
+      - '.github/workflows/wiki.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wiki-${{ github.repository }}
+  cancel-in-progress: true
+
+jobs:
+  wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build index
+        run: node scripts/build-index.mjs
+
+      - name: Export wiki markdown
+        run: node scripts/export-wiki.mjs
+        env:
+          DEV_DOCS_REPO: ${{ github.repository }}
+
+      - name: Push to GitHub Wiki
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+          DEV_DOCS_REPO: ${{ github.repository }}
+        run: bash scripts/push-wiki.sh
