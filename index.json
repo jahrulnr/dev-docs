@@ -1,8 +1,8 @@
 {
   "version": 1,
   "base": "/data/workspace/dev-docs",
-  "generated": "2026-06-16T11:38:59.305Z",
-  "count": 168,
+  "generated": "2026-06-16T12:22:58.623Z",
+  "count": 169,
   "entries": [
     {
       "id": "big-ball-of-mud",
@@ -2130,6 +2130,21 @@
         "kibana",
         "logstash",
         "stack"
+      ]
+    },
+    {
+      "id": "github-wiki",
+      "slug": "technologies/infrastructure/github-wiki",
+      "path_en": "docs/technologies/infrastructure/github-wiki_en.md",
+      "path_id": "docs/technologies/infrastructure/github-wiki_id.md",
+      "title": "GitHub Wiki (Gollum)",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "github",
+        "github wiki",
+        "github wiki (gollum)",
+        "wiki"
       ]
     },
     {

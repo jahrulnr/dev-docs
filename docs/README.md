@@ -26,6 +26,7 @@ Cloud platform services and tools:
 Infrastructure tools and communication protocols:
 - [Infrastructure Tools](technologies/infrastructure/) - Docker, Kubernetes, Terraform, monitoring tools
 - [Communication Protocols](technologies/protocols/) - HTTP, gRPC, WebSocket, MQTT, GraphQL
+- [GitHub Wiki (Gollum)](technologies/infrastructure/github-wiki_en.md) - Wiki constraints, file naming SOP, and link rules for docs-as-code
 
 ## Navigation Tips
 

@@ -151,6 +151,7 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | docker, docker swarm, swarm | `docs/technologies/infrastructure/docker-swarm_en.md` | `docs/technologies/infrastructure/docker-swarm_id.md` |
 | container, docker, dockerfile, oci image | `docs/technologies/infrastructure/docker_en.md` | `docs/technologies/infrastructure/docker_id.md` |
 | elastic, elasticsearch, elk, elk stack | `docs/technologies/infrastructure/elk-stack_en.md` | `docs/technologies/infrastructure/elk-stack_id.md` |
+| github, github wiki, github wiki (gollum), wiki | `docs/technologies/infrastructure/github-wiki_en.md` | `docs/technologies/infrastructure/github-wiki_id.md` |
 | go, go plugin runtimes, plugin, runtimes | `docs/technologies/infrastructure/go-plugin-runtimes_en.md` | `docs/technologies/infrastructure/go-plugin-runtimes_id.md` |
 | grafana | `docs/technologies/infrastructure/grafana_en.md` | `docs/technologies/infrastructure/grafana_id.md` |
 | helm | `docs/technologies/infrastructure/helm_en.md` | `docs/technologies/infrastructure/helm_id.md` |
