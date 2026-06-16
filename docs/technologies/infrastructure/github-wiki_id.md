@@ -55,7 +55,19 @@ Exporter kita menghasilkan:
 
 - 1 halaman per doc (EN + ID)
 - `Home` dan `Home-id`
-- `_Sidebar` dan `Sidebar-id` (halaman navigasi Bahasa Indonesia)
+- `_Sidebar` saja — navigasi bilingual per baris topik (lihat di bawah)
+
+#### Sidebar bilingual (UX dalam limitasi GitHub)
+
+GitHub Wiki hanya punya satu `_Sidebar.md` global. Tidak ada sidebar per bahasa atau switch locale.
+
+Pola kita: **satu baris per topik**, dengan link bahasa yang bisa diklik:
+
+```markdown
+- Clean Architecture · [EN](Architecture%20Patterns%20-%20Clean%20Architecture) · [ID](Architecture%20Patterns%20-%20Clean%20Architecture-id)
+```
+
+Header link `Home (EN)` dan `Beranda (ID)`. User pilih bahasa per topik dari sidebar — tanpa halaman `Sidebar-id` duplikat.
 
 #### Konvensi penamaan
 

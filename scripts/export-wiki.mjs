@@ -68,9 +68,6 @@ function buildWikiNameMap(entries) {
 
 const wikiNames = buildWikiNameMap(index.entries);
 
-/** Indonesian navigation page (not `_Sidebar-id` — leading `_Sidebar*` confuses Gollum). */
-const SIDEBAR_ID_PAGE = 'Sidebar-id';
-
 function wikiPage(slug, lang) {
   const n = wikiNames.get(slug);
   if (!n) throw new Error(`No wiki name for slug: ${slug}`);
@@ -187,7 +184,7 @@ Knowledge base teknis bilingual (EN / ID) untuk arsitektur, patterns, cloud, dan
 
 ## Navigasi
 
-- Lihat **Sidebar-id** di sidebar wiki untuk daftar lengkap topik.
+- Gunakan **_Sidebar** wiki: setiap topik punya link **EN** dan **ID**.
 - Sumber di repo: [${REPO}](https://github.com/${REPO})
 
 ## Kategori
@@ -206,7 +203,7 @@ Bilingual technical knowledge base (EN / ID) for architecture, patterns, cloud, 
 
 ## Navigation
 
-- Use **_Sidebar** in the wiki sidebar for the full topic list.
+- Use the wiki **_Sidebar**: each topic has **EN** and **ID** links.
 - Source repo: [${REPO}](https://github.com/${REPO})
 
 ## Categories
@@ -217,7 +214,11 @@ _Auto-synced from \`master\` via GitHub Actions._
 `;
 }
 
-function buildSidebar(lang) {
+/**
+ * One global _Sidebar: each row is title + per-language links (UX within GitHub limits).
+ * Example: `- Clean Architecture · [EN](...) · [ID](...)`
+ */
+function buildSidebar() {
   const groups = new Map();
   for (const e of index.entries) {
     const key = `${e.pillar}|${e.subpillar ?? ''}`;
@@ -225,9 +226,14 @@ function buildSidebar(lang) {
     groups.get(key).push(e);
   }
 
-  const lines = lang === 'id'
-    ? [`### [EN](_Sidebar) · Bahasa Indonesia`, '']
-    : [`### English · [ID](${wikiHref(SIDEBAR_ID_PAGE)})`, ''];
+  const lines = [
+    '### Dev-docs',
+    '',
+    `- [Home (EN)](${wikiHref('Home')}) · [Beranda (ID)](${wikiHref('Home-id')})`,
+    '',
+    '_Each topic: pick **EN** or **ID**._',
+    '',
+  ];
 
   const sortedKeys = [...groups.keys()].sort();
   for (const key of sortedKeys) {
@@ -236,8 +242,11 @@ function buildSidebar(lang) {
     lines.push(`### ${label}`, '');
     const items = groups.get(key).sort((a, b) => a.title.localeCompare(b.title));
     for (const e of items) {
-      const page = wikiPage(e.slug, lang);
-      lines.push(`- [${e.title}](${wikiHref(page)})`);
+      const enPage = wikiPage(e.slug, 'en');
+      const idPage = wikiPage(e.slug, 'id');
+      lines.push(
+        `- ${e.title} · [EN](${wikiHref(enPage)}) · [ID](${wikiHref(idPage)})`,
+      );
     }
     lines.push('');
   }
@@ -269,7 +278,6 @@ for (const e of index.entries) {
 
 writeFileSync(join(OUT, 'Home.md'), buildHome('en'));
 writeFileSync(join(OUT, 'Home-id.md'), buildHome('id'));
-writeFileSync(join(OUT, '_Sidebar.md'), buildSidebar('en'));
-writeFileSync(join(OUT, `${SIDEBAR_ID_PAGE}.md`), buildSidebar('id'));
+writeFileSync(join(OUT, '_Sidebar.md'), buildSidebar());
 
-console.log(`Wiki export: ${exported} topic pages + Home + Sidebars → ${OUT}`);
+console.log(`Wiki export: ${exported} topic pages + Home + _Sidebar → ${OUT}`);

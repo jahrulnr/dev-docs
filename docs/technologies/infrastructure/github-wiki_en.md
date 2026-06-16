@@ -55,7 +55,19 @@ Our exporter generates:
 
 - One wiki page per doc (EN + ID)
 - `Home` and `Home-id`
-- `_Sidebar` and `Sidebar-id` (Indonesian navigation page)
+- `_Sidebar` only — bilingual navigation per topic row (see below)
+
+#### Bilingual sidebar (UX within GitHub limits)
+
+GitHub Wiki exposes a single global `_Sidebar.md`. There is no per-language sidebar or locale switch.
+
+Our pattern: **one row per topic**, with clickable language links:
+
+```markdown
+- Clean Architecture · [EN](Architecture%20Patterns%20-%20Clean%20Architecture) · [ID](Architecture%20Patterns%20-%20Clean%20Architecture-id)
+```
+
+Header links `Home (EN)` and `Beranda (ID)`. Users pick language per topic from the sidebar — no duplicate `Sidebar-id` page.
 
 #### Naming convention
 
