@@ -43,6 +43,7 @@ jobs:
       - name: Push to GitHub Wiki
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WIKI_TOKEN: ${{ secrets.WIKI_TOKEN }}
           GITHUB_SHA: ${{ github.sha }}
           DEV_DOCS_REPO: ${{ github.repository }}
         run: bash scripts/push-wiki.sh

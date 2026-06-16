@@ -5,36 +5,33 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 EXPORT="$ROOT/wiki-export"
 REPO="${DEV_DOCS_REPO:-jahrulnr/dev-docs}"
-WIKI_URL="${WIKI_PUSH_URL:-}"
 
 if [[ ! -d "$EXPORT" ]] || [[ -z "$(ls -A "$EXPORT"/*.md 2>/dev/null)" ]]; then
   echo "ERROR: wiki-export is empty. Run: node scripts/build-index.mjs && node scripts/export-wiki.mjs" >&2
   exit 1
 fi
 
-if [[ -z "$WIKI_PUSH_URL" ]]; then
-  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-    WIKI_PUSH_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.wiki.git"
-  else
-    echo "ERROR: set GITHUB_TOKEN or WIKI_PUSH_URL" >&2
-    exit 1
-  fi
+TOKEN="${WIKI_TOKEN:-${GITHUB_TOKEN:-}}"
+if [[ -z "$TOKEN" ]]; then
+  echo "ERROR: set WIKI_TOKEN (recommended) or GITHUB_TOKEN" >&2
+  exit 1
 fi
 
+WIKI_PUSH_URL="https://x-access-token:${TOKEN}@github.com/${REPO}.wiki.git"
 WORKDIR="$(mktemp -d)"
 trap 'rm -rf "$WORKDIR"' EXIT
 
-git -C "$WORKDIR" init -q
-git -C "$WORKDIR" remote add origin "$WIKI_PUSH_URL"
-
-if git -C "$WORKDIR" ls-remote --heads origin master 2>/dev/null | grep -q master; then
-  git -C "$WORKDIR" pull origin master --depth=1
-elif git -C "$WORKDIR" ls-remote --heads origin main 2>/dev/null | grep -q main; then
-  git -C "$WORKDIR" checkout -b main 2>/dev/null || true
-  git -C "$WORKDIR" pull origin main --depth=1
+echo "Cloning wiki repository for ${REPO}..."
+if ! git clone --depth=1 "$WIKI_PUSH_URL" "$WORKDIR" 2>/dev/null; then
+  echo "Wiki git repo not found. Initializing (enable Wiki in repo Settings if this fails on push)."
+  git -C "$WORKDIR" init -q
+  git -C "$WORKDIR" remote add origin "$WIKI_PUSH_URL"
+  git -C "$WORKDIR" checkout -b master
+else
+  echo "Wiki clone OK."
 fi
 
-rm -f "$WORKDIR"/*.md
+find "$WORKDIR" -maxdepth 1 -name '*.md' -delete
 cp -a "$EXPORT"/*.md "$WORKDIR"/
 
 git -C "$WORKDIR" add -A
@@ -46,11 +43,17 @@ fi
 git -C "$WORKDIR" -c user.name="dev-docs wiki bot" -c user.email="dev-docs-bot@users.noreply.github.com" \
   commit -m "Sync wiki from ${REPO}@${GITHUB_SHA:-local}"
 
-BRANCH="$(git -C "$WORKDIR" branch --show-current 2>/dev/null || echo master)"
-if [[ -z "$BRANCH" || "$BRANCH" == "master" ]]; then
-  git -C "$WORKDIR" push origin HEAD:master
-else
-  git -C "$WORKDIR" push origin HEAD:"$BRANCH"
+BRANCH="$(git -C "$WORKDIR" branch --show-current)"
+if [[ -z "$BRANCH" ]]; then BRANCH=master; fi
+
+echo "Pushing to wiki (${BRANCH})..."
+if ! git -C "$WORKDIR" push -u origin "$BRANCH"; then
+  echo "" >&2
+  echo "ERROR: wiki push failed." >&2
+  echo "  1. Enable Wiki: repo Settings → Features → Wikis" >&2
+  echo "  2. Create one manual wiki page (e.g. Home) so .wiki git exists" >&2
+  echo "  3. Add repo secret WIKI_TOKEN (PAT with repo scope) if GITHUB_TOKEN is rejected" >&2
+  exit 1
 fi
 
 echo "Pushed $(find "$EXPORT" -maxdepth 1 -name '*.md' | wc -l) pages to ${REPO}.wiki"

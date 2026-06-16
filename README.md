@@ -117,7 +117,11 @@ On push to `master`, [`.github/workflows/wiki.yml`](.github/workflows/wiki.yml) 
 2. `node scripts/export-wiki.mjs` → `wiki-export/` (gitignored)
 3. `scripts/push-wiki.sh` → pushes to `dev-docs.wiki` using `GITHUB_TOKEN`
 
-**One-time setup:** enable Wiki in repo Settings → enable Wikis → create an initial page (e.g. `Home`) so the `.wiki` git repo exists.
+**One-time setup:**
+
+1. Repo **Settings → Features → Wikis** → enable.
+2. Create one manual wiki page (e.g. `Home`) so the `dev-docs.wiki` git repo exists.
+3. If the workflow push step fails with auth errors, add secret **`WIKI_TOKEN`** (fine-grained or classic PAT with **Contents: Read and write** on this repo). The workflow prefers `WIKI_TOKEN` over `GITHUB_TOKEN`.
 
 **Local preview:**
 
