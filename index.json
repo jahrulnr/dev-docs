@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "base": "/home/jahrulnr/.agents/skills/dev-docs",
-  "generated": "2026-06-08T18:45:30.966Z",
-  "count": 165,
+  "base": "/data/workspace/dev-docs",
+  "generated": "2026-06-16T11:23:35.331Z",
+  "count": 168,
   "entries": [
     {
       "id": "big-ball-of-mud",
@@ -226,6 +226,20 @@
       ]
     },
     {
+      "id": "plugin-architecture",
+      "slug": "best-practices/architecture/patterns/plugin-architecture",
+      "path_en": "docs/best-practices/architecture/patterns/plugin-architecture_en.md",
+      "path_id": "docs/best-practices/architecture/patterns/plugin-architecture_id.md",
+      "title": "Plugin Architecture",
+      "pillar": "architecture",
+      "subpillar": "patterns",
+      "keywords": [
+        "architecture",
+        "plugin",
+        "plugin architecture"
+      ]
+    },
+    {
       "id": "event-driven-architecture",
       "slug": "best-practices/architecture/styles/event-driven-architecture",
       "path_en": "docs/best-practices/architecture/styles/event-driven-architecture_en.md",
@@ -367,12 +381,11 @@
       "slug": "best-practices/patterns/design/adapter",
       "path_en": "docs/best-practices/patterns/design/adapter_en.md",
       "path_id": "docs/best-practices/patterns/design/adapter_id.md",
-      "title": "Adapter Pattern",
+      "title": "Adapter",
       "pillar": "patterns",
       "subpillar": "design",
       "keywords": [
-        "adapter",
-        "adapter pattern"
+        "adapter"
       ]
     },
     {
@@ -407,12 +420,11 @@
       "slug": "best-practices/patterns/design/command",
       "path_en": "docs/best-practices/patterns/design/command_en.md",
       "path_id": "docs/best-practices/patterns/design/command_id.md",
-      "title": "Command Pattern",
+      "title": "Command",
       "pillar": "patterns",
       "subpillar": "design",
       "keywords": [
-        "command",
-        "command pattern"
+        "command"
       ]
     },
     {
@@ -432,12 +444,11 @@
       "slug": "best-practices/patterns/design/decorator",
       "path_en": "docs/best-practices/patterns/design/decorator_en.md",
       "path_id": "docs/best-practices/patterns/design/decorator_id.md",
-      "title": "Decorator Pattern",
+      "title": "Decorator",
       "pillar": "patterns",
       "subpillar": "design",
       "keywords": [
-        "decorator",
-        "decorator pattern"
+        "decorator"
       ]
     },
     {
@@ -445,12 +456,11 @@
       "slug": "best-practices/patterns/design/facade",
       "path_en": "docs/best-practices/patterns/design/facade_en.md",
       "path_id": "docs/best-practices/patterns/design/facade_id.md",
-      "title": "Facade Pattern",
+      "title": "Facade",
       "pillar": "patterns",
       "subpillar": "design",
       "keywords": [
-        "facade",
-        "facade pattern"
+        "facade"
       ]
     },
     {
@@ -485,12 +495,11 @@
       "slug": "best-practices/patterns/design/mediator",
       "path_en": "docs/best-practices/patterns/design/mediator_en.md",
       "path_id": "docs/best-practices/patterns/design/mediator_id.md",
-      "title": "Mediator Pattern",
+      "title": "Mediator",
       "pillar": "patterns",
       "subpillar": "design",
       "keywords": [
-        "mediator",
-        "mediator pattern"
+        "mediator"
       ]
     },
     {
@@ -549,12 +558,11 @@
       "slug": "best-practices/patterns/design/state",
       "path_en": "docs/best-practices/patterns/design/state_en.md",
       "path_id": "docs/best-practices/patterns/design/state_id.md",
-      "title": "State Pattern",
+      "title": "State",
       "pillar": "patterns",
       "subpillar": "design",
       "keywords": [
-        "state",
-        "state pattern"
+        "state"
       ]
     },
     {
@@ -701,6 +709,20 @@
         "event sourcing",
         "event store",
         "sourcing"
+      ]
+    },
+    {
+      "id": "extensibility-hooks",
+      "slug": "best-practices/patterns/integration/extensibility-hooks",
+      "path_en": "docs/best-practices/patterns/integration/extensibility-hooks_en.md",
+      "path_id": "docs/best-practices/patterns/integration/extensibility-hooks_id.md",
+      "title": "Extensibility Hooks",
+      "pillar": "patterns",
+      "subpillar": "integration",
+      "keywords": [
+        "extensibility",
+        "extensibility hooks",
+        "hooks"
       ]
     },
     {
@@ -854,13 +876,12 @@
       "slug": "best-practices/patterns/reliability/dead-letter-queue",
       "path_en": "docs/best-practices/patterns/reliability/dead-letter-queue_en.md",
       "path_id": "docs/best-practices/patterns/reliability/dead-letter-queue_id.md",
-      "title": "Dead Letter Queue (DLQ)",
+      "title": "Dead Letter Queue",
       "pillar": "patterns",
       "subpillar": "reliability",
       "keywords": [
         "dead",
         "dead letter queue",
-        "dead letter queue (dlq)",
         "letter",
         "queue"
       ]
@@ -1382,13 +1403,13 @@
       "slug": "best-practices/principles/fail-fast",
       "path_en": "docs/best-practices/principles/fail-fast_en.md",
       "path_id": "docs/best-practices/principles/fail-fast_id.md",
-      "title": "Fail-Fast Principle",
+      "title": "Fail Fast Principle",
       "pillar": "principles",
       "subpillar": "fail-fast",
       "keywords": [
         "fail",
         "fail fast",
-        "fail-fast principle",
+        "fail fast principle",
         "fast"
       ]
     },
@@ -1653,12 +1674,12 @@
       "slug": "ecosystem/aws/backup",
       "path_en": "docs/ecosystem/aws/backup_en.md",
       "path_id": "docs/ecosystem/aws/backup_id.md",
-      "title": "Backup & Recovery",
+      "title": "Backup & Recovery (AWS)",
       "pillar": "ecosystem",
       "subpillar": "aws",
       "keywords": [
         "backup",
-        "backup & recovery"
+        "backup & recovery (aws)"
       ]
     },
     {
@@ -1717,13 +1738,14 @@
       "slug": "ecosystem/aws/edge-computing",
       "path_en": "docs/ecosystem/aws/edge-computing_en.md",
       "path_id": "docs/ecosystem/aws/edge-computing_id.md",
-      "title": "Edge Computing",
+      "title": "Edge Computing (AWS)",
       "pillar": "ecosystem",
       "subpillar": "aws",
       "keywords": [
         "computing",
         "edge",
-        "edge computing"
+        "edge computing",
+        "edge computing (aws)"
       ]
     },
     {
@@ -2108,6 +2130,21 @@
         "kibana",
         "logstash",
         "stack"
+      ]
+    },
+    {
+      "id": "go-plugin-runtimes",
+      "slug": "technologies/infrastructure/go-plugin-runtimes",
+      "path_en": "docs/technologies/infrastructure/go-plugin-runtimes_en.md",
+      "path_id": "docs/technologies/infrastructure/go-plugin-runtimes_id.md",
+      "title": "Go Plugin Runtimes",
+      "pillar": "technologies",
+      "subpillar": "infrastructure",
+      "keywords": [
+        "go",
+        "go plugin runtimes",
+        "plugin",
+        "runtimes"
       ]
     },
     {

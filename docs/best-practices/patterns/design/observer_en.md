@@ -94,4 +94,4 @@ func (c *CurrentConditionsDisplay) Update(temp, hum, pres float64) {
 
 ## Links
 
-For related architectural patterns, see [Clean Architecture](../architecture/clean-architecture_en.md). For event-driven patterns, check [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). For coding principles, see [SOLID Principles](../../principles/solid_en.md).
+For related architectural patterns, see [Clean Architecture](../../architecture/patterns/clean-architecture_en.md). For event-driven patterns, check [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). For coding principles, see [SOLID Principles](../../principles/solid_en.md).

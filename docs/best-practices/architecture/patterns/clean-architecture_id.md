@@ -59,4 +59,4 @@ Di aplikasi e-commerce, entitas `Order` (domain) menangani aturan inti seperti "
 
 ## Tautan
 
-Untuk lebih lanjut tentang prinsip SOLID, lihat [Prinsip SOLID](../README.md#solid-principles). Untuk contoh DDD, periksa [Aturan Coding](../../coding-rules.md).
+Untuk lebih lanjut tentang prinsip SOLID, lihat [Prinsip SOLID](../../principles/solid_id.md). Untuk contoh DDD, periksa [Aturan Coding](../../principles/code-quality/clean-code_id.md).

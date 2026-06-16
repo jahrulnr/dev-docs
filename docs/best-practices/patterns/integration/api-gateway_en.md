@@ -119,4 +119,4 @@ func main() {
 
 ## Links
 
-For microservices architecture, see [Clean Architecture](../../architecture/clean-architecture_en.md). For event-driven integration, check [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). For API design principles, refer to [SOLID Principles](../../principles/solid_en.md).
+For microservices architecture, see [Clean Architecture](../../../architecture/patterns/clean-architecture_en.md). For event-driven integration, check [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). For API design principles, refer to [SOLID Principles](../../principles/solid_en.md).

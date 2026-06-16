@@ -79,10 +79,20 @@ CMD ["npm", "start"]
 - Tag images dengan nomor versi
 - Update base images secara teratur untuk keamanan
 
-## Integrasi dengan Ecommerce
+## Kasus penggunaan khas
 
-Dalam aplikasi ecommerce, Docker umumnya digunakan untuk:
-- Mengcontainerize microservices (layanan order, pembayaran)
-- Menjalankan database dalam container untuk development
-- Membuat pipeline CI/CD yang konsisten
-- Deploy aplikasi ke cluster Kubernetes
+- Packaging aplikasi dengan runtime environment yang reproducible
+- Paritas development lokal dengan production deployment
+- Pipeline CI/CD untuk build, test, dan artifact
+- Membangun image yang dikonsumsi Kubernetes atau Docker Swarm
+- Mengisolasi dependensi service dalam stack microservice
+
+## Terkait
+
+- [Kubernetes](kubernetes_id.md)
+- [Docker Swarm](docker-swarm_id.md)
+- [containerd](containerd_id.md)
+
+## Referensi
+
+- [Docker Documentation](https://docs.docker.com/)

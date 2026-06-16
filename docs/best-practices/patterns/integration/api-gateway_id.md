@@ -119,4 +119,4 @@ func main() {
 
 ## Tautan
 
-Untuk arsitektur microservices, lihat [Clean Architecture](../../architecture/clean-architecture_id.md). Untuk integrasi event-driven, periksa [Event-Driven Architecture](../../ecosystem/aws/event-driven_id.md). Untuk prinsip desain API, lihat [SOLID Principles](../../principles/solid_id.md).
+Untuk arsitektur microservices, lihat [Clean Architecture](../../../architecture/patterns/clean-architecture_id.md). Untuk integrasi event-driven, periksa [Event-Driven Architecture](../../ecosystem/aws/event-driven_id.md). Untuk prinsip desain API, lihat [SOLID Principles](../../principles/solid_id.md).

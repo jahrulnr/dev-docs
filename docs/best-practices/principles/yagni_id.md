@@ -1,25 +1,60 @@
 # Prinsip YAGNI
 
-## Gambaran Umum
+## Overview
 
-YAGNI (You Aren't Gonna Need It) menyarankan tidak mengimplementasikan fitur sampai benar-benar dibutuhkan. Dari Extreme Programming (XP), ini mencegah over-engineering.
+**YAGNI** (*You Aren't Gonna Need It*) adalah prinsip Extreme Programming: implementasikan hanya apa yang diminta kebutuhan saat ini, bukan apa yang Anda bayangkan mungkin dibutuhkan nanti. Fitur spekulatif menambah kode untuk dirawat, tes untuk dijalankan, dan beban kognitif—sering tanpa pernah memberi nilai.
 
-Bangun hanya apa yang diperlukan sekarang; hindari fitur spekulatif. Manfaat: Pengembangan lebih cepat, lebih sedikit upaya terbuang, basis kode lebih sederhana.
+YAGNI tidak melarang perencanaan atau titik ekstensi yang bersih. Yang dilarang adalah **membangun kapabilitas yang tidak dipakai sekarang** karena "mungkin suatu hari butuh *multi-tenant sharding*." Saat kebutuhan datang, Anda mengimplementasikan dengan konteks hari itu—sering lebih sederhana daripada desain spekulatif.
 
-## Kapan Menggunakan
+Seimbangkan YAGNI dengan **refactoring** saat kasus serupa kedua muncul (*Rule of Three*). Antidot duplikasi bukan abstraksi prematur; melainkan generalisasi berbasis bukti.
 
-Selama perencanaan atau coding—lawan menambahkan fitur "future-proofing"; ideal untuk proyek agile.
+## Key ideas
 
-## Cara Implementasi
+- *Ship* perubahan terkecil yang memenuhi *story* atau tiket.
+- Hapus *dead code* dan *feature flag* untuk jalur yang ditinggalkan.
+- Utamakan konfigurasi daripada *framework plugin* yang tidak terpakai.
+- Dokumentasikan risiko masa depan yang diketahui di tiket atau ADR, bukan di jalur kode produksi.
 
-Fokus pada persyaratan saat ini (misalnya, jangan tambahkan profil pengguna jika hanya login yang dibutuhkan). Refactor nanti jika dibutuhkan. Pikirkan, "Apakah saya butuh ini hari ini?"—seperti tidak membeli ekstra yang mungkin tidak pernah digunakan.
+## When to use
 
+- Item *backlog* mendeskripsikan satu perilaku konkret—implementasikan hanya itu.
+- *Review* menambah abstraksi "demi fleksibilitas" tanpa konsumen kedua.
+- Tim *startup* atau sensitif biaya di mana beban maintenance penting.
+
+## When not to use
+
+- Regulasi atau keselamatan mewajibkan kapabilitas sebelum go-live (*audit logging*, enkripsi *at rest*).
+- SLA kontraktual membutuhkan *hook* yang aktif pada tanggal tetap—koordinasikan dengan pengiriman, bukan *stub* diam-diam.
+- Pekerjaan performa atau kapasitas dengan bukti pengukuran kebutuhan yang akan datang (bukan tebakan).
+
+## Trade-offs
+
+| Mengikuti YAGNI | Biaya |
+| --- | --- |
+| Lebih sedikit pemborosan, pengiriman lebih cepat | Refactor mungkin saat kebutuhan muncul |
+| Permukaan serangan dan kegagalan lebih kecil | Bisa terasa picik bagi perencana |
+| *Codebase* lebih jelas | Butuh disiplin di *review* |
+
+## Example
+
+Tiket meminta ekspor CSV saja. Jangan membangun sistem *plugin* `Exporter` generik dengan driver XML dan Parquet. Implementasikan `ExportCSV()`; ekstrak *interface* saat ekspor PDF benar-benar diminta.
+
+```go
+func ExportCSV(rows []Row, w io.Writer) error {
+    cw := csv.NewWriter(w)
+    // write header and rows
+    cw.Flush()
+    return cw.Error()
+}
 ```
-Dibutuhkan Sekarang: [Fitur Inti]
 
-Tidak Dibutuhkan: [Fitur Spekulatif] (Lewati!)
-```
+## Related
 
-## Tautan
+- [KISS](kiss_id.md) — kesederhanaan sebagai default
+- [DRY](dry_id.md) — deduplikasi setelah pengulangan nyata
+- [Fail Fast](fail-fast_id.md) — tolak asumsi tidak valid lebih awal alih-alih cabang spekulatif
 
-Untuk pengembangan agile, lihat [Aturan Coding](../../coding-rules.md).
+## References
+
+- Beck & Andres — *Extreme Programming Explained*, YAGNI
+- Martin Fowler — bliki tentang YAGNI dan desain inkremental

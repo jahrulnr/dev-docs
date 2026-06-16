@@ -1,43 +1,57 @@
-# Arsitektur Serverless
+# Serverless Architecture
 
-## Gambaran Umum
+## Overview
 
-Arsitektur Serverless mendelegasikan manajemen server ke penyedia cloud, menjalankan kode sebagai respons terhadap event tanpa penyediaan server. Fungsi dieksekusi sesuai permintaan, diskalakan secara otomatis. Gaya ini fokus pada logika kode, mengurangi overhead operasional, tetapi dapat menyebabkan vendor lock-in dan masalah cold start.
+**Serverless Architecture** adalah model eksekusi cloud di mana provider menjalankan kode sebagai respons terhadap *event* dan mengelola server, skala, serta sebagian besar *lifecycle runtime*. Anda *deploy* **fungsi** (FaaS) atau *managed service* (API Gateway, antrian, database) dan membayar terutama berdasarkan konsumsi alih-alalu kapasitas yang direservasi.
 
-## Karakteristik Utama
+Namanya menyesatkan: server tetap ada—hanya diabstraksikan. Pengembang fokus pada *handler* (`onUpload`, `onHTTPRequest`, `onSchedule`) dan infrastruktur sebagai konfigurasi (IAM, *trigger*, variabel lingkungan). Platform umum: AWS Lambda, Google Cloud Functions, Azure Functions, dan Knative di Kubernetes.
 
-- **Function as a Service (FaaS)**: Kode berjalan dalam fungsi stateless (misalnya, AWS Lambda).
-- **Dipicu Event**: Dipanggil oleh permintaan HTTP, perubahan basis data, dll.
-- **Auto-Scaling**: Diskalakan berdasarkan permintaan.
-- **Tidak Ada Manajemen Server**: Penyedia menangani infrastruktur.
+Serverless cocok untuk beban berbentuk *event* dan tidak stabil. Kurang cocok untuk pekerjaan CPU-bound lama, *state* in-memory besar, latensi rendah ketat tanpa *cold start*, dan desain multi-cloud portabel tanpa disiplin.
 
-## Kapan Digunakan
+## Key characteristics
 
-- Aplikasi dengan traffic variabel atau tidak dapat diprediksi.
-- Prototyping atau beban kerja event-driven.
-- Hindari untuk proses berjalan lama atau kebutuhan latensi rendah.
+- **Event triggers** — HTTP, *object storage*, antrian pesan, *cron*, *change stream* database.
+- **Automatic scaling** — konkurensi menskala dengan beban dalam batas akun.
+- **Stateless functions** — *state* tahan lama di *store* eksternal (DynamoDB, S3, Redis).
+- **Operational model** — patching dan perencanaan kapasitas bergeser ke provider; observability dan batas tetap tanggung jawab Anda.
 
-## Keuntungan
+## When to use
 
-- Efisiensi biaya: Bayar hanya untuk waktu eksekusi.
-- Skalabilitas dan ops yang dikurangi.
-- Pengembangan lebih cepat.
+- Traffic variabel atau tidak terduga (*webhook*, *thumbnail* gambar, ledakan ETL).
+- Logika *glue* antar *managed service* cloud.
+- Prototipe cepat dan alat internal dengan *headcount* ops minimal.
 
-## Kekurangan
+## When not to use
 
-- Vendor lock-in.
-- Cold start dan timeout.
-- Tantangan debugging.
+- Throughput tinggi berkelanjutan lebih murah di VM atau kontainer reservasi—modelkan biaya.
+- *Worker* berjalan lama melebihi batas *timeout* fungsi.
+- Jalur *hot path* sensitif latensi di mana variansi *cold start* tidak dapat diterima tanpa *provisioned concurrency*.
 
-## Contoh
+## Trade-offs
 
-Layanan pemrosesan file yang dipicu oleh upload.
+| Manfaat | Tantangan |
+| --- | --- |
+| Operasi server berkurang | *Vendor lock-in* dan batas regional |
+| *Pay-per-use* granular | *Cold start*, *timeout*, langit-langit memori |
+| Skala horizontal cepat | *Debugging* terdistribusi dan paritas dev lokal |
 
-## Pola Terkait
+## Example
 
-- Event-Driven, Microservices.
-- Lihat dokumen AWS Serverless.
+Unggahan gambar ke *object storage* memicu Lambda `ResizeThumbnail`, yang menulis turunan kembali ke *storage* dan mengirim `ThumbnailReady` ke antrian untuk pengindeksan pencarian.
 
-## Referensi
+```text
+Client upload -> S3 -> Lambda (resize) -> S3 + SQS -> Indexer
+```
 
-- Arsitektur Serverless AWS.
+Pasangkan dengan *pipeline* **CI/CD** yang mengemas fungsi dan memperbarui definisi infrastruktur (SAM, Terraform, Serverless Framework).
+
+## Related
+
+- [Event-Driven Architecture](event-driven-architecture_id.md) — pasangan natural dengan *trigger*
+- [Microservices Architecture](microservices-architecture_id.md) — fungsi sebagai *service* halus
+- [CI/CD](../../practices/integration/ci-cd_id.md) — otomatisasi *deploy* fungsi
+
+## References
+
+- AWS Well-Architected Serverless Lens
+- Martin Fowler — definisi *serverless* dan esai trade-off

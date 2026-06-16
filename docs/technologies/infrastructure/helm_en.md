@@ -99,18 +99,18 @@ ingress:
 - Use helm lint for chart validation
 - Store charts in version control
 
-## Integration with Ecommerce
-
-Helm is essential for ecommerce deployments:
-- Packaging entire microservices stacks
-- Managing database and cache deployments
-- Implementing canary deployments with traffic splitting
-- Standardizing monitoring and logging setups
-- Enabling self-service deployments for development teams
-
 ## Comparison with Kustomize
 
 - **Approach**: Helm uses templating; Kustomize uses overlays
 - **Complexity**: Helm supports more complex logic; Kustomize is simpler
 - **Ecosystem**: Helm has larger chart ecosystem
 - **Learning**: Kustomize has gentler learning curve for basic use cases
+
+## Related
+
+- [Kubernetes](kubernetes_en.md)
+- [Docker](docker_en.md)
+
+## References
+
+- [Helm Documentation](https://helm.sh/docs/)

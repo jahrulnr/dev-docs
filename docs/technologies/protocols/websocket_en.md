@@ -132,73 +132,19 @@ wss.on('connection', function connection(ws) {
 - Use connection pooling for server resources
 - Implement proper backpressure handling
 
-## Integration with Ecommerce
+## Typical use cases
 
-WebSocket is essential for modern ecommerce platforms requiring real-time features:
+- Real-time dashboards and live notifications (SSE/WebSocket fan-out)
+- Collaborative editing and presence indicators
+- IoT telemetry and control-plane status streams
+- Gaming, trading, or ops tooling that cannot tolerate polling latency
 
-- **Live Chat Support**: Real-time customer service communication
-- **Inventory Updates**: Instant stock level notifications
-- **Price Alerts**: Real-time price change notifications
-- **Order Tracking**: Live order status updates
-- **Auction Systems**: Real-time bidding updates
-- **Cart Synchronization**: Cross-device cart updates
-- **Live Product Demos**: Interactive product presentations
-- **Customer Notifications**: Instant alerts for promotions, restocks
-- **Collaborative Shopping**: Shared shopping experiences
-- **Real-time Analytics**: Live dashboard updates
+## Related
 
-### Ecommerce WebSocket Architecture
+- [Server-Sent Events](sse_en.md)
+- [HTTP](http_en.md)
+- [MQTT](mqtt_en.md)
 
-```
-┌─────────────────┐    WebSocket    ┌─────────────────┐
-│   Web Client    │◄──────────────►│  WebSocket      │
-│                 │                │  Server/Gateway │
-└─────────────────┘                └─────────────────┘
-                                        │
-                                        ▼
-                               ┌─────────────────┐
-                               │   Message       │
-                               │   Broker       │
-                               │   (Redis/Kafka)│
-                               └─────────────────┘
-                                        │
-                               ┌─────────────────┐
-                               │   Microservices │
-                               │   (Order,       │
-                               │    Inventory,   │
-                               │    Payment)     │
-                               └─────────────────┘
-```
+## References
 
-### Common Ecommerce WebSocket Events
-
-```javascript
-// Client sends
-{
-  "type": "subscribe",
-  "channels": ["product:123", "inventory:electronics"]
-}
-
-// Server sends
-{
-  "type": "inventory_update",
-  "product_id": "123",
-  "new_stock": 5,
-  "timestamp": "2024-01-15T10:30:00Z"
-}
-
-{
-  "type": "price_change",
-  "product_id": "123",
-  "old_price": 99.99,
-  "new_price": 89.99,
-  "reason": "flash_sale"
-}
-
-{
-  "type": "order_update",
-  "order_id": "ORD-456",
-  "status": "shipped",
-  "tracking_number": "1Z999AA1234567890"
-}
-```
+- [RFC 6455 — The WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455)

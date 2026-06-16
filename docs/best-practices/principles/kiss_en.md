@@ -2,24 +2,62 @@
 
 ## Overview
 
-KISS (Keep It Simple, Stupid) is a design principle emphasizing simplicity in systems, products, or code. Originating from Lockheed Skunk Works in the 1960s, it advises avoiding unnecessary complexity.
+**KISS** (Keep It Simple, Stupid) is a design principle that favors the simplest solution that correctly solves the problem. Coined in aerospace engineering (Kelly Johnson, Lockheed Skunk Works), it warns against unnecessary complexity in systems, APIs, and code paths.
 
-The goal is simplicity; avoid over-engineering; prefer straightforward solutions. Benefits include easier understanding, maintenance, debugging, and faster development.
+Simplicity is not laziness or cutting corners. It means resisting speculative abstractions, avoiding clever tricks that obscure intent, and choosing readable structures over fashionable patterns when they do not earn their cost. Simple systems are easier to review, operate, debug, and onboard—especially under incident pressure.
 
-## When to Use
+KISS pairs naturally with **YAGNI** (do not build for hypothetical futures) and **DRY** (but do not merge unrelated logic just to deduplicate). The goal is clarity and maintainability, not minimal line count.
 
-In all coding and design tasks, especially when tempted to add "cool" but unnecessary features; important for developers to avoid overcomplicating basics.
+## Key ideas
 
-## How to Implement
+- Prefer obvious data structures and control flow over generic frameworks.
+- Defer abstraction until a second real use case appears.
+- Optimize for the reader of the code six months from now.
+- Complexity budget: spend it only where requirements demand (performance, compliance, scale).
 
-Choose the simplest solution that works (e.g., use a loop instead of complex recursion for summing numbers). Refactor complex code to basics. Ask, "Can a beginner understand this?"—if not, simplify.
+## When to use
 
-```text
-Simple: [Input] --> [Process] --> [Output]
+- Always as a default bias when designing modules, APIs, and infrastructure.
+- When reviewing PRs that introduce layers without a concrete present need.
+- When incident postmortems cite confusion or opaque indirection as contributors.
 
-Complex: [Input] --> [Subprocess1] --> [Subprocess2] --> [Output] (Unnecessary)
+## When not to use
+
+- Do not confuse KISS with ignoring real constraints (security, SLAs, regulatory audit trails).
+- Do not simplify by omitting error handling, observability, or tests where stakes are high.
+- Legitimate complexity (distributed consensus, encryption) still needs rigorous design—KISS applies to *unnecessary* complexity.
+
+## Trade-offs
+
+| Simpler approach | Risk if over-applied |
+| --- | --- |
+| Faster to ship and reason about | May underfit future known requirements |
+| Fewer moving parts in production | Refactor cost if requirements shift sharply |
+| Clearer onboarding | Can look "naive" to pattern-heavy cultures |
+
+## Example
+
+Summing a slice of integers: a `for` loop is KISS. A generic reducer pipeline with plugins is not—unless multiple summation strategies are already required.
+
+```go
+func Sum(nums []int) int {
+    total := 0
+    for _, n := range nums {
+        total += n
+    }
+    return total
+}
 ```
 
-## Links
+Before adding a factory, event bus, or plugin hook, ask: "What concrete problem does this solve today?"
 
-For simplicity in code, see [Coding Rules](../../coding-rules.md).
+## Related
+
+- [YAGNI](yagni_en.md) — avoid speculative features
+- [DRY](dry_en.md) — share knowledge without forced coupling
+- [Separation of Concerns](separation-of-concerns_en.md) — simple modules with clear boundaries
+
+## References
+
+- U.S. Navy / Skunk Works origin of KISS (engineering folklore, widely cited)
+- Martin Fowler — YAGNI and incremental design essays

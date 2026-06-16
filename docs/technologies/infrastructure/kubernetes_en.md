@@ -105,18 +105,19 @@ spec:
 - Use Helm for complex application packaging
 - Implement security contexts and network policies
 
-## Integration with Ecommerce
-
-Kubernetes is ideal for ecommerce platforms because:
-- Handles traffic spikes with horizontal pod autoscaling
-- Provides rolling updates for zero-downtime deployments
-- Manages complex microservices dependencies
-- Supports multi-region deployments for global scale
-- Integrates with service meshes for advanced traffic management
-
 ## Comparison with Docker Swarm
 
 - **Ecosystem**: Kubernetes has larger community and tool ecosystem
 - **Features**: More advanced scheduling, networking, and storage options
 - **Complexity**: Steeper learning curve but more powerful
 - **Adoption**: Industry standard for enterprise container orchestration
+
+## Related
+
+- [Docker](docker_en.md)
+- [Helm](helm_en.md)
+- [Docker Swarm](docker-swarm_en.md)
+
+## References
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)

@@ -492,95 +492,7 @@ spec:
           value: "50051"
 ```
 
-## Integrasi dengan Ecommerce
-
-gRPC sangat powerful untuk platform ecommerce yang butuh high-performance, type-safe APIs dengan complex data relationships:
-
-- **Komunikasi Microservices**: Efisien service-to-service calls dengan strong typing
-- **Real-time Inventory**: Streaming updates untuk stock levels dan availability
-- **Order Processing**: Complex order workflows dengan validation dan error handling
-- **Product Catalog**: Efisien product search dan filtering dengan protobuf serialization
-- **Payment Processing**: Secure, reliable payment transaction handling
-- **Recommendation Engine**: High-performance ML model serving
-- **Analytics Pipeline**: Real-time event streaming dan processing
-- **Multi-region Deployment**: Efisien cross-region communication
-
-### Arsitektur Ecommerce gRPC
-
-```
-┌─────────────────┐    gRPC    ┌─────────────────┐
-│   Mobile/Web    │◄─────────►│   API Gateway   │
-│   Applications  │           │   (Envoy/Kong)  │
-└─────────────────┘           └─────────────────┘
-         │                              │
-         ▼                              ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Product       │           │   Authentication │
-│   Service       │           │   Service        │
-│   (gRPC)        │           └─────────────────┘
-└─────────────────┘                    │
-         │                             ▼
-         ▼                    ┌─────────────────┐
-┌─────────────────┐           │   Order          │
-│   Cart          │           │   Service        │
-│   Service       │           │   (gRPC)         │
-└─────────────────┘           └─────────────────┘
-         │                             │
-         ▼                             ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Inventory     │           │   Payment        │
-│   Service       │           │   Service        │
-│   (gRPC)        │           │   (gRPC)         │
-└─────────────────┘           └─────────────────┘
-         │                             │
-         ▼                             ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Shipping      │           │   Notification   │
-│   Service       │           │   Service        │
-│   (gRPC)        │           │   (gRPC)         │
-└─────────────────┘           └─────────────────┘
-```
-
-### Common Ecommerce gRPC Services
-
-```protobuf
-// Product Service
-service ProductService {
-  rpc GetProduct(GetProductRequest) returns (Product);
-  rpc SearchProducts(SearchProductsRequest) returns (stream Product);
-  rpc GetProductRecommendations(RecommendationRequest) returns (stream Product);
-  rpc UpdateProductPrice(stream PriceUpdate) returns (stream PriceUpdateResponse);
-}
-
-// Order Service
-service OrderService {
-  rpc CreateOrder(CreateOrderRequest) returns (Order);
-  rpc GetOrder(GetOrderRequest) returns (Order);
-  rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (Order);
-  rpc StreamOrderUpdates(GetOrderRequest) returns (stream OrderUpdate);
-  rpc CancelOrder(CancelOrderRequest) returns (Order);
-}
-
-// Inventory Service
-service InventoryService {
-  rpc CheckAvailability(CheckAvailabilityRequest) returns (AvailabilityResponse);
-  rpc ReserveInventory(ReserveInventoryRequest) returns (ReservationResponse);
-  rpc ReleaseReservation(ReleaseReservationRequest) returns (google.protobuf.Empty);
-  rpc StreamInventoryChanges(google.protobuf.Empty) returns (stream InventoryChange);
-}
-
-// Cart Service
-service CartService {
-  rpc GetCart(GetCartRequest) returns (Cart);
-  rpc AddItem(AddItemRequest) returns (Cart);
-  rpc UpdateItem(UpdateItemRequest) returns (Cart);
-  rpc RemoveItem(RemoveItemRequest) returns (Cart);
-  rpc ClearCart(ClearCartRequest) returns (google.protobuf.Empty);
-  rpc Checkout(CheckoutRequest) returns (Order);
-}
-```
-
-### Performance Comparison: REST vs gRPC
+## gRPC vs REST
 
 | Aspect | REST (JSON/HTTP1.1) | gRPC (Protobuf/HTTP2) |
 |--------|-------------------|----------------------|
@@ -592,3 +504,13 @@ service CartService {
 | Browser Support | Universal | Butuh grpc-web |
 | Debugging | Mudah (text) | Butuh tools (binary) |
 | Load Balancing | Basic | Advanced (connection-level) |
+
+## Terkait
+
+- [HTTP](http_id.md)
+- [GraphQL](graphql_id.md)
+- [Kubernetes](../infrastructure/kubernetes_id.md)
+
+## Referensi
+
+- [gRPC Documentation](https://grpc.io/docs/)

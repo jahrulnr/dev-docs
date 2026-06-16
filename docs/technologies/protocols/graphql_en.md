@@ -951,60 +951,7 @@ const resolvers = {
 };
 ```
 
-## Integration with Ecommerce
-
-GraphQL is particularly powerful for ecommerce platforms where different clients need different data shapes and real-time updates are crucial:
-
-- **Product Catalog**: Flexible product queries with complex filtering and search
-- **Shopping Cart**: Real-time cart updates across multiple devices
-- **Order Management**: Complex order queries with related data
-- **Customer Accounts**: Personalized data fetching based on user preferences
-- **Inventory Management**: Real-time stock updates and availability checks
-- **Recommendation Engine**: Dynamic product recommendations based on user behavior
-- **Multi-channel Selling**: Consistent API for web, mobile, and third-party integrations
-- **Analytics Dashboard**: Flexible reporting queries for business intelligence
-
-### Ecommerce GraphQL Architecture
-
-```
-┌─────────────────┐    GraphQL    ┌─────────────────┐
-│   Web/Mobile    │◄────────────►│   GraphQL       │
-│   Applications  │              │   Gateway       │
-└─────────────────┘              └─────────────────┘
-         │                               │
-         ▼                               ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Product       │           │   Authentication │
-│   Service       │           │   Service        │
-│   (REST/gRPC)   │           └─────────────────┘
-└─────────────────┘                    │
-         │                             ▼
-         ▼                    ┌─────────────────┐
-┌─────────────────┐           │   Order          │
-│   Cart          │           │   Service        │
-│   Service       │           │   (GraphQL)      │
-└─────────────────┘           └─────────────────┘
-         │                             │
-         ▼                             ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Inventory     │           │   Payment        │
-│   Service       │           │   Service        │
-└─────────────────┘           └─────────────────┘
-         │                             │
-         ▼                             ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Shipping      │           │   Search         │
-│   Service       │           │   Service        │
-└─────────────────┘           └─────────────────┘
-         │                             │
-         ▼                             ▼
-┌─────────────────┐           ┌─────────────────┐
-│   Notification  │           │   Analytics      │
-│   Service       │           │   Service        │
-└─────────────────┘           └─────────────────┘
-```
-
-### GraphQL vs REST Comparison
+## GraphQL vs REST
 
 | Feature | REST | GraphQL |
 |---------|------|---------|
@@ -1018,3 +965,12 @@ GraphQL is particularly powerful for ecommerce platforms where different clients
 | Performance | Multiple round trips | Single request optimization |
 | Type Safety | Runtime validation | Compile-time guarantees |
 | Learning Curve | Low | Medium-High |
+
+## Related
+
+- [HTTP](http_en.md)
+- [gRPC](grpc_en.md)
+
+## References
+
+- [GraphQL Specification](https://spec.graphql.org/)

@@ -63,4 +63,4 @@ func (r SqlUserRepository) Save(user User) error {
 
 ## Links
 
-For related architectural patterns, see [CQRS](../architectural/cqrs_en.md). For domain models, check [Coding Rules](../../coding-rules.md).
+For related architectural patterns, see [CQRS](../integration/cqrs_en.md). For domain models, check [Coding Rules](../../principles/code-quality/clean-code_en.md).

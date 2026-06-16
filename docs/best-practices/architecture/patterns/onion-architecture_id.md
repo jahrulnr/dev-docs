@@ -53,4 +53,4 @@ Di aplikasi perbankan, domain menangani aturan "saldo akun". Lapisan aplikasi me
 
 ## Tautan
 
-Untuk detail DDD, lihat [Aturan Coding](../../coding-rules.md). Untuk SOLID, periksa [Prinsip SOLID](../README.md#solid-principles).
+Untuk detail DDD, lihat [Aturan Coding](../../principles/code-quality/clean-code_id.md). Untuk SOLID, periksa [Prinsip SOLID](../../principles/solid_id.md).

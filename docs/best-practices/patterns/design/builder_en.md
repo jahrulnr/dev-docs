@@ -1,38 +1,59 @@
 # Builder
+
 ## Overview
 
-Builder separates the construction of a complex object from its representation, enabling the same construction process to create different representations. This pattern simplifies object creation with many parameters or steps.
+The **Builder** pattern separates construction of a complex object from its representation. A builder exposes step-by-step configuration (often fluent methods) and a final `Build()` that produces the product. The same construction process can yield different representations by swapping concrete builders.
+
+You see Builder in query APIs, HTTP client configurators, test data builders, and protobuf/grpc message builders. It addresses **telescoping constructors**—constructors with many optional parameters that become unreadable and error-prone.
+
+## How it works
+
+1. Define a `Builder` interface (or abstract builder) with configuration methods and `Build()`.
+2. Implement one or more concrete builders for different product variants.
+3. Optionally use a **Director** that orchestrates fixed build sequences (less common in application code).
+
+Builders often return `this` from setter methods for chaining. Immutability of the final product is a common motivation.
 
 ## When to use
-- When constructing an object requires many optional steps or configurations.
-- To avoid telescoping constructors and improve readability.
 
-## Implementation Guidance
-- Define a Builder interface with fluent methods for configuration and a Build() method.
-- Implement concrete builders for different representations.
+- Many optional fields or construction steps for one product type.
+- You want readable, self-documenting assembly code instead of long constructors.
+- The construction algorithm must be reusable with different representations (e.g. JSON vs SQL query).
 
-## Example (Pseudo)
-A `QueryBuilder` that composes filters, ordering, and pagination options, then builds a SQL query string.
+## When not to use
 
-## Pros / Cons
-- Pros: Clear and readable construction of complex objects.
-- Cons: More classes and an additional abstraction layer.
+- Simple structs with few fields—a constructor or struct literal is enough.
+- Objects that must be fully valid at every intermediate step (consider a factory or validated constructor instead).
+- When Go’s functional options pattern (`WithTimeout`, `WithRetry`) is idiomatic and sufficient.
 
-## Related Patterns
-Factory Method, Abstract Factory
+## Trade-offs
 
-## References
-- Gamma et al., "Design Patterns".Builder separates the construction of a complex object from its representation so the same construction process can create different representations.
-
-## When to use
-Use when creating complex objects step-by-step, or when creation needs to support different representations.
+| Pros | Cons |
+| --- | --- |
+| Readable construction, hides complexity | More types and boilerplate |
+| Easy to add optional steps without breaking callers | Risk of invalid partial state before `Build()` |
+| Supports multiple representations | Can be overkill for small objects |
 
 ## Example
-Building a complex `House` with steps: build foundation, add walls, add roof; Director orchestrates steps using a Builder.
 
-## Pros / Cons
-- Pros: Clear construction process, good for immutability and complex objects.
-- Cons: More code, may be overkill for simple objects.
+A `HTTPClientBuilder` sets timeout, retry policy, and TLS config, then `Build()` returns an immutable client:
+
+```go
+client := NewHTTPClientBuilder().
+    WithTimeout(5 * time.Second).
+    WithRetry(3).
+    Build()
+```
+
+A `QueryBuilder` composes `WHERE`, `ORDER BY`, and `LIMIT` into a parameterized SQL string.
+
+## Related
+
+- [Factory Method](../design/factory-method_en.md)
+- [Abstract Factory](../design/abstract-factory_en.md)
+- [Fluent interface](https://martinfowler.com/bliki/FluentInterface.html) (external concept)
 
 ## References
-- Gamma et al., "Design Patterns".
+
+- Gamma, Helm, Johnson, Vlissides — *Design Patterns* (GoF), Builder chapter
+- Effective construction patterns in Go: functional options vs builder (community practice)

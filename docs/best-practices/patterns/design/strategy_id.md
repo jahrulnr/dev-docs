@@ -91,4 +91,4 @@ func (o *Order) CalculateTotal() float64 {
 
 ## Tautan
 
-Untuk pola arsitektural terkait, lihat [Clean Architecture](../architecture/clean-architecture_en.md). Untuk model domain, periksa [Coding Rules](../../coding-rules.md).
+Untuk pola arsitektural terkait, lihat [Clean Architecture](../../architecture/patterns/clean-architecture_id.md). Untuk model domain, periksa [Coding Rules](../../principles/code-quality/clean-code_id.md).

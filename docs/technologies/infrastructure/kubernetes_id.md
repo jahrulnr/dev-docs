@@ -105,18 +105,19 @@ spec:
 - Gunakan Helm untuk packaging aplikasi kompleks
 - Implementasikan security contexts dan network policies
 
-## Integrasi dengan Ecommerce
-
-Kubernetes ideal untuk platform ecommerce karena:
-- Tangani lonjakan trafik dengan horizontal pod autoscaling
-- Sediakan rolling updates untuk deployment tanpa downtime
-- Kelola dependensi microservices kompleks
-- Dukung deployment multi-region untuk skala global
-- Terintegrasi dengan service mesh untuk manajemen trafik advanced
-
 ## Perbandingan dengan Docker Swarm
 
 - **Ekosistem**: Kubernetes memiliki komunitas dan ekosistem tool lebih besar
 - **Fitur**: Opsi scheduling, networking, dan storage lebih advanced
 - **Kompleksitas**: Learning curve lebih curam tetapi lebih powerful
 - **Adopsi**: Standar industri untuk orkestrasi container enterprise
+
+## Terkait
+
+- [Docker](docker_id.md)
+- [Helm](helm_id.md)
+- [Docker Swarm](docker-swarm_id.md)
+
+## Referensi
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)

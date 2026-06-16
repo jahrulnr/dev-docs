@@ -1,26 +1,62 @@
-# Fail-Fast Principle
+# Fail Fast Principle
 
 ## Overview
 
-Fail-Fast means detecting and reporting errors immediately, halting flawed processes. Used in systems design, it contrasts with fault-tolerant systems.
+**Fail fast** means detecting errors and invalid states as early as possible—at compile time, startup, input validation, or the first API boundary—and stopping immediately with a clear signal rather than continuing with corrupt assumptions. The goal is to surface defects where they are cheapest to fix and easiest to diagnose.
 
-Check conditions early (e.g., preconditions, state); throw exceptions or halt on errors. Benefits: Easier debugging, prevents silent failures, improves reliability.
+Fail fast complements **defensive programming** but differs in emphasis: instead of silently recovering or returning ambiguous defaults, fail fast rejects bad input, missing configuration, or violated invariants promptly. In distributed systems, combine local fail fast with timeouts and circuit breakers so failures do not cascade unnoticed.
 
-## When to Use
+"Fail closed" in security (deny when uncertain) is a fail-fast cousin: prefer blocking over risky continuation.
 
-In critical systems, iterators, or startup checks; when errors could cascade.
+## Key ideas
 
-## How to Implement
+- Validate preconditions at boundaries (HTTP handlers, CLI entry, message consumers).
+- Crash or error at startup if required config/secrets are missing—do not limp into production.
+- Use types and constructors that cannot represent invalid states when practical.
+- Propagate errors with context; avoid swallowing exceptions.
 
-Validate inputs at function start (e.g., `if (!valid) throw Error`). Use assertions. Fail early like a game over screen—don't let bad data sneak through.
+## When to use
 
+- Configuration-driven services where misconfiguration causes data loss or security holes.
+- Libraries and public APIs where invalid arguments indicate programmer error.
+- Pipelines where partial success masks downstream corruption.
+
+## When not to use
+
+- User-facing flows where graceful degradation improves UX (show validation message, not process crash).
+- Batch jobs processing millions of rows—per-row fail fast may need aggregation and skip policies.
+- Resilience patterns that intentionally retry transient faults (network blips).
+
+## Trade-offs
+
+| Fail fast | Softer handling |
+| --- | --- |
+| Faster root-cause identification | More user-friendly in some UX paths |
+| Prevents corrupt state propagation | Can increase noise if thresholds are wrong |
+| Clear operational alerts | Requires thoughtful error messages |
+
+## Example
+
+Reject negative transfer amounts at the service entry; do not let them reach the ledger.
+
+```go
+func Transfer(from, to AccountID, amount decimal.Decimal) error {
+    if amount.Sign() <= 0 {
+        return fmt.Errorf("transfer: amount must be positive: %s", amount)
+    }
+    // proceed
+}
 ```
-[Input] --> [Check] --> [Fail if Invalid] --> [Process]
-                    |
-                    v
-               [Error Halt]
-```
 
-## Links
+Application startup: if `DATABASE_URL` is empty, `log.Fatal` or return error from `main`—never default to in-memory DB in production builds.
 
-For error handling, see [Coding Rules](../../coding-rules.md).
+## Related
+
+- [DRY](dry_en.md) — centralize validation rules once
+- [Separation of Concerns](separation-of-concerns_en.md) — validate at the right boundary
+- [Defense in Depth](security/defense-in-depth_en.md) — layered checks without hiding failures
+
+## References
+
+- Jim Shore — "Fail Fast" (IEEE / agile practice articles)
+- Go community: explicit error returns vs panic for programmer errors

@@ -48,4 +48,4 @@ In a blog system, commands handle "create post" (write), queries handle "list po
 
 ## Links
 
-For event-driven patterns, see [Event-Driven Architecture](../../infra/aws/event-driven_en.md). For domain models, check [Coding Rules](../../coding-rules.md).
+For event-driven patterns, see [Event-Driven Architecture](../../architecture/styles/event-driven-architecture_en.md). For domain models, check [Coding Rules](../../principles/code-quality/clean-code_en.md).

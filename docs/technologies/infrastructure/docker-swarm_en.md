@@ -103,10 +103,18 @@ volumes:
 - Monitor swarm health and performance
 - Plan for high availability with multiple managers
 
-## Integration with Ecommerce
+## Typical use cases
 
-Docker Swarm can be used for:
-- Orchestrating microservices in ecommerce platforms
-- Managing containerized databases and caches
-- Implementing blue-green deployments
-- Scaling services based on traffic patterns
+- Small-to-medium container clusters without full Kubernetes complexity
+- Rolling updates and service scaling on Docker-native stacks
+- Edge deployments with modest orchestration requirements
+- Gradual migration from single-host Compose to multi-node orchestration
+
+## Related
+
+- [Docker](docker_en.md)
+- [Kubernetes](kubernetes_en.md)
+
+## References
+
+- [Docker Swarm Documentation](https://docs.docker.com/engine/swarm/)

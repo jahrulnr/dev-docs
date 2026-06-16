@@ -52,4 +52,4 @@ In a banking app, the domain handles "account balance" rules. Application layer 
 
 ## Links
 
-For DDD details, see [Coding Rules](../../coding-rules.md). For SOLID, check [SOLID Principles](../README.md#solid-principles).
+For DDD details, see [Coding Rules](../../principles/code-quality/clean-code_en.md). For SOLID, check [SOLID Principles](../../principles/solid_en.md).

@@ -60,4 +60,4 @@ In an e-commerce app, the `Order` entity (domain) handles core rules like "order
 
 ## Links
 
-For more on SOLID principles, see [SOLID Principles](../README.md#solid-principles). For DDD examples, check [Coding Rules](../../coding-rules.md).
+For more on SOLID principles, see [SOLID Principles](../../principles/solid_en.md). For DDD examples, check [Coding Rules](../../principles/code-quality/clean-code_en.md).

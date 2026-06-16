@@ -1,38 +1,51 @@
 # Chain of Responsibility
+
 ## Overview
 
-Chain of Responsibility lets multiple handlers have a chance to process a request by chaining them; the request is passed along the chain until a handler handles it. This pattern enables flexible and decoupled request processing.
+**Chain of Responsibility** passes a request along a chain of handlers. Each handler either processes the request or forwards it to the next link. The sender does not know which handler will ultimately act—decoupling producers from consumers.
+
+The pattern appears in HTTP middleware stacks, logging pipelines (filter by level), support ticket escalation, and UI event bubbling. It trades explicit routing for flexible composition.
+
+## How it works
+
+1. Define a `Handler` interface: `Handle(request)` returns handled or pass-to-next.
+2. Link handlers in order (linked list, slice, or middleware wrapper).
+3. The chain stops when a handler processes the request or the chain ends (unhandled case must be defined).
+
+In web frameworks, middleware is the dominant modern form: each layer wraps the next `http.Handler`.
 
 ## When to use
-- When multiple components may handle a request and you want to decouple sender from receivers.
-- For pipelines of processing steps (validation, enrichment, delivery).
 
-## Implementation Guidance
-- Define a Handler interface with a method that either handles or forwards the request.
-- Compose chains by linking handlers or using middleware patterns.
+- Multiple objects might handle a request and the set may change at runtime.
+- You want to add/remove processing steps without editing the sender.
+- Processing stages are optional or ordered (validation → auth → business logic).
 
-## Example
-HTTP middleware chain where each middleware either handles the request or passes it to the next.
+## When not to use
 
-## Pros / Cons
-- Pros: Flexible, promotes decoupling and composition.
-- Cons: Can be harder to trace request flow and debug.
+- Exactly one handler must always run—use direct dispatch.
+- Order is hard to reason about and debugging the chain is costly for your team.
+- Deep chains with heavy logic—consider a pipeline with explicit stage names and observability.
 
-## Related Patterns
-Decorator, Chain-based middleware
+## Trade-offs
 
-## References
-- Common design pattern literature.Chain of Responsibility passes a request along a chain of handlers; each handler decides to process or forward it.
-
-## When to use
-Use to decouple sender and receiver and allow multiple possible handlers without hard-coding the receiver.
+| Pros | Cons |
+| --- | --- |
+| Loose coupling, open for extension | Harder to trace flow and debug |
+| Composable stages (middleware) | Request may reach chain end unhandled |
+| Single Responsibility per handler | Performance overhead if chain is long |
 
 ## Example
-A logging system where messages pass through handlers (debug, info, warn) and are handled by appropriate level.
 
-## Pros / Cons
-- Pros: Flexible request handling, easy to add handlers.
-- Cons: Request may not be handled; debugging chain order can be tricky.
+HTTP middleware: CORS → authentication → rate limit → handler. Each middleware either writes a response or calls `next.ServeHTTP(w, r)`.
+
+Logging: a message enters at `DebugHandler`; if level is too low, it forwards to `InfoHandler`, then `Warn`, then `Error`.
+
+## Related
+
+- [Decorator](../design/decorator_en.md) — similar composition, different intent (add behavior vs route)
+- [Middleware pattern](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern) in HTTP stacks
 
 ## References
-- Gamma et al., "Design Patterns".
+
+- Gamma et al. — *Design Patterns*, Chain of Responsibility
+- Common in `net/http` middleware and Gin/Echo/Chi chains

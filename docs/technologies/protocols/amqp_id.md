@@ -321,155 +321,19 @@ class ReliablePublisher {
 }
 ```
 
-## Integrasi dengan Ecommerce
+## Kasus penggunaan umum
 
-AMQP unggul dalam skenario ecommerce kompleks yang membutuhkan guaranteed delivery, advanced routing, dan reliability enterprise-grade:
+- Work queue dan background job processing
+- Microservices event-driven dengan guaranteed delivery
+- Routing kompleks antar exchange dan queue
+- Pola request/reply antar service
+- Dead-letter handling dan workflow retry
 
-- **Order Processing Pipeline**: Multi-step order fulfillment dengan guaranteed delivery
-- **Inventory Synchronization**: Complex inventory updates across multiple warehouses
-- **Payment Processing**: Secure, reliable payment transaction messaging
-- **Fraud Detection**: Real-time analysis pola transaksi
-- **Supply Chain Integration**: B2B messaging dengan trading partners
-- **Customer Notification System**: Prioritized, reliable notification delivery
-- **Analytics Pipeline**: High-volume event processing dan aggregation
-- **Multi-tenant Architecture**: Isolated messaging untuk different business units
+## Terkait
 
-### Arsitektur AMQP Ecommerce
+- [MQTT](mqtt_id.md)
+- [RabbitMQ](../infrastructure/rabbitmq_id.md)
 
-```
-┌─────────────────┐    AMQP    ┌─────────────────┐
-│   Web/Mobile    │◄─────────►│   AMQP Broker   │
-│   Applications  │           │   (RabbitMQ)    │
-└─────────────────┘           └─────────────────┘
-         │                              │
-         ▼                              ▼
-┌─────────────────┐           ┌─────────────────┐
-│   API Gateway   │           │   Dead Letter   │
-│   (Message      │           │   Exchange      │
-│    Validation)  │           └─────────────────┘
-└─────────────────┘                    │
-         │                             ▼
-         ▼                    ┌─────────────────┐
-┌─────────────────┐           │   Error         │
-│   Order Service │           │   Handler       │
-└─────────────────┘           └─────────────────┘
-         │
-         ▼
-┌─────────────────┐ ◄─────────┐
-│   Payment       │           │
-│   Service       │           │
-└─────────────────┘           │
-         │                    │
-         ▼                    │
-┌─────────────────┐           │
-│   Inventory     │           │
-│   Service       │           │
-└─────────────────┘           │
-         │                    │
-         ▼                    │
-┌─────────────────┐           │
-│   Shipping      │           │
-│   Service       │           │
-└─────────────────┘           │
-         │                    │
-         ▼                    │
-┌─────────────────┐           │
-│   Notification  │◄──────────┘
-│   Service       │
-└─────────────────┘
-```
+## Referensi
 
-### Common Ecommerce AMQP Message Patterns
-
-```javascript
-// Order Created Event
-{
-  "messageId": "msg-12345",
-  "correlationId": "order-ORD-12345",
-  "routingKey": "order.created",
-  "exchange": "ecommerce.orders",
-  "timestamp": "2024-01-15T10:30:00Z",
-  "headers": {
-    "source": "web-app",
-    "priority": "high",
-    "content-type": "application/json"
-  },
-  "body": {
-    "orderId": "ORD-12345",
-    "customerId": "CUST-67890",
-    "items": [
-      {
-        "productId": "PROD-001",
-        "sku": "TSHIRT-RED-L",
-        "quantity": 2,
-        "unitPrice": 29.99,
-        "totalPrice": 59.98
-      }
-    ],
-    "shippingAddress": {
-      "street": "123 Main St",
-      "city": "Anytown",
-      "state": "CA",
-      "zipCode": "12345"
-    },
-    "billingAddress": { /* same structure */ },
-    "paymentMethod": {
-      "type": "credit_card",
-      "last4": "4242",
-      "brand": "visa"
-    },
-    "totalAmount": 59.98,
-    "currency": "USD"
-  }
-}
-
-// Inventory Update Event
-{
-  "messageId": "msg-67890",
-  "correlationId": "inv-PROD-001-WH001",
-  "routingKey": "inventory.updated.PROD-001",
-  "exchange": "ecommerce.inventory",
-  "timestamp": "2024-01-15T10:35:00Z",
-  "headers": {
-    "source": "warehouse-system",
-    "event-type": "stock_change"
-  },
-  "body": {
-    "productId": "PROD-001",
-    "warehouseId": "WH001",
-    "previousStock": 150,
-    "newStock": 148,
-    "changeType": "sale",
-    "referenceId": "ORD-12345",
-    "reason": "order_fulfilled",
-    "timestamp": "2024-01-15T10:35:00Z"
-  }
-}
-
-// Payment Processed Event
-{
-  "messageId": "msg-54321",
-  "correlationId": "pay-PAY-99999",
-  "routingKey": "payment.processed",
-  "exchange": "ecommerce.payments",
-  "timestamp": "2024-01-15T10:32:00Z",
-  "headers": {
-    "source": "payment-gateway",
-    "priority": "critical"
-  },
-  "body": {
-    "paymentId": "PAY-99999",
-    "orderId": "ORD-456",
-    "amount": 59.98,
-    "currency": "USD",
-    "status": "completed",
-    "transactionId": "txn_abc123",
-    "processedAt": "2024-01-15T10:32:00Z",
-    "paymentMethod": {
-      "type": "credit_card",
-      "brand": "visa",
-      "last4": "4242"
-    }
-  }
-}
-```
+- [AMQP 0-9-1 Overview](https://www.rabbitmq.com/tutorials/amqp-concepts)

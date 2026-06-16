@@ -19,6 +19,7 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | mvp, mvp (model-view-presenter) | `docs/best-practices/architecture/patterns/mvp_en.md` | `docs/best-practices/architecture/patterns/mvp_id.md` |
 | mvvm, mvvm (model-view-viewmodel) | `docs/best-practices/architecture/patterns/mvvm_en.md` | `docs/best-practices/architecture/patterns/mvvm_id.md` |
 | architecture, onion, onion architecture | `docs/best-practices/architecture/patterns/onion-architecture_en.md` | `docs/best-practices/architecture/patterns/onion-architecture_id.md` |
+| architecture, plugin, plugin architecture | `docs/best-practices/architecture/patterns/plugin-architecture_en.md` | `docs/best-practices/architecture/patterns/plugin-architecture_id.md` |
 | architecture, driven, eda, event | `docs/best-practices/architecture/styles/event-driven-architecture_en.md` | `docs/best-practices/architecture/styles/event-driven-architecture_id.md` |
 | architecture, micro services, microservice, microservices | `docs/best-practices/architecture/styles/microservices-architecture_en.md` | `docs/best-practices/architecture/styles/microservices-architecture_id.md` |
 | architecture, monolithic, monolithic architecture | `docs/best-practices/architecture/styles/monolithic-architecture_en.md` | `docs/best-practices/architecture/styles/monolithic-architecture_id.md` |
@@ -28,21 +29,21 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | data, data mapper, mapper | `docs/best-practices/patterns/data-access/data-mapper_en.md` | `docs/best-practices/patterns/data-access/data-mapper_id.md` |
 | of, unit, unit of work, work | `docs/best-practices/patterns/data-access/unit-of-work_en.md` | `docs/best-practices/patterns/data-access/unit-of-work_id.md` |
 | abstract, abstract factory, factory | `docs/best-practices/patterns/design/abstract-factory_en.md` | `docs/best-practices/patterns/design/abstract-factory_id.md` |
-| adapter, adapter pattern | `docs/best-practices/patterns/design/adapter_en.md` | `docs/best-practices/patterns/design/adapter_id.md` |
+| adapter | `docs/best-practices/patterns/design/adapter_en.md` | `docs/best-practices/patterns/design/adapter_id.md` |
 | builder | `docs/best-practices/patterns/design/builder_en.md` | `docs/best-practices/patterns/design/builder_id.md` |
 | chain, chain of responsibility, of, responsibility | `docs/best-practices/patterns/design/chain-of-responsibility_en.md` | `docs/best-practices/patterns/design/chain-of-responsibility_id.md` |
-| command, command pattern | `docs/best-practices/patterns/design/command_en.md` | `docs/best-practices/patterns/design/command_id.md` |
+| command | `docs/best-practices/patterns/design/command_en.md` | `docs/best-practices/patterns/design/command_id.md` |
 | composite | `docs/best-practices/patterns/design/composite_en.md` | `docs/best-practices/patterns/design/composite_id.md` |
-| decorator, decorator pattern | `docs/best-practices/patterns/design/decorator_en.md` | `docs/best-practices/patterns/design/decorator_id.md` |
-| facade, facade pattern | `docs/best-practices/patterns/design/facade_en.md` | `docs/best-practices/patterns/design/facade_id.md` |
+| decorator | `docs/best-practices/patterns/design/decorator_en.md` | `docs/best-practices/patterns/design/decorator_id.md` |
+| facade | `docs/best-practices/patterns/design/facade_en.md` | `docs/best-practices/patterns/design/facade_id.md` |
 | factory, factory method, method | `docs/best-practices/patterns/design/factory-method_en.md` | `docs/best-practices/patterns/design/factory-method_id.md` |
 | factory, factory pattern | `docs/best-practices/patterns/design/factory_en.md` | `docs/best-practices/patterns/design/factory_id.md` |
-| mediator, mediator pattern | `docs/best-practices/patterns/design/mediator_en.md` | `docs/best-practices/patterns/design/mediator_id.md` |
+| mediator | `docs/best-practices/patterns/design/mediator_en.md` | `docs/best-practices/patterns/design/mediator_id.md` |
 | observer, observer pattern | `docs/best-practices/patterns/design/observer_en.md` | `docs/best-practices/patterns/design/observer_id.md` |
 | proxy, proxy pattern | `docs/best-practices/patterns/design/proxy_en.md` | `docs/best-practices/patterns/design/proxy_id.md` |
 | repository, repository pattern | `docs/best-practices/patterns/design/repository_en.md` | `docs/best-practices/patterns/design/repository_id.md` |
 | singleton | `docs/best-practices/patterns/design/singleton_en.md` | `docs/best-practices/patterns/design/singleton_id.md` |
-| state, state pattern | `docs/best-practices/patterns/design/state_en.md` | `docs/best-practices/patterns/design/state_id.md` |
+| state | `docs/best-practices/patterns/design/state_en.md` | `docs/best-practices/patterns/design/state_id.md` |
 | strategy, strategy pattern | `docs/best-practices/patterns/design/strategy_en.md` | `docs/best-practices/patterns/design/strategy_id.md` |
 | policy, policy pattern | `docs/best-practices/patterns/domain/policy_en.md` | `docs/best-practices/patterns/domain/policy_id.md` |
 | specification, specification pattern | `docs/best-practices/patterns/domain/specification_en.md` | `docs/best-practices/patterns/domain/specification_id.md` |
@@ -53,6 +54,7 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | carried, event, event carried state transfer, state | `docs/best-practices/patterns/integration/event-carried-state-transfer_en.md` | `docs/best-practices/patterns/integration/event-carried-state-transfer_id.md` |
 | event, event notification, notification | `docs/best-practices/patterns/integration/event-notification_en.md` | `docs/best-practices/patterns/integration/event-notification_id.md` |
 | event, event sourcing, event store, sourcing | `docs/best-practices/patterns/integration/event-sourcing_en.md` | `docs/best-practices/patterns/integration/event-sourcing_id.md` |
+| extensibility, extensibility hooks, hooks | `docs/best-practices/patterns/integration/extensibility-hooks_en.md` | `docs/best-practices/patterns/integration/extensibility-hooks_id.md` |
 | broker, message, message broker | `docs/best-practices/patterns/integration/message-broker_en.md` | `docs/best-practices/patterns/integration/message-broker_id.md` |
 | publish, publish / subscribe, publish subscribe, subscribe | `docs/best-practices/patterns/integration/publish-subscribe_en.md` | `docs/best-practices/patterns/integration/publish-subscribe_id.md` |
 | centralized, centralized logging, logging | `docs/best-practices/patterns/observability/centralized-logging_en.md` | `docs/best-practices/patterns/observability/centralized-logging_id.md` |
@@ -63,7 +65,7 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | logging, structured, structured logging | `docs/best-practices/patterns/observability/structured-logging_en.md` | `docs/best-practices/patterns/observability/structured-logging_id.md` |
 | bulkhead, bulkhead pattern, isolation, thread pool isolation | `docs/best-practices/patterns/reliability/bulkhead_en.md` | `docs/best-practices/patterns/reliability/bulkhead_id.md` |
 | breaker, circuit, circuit breaker, circuit breaker pattern | `docs/best-practices/patterns/reliability/circuit-breaker_en.md` | `docs/best-practices/patterns/reliability/circuit-breaker_id.md` |
-| dead, dead letter queue, dead letter queue (dlq), letter | `docs/best-practices/patterns/reliability/dead-letter-queue_en.md` | `docs/best-practices/patterns/reliability/dead-letter-queue_id.md` |
+| dead, dead letter queue, letter, queue | `docs/best-practices/patterns/reliability/dead-letter-queue_en.md` | `docs/best-practices/patterns/reliability/dead-letter-queue_id.md` |
 | fallback | `docs/best-practices/patterns/reliability/fallback_en.md` | `docs/best-practices/patterns/reliability/fallback_id.md` |
 | exponential backoff, retries, retry, retry pattern | `docs/best-practices/patterns/reliability/retry_en.md` | `docs/best-practices/patterns/reliability/retry_id.md` |
 | deadline, timeout, timeouts | `docs/best-practices/patterns/reliability/timeout_en.md` | `docs/best-practices/patterns/reliability/timeout_id.md` |
@@ -100,7 +102,7 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | consistency, eventual, eventual consistency, eventual consistency principle | `docs/best-practices/principles/distributed/eventual-consistency_en.md` | `docs/best-practices/principles/distributed/eventual-consistency_id.md` |
 | idempotency, idempotency principle | `docs/best-practices/principles/distributed/idempotency_en.md` | `docs/best-practices/principles/distributed/idempotency_id.md` |
 | dry, dry principle | `docs/best-practices/principles/dry_en.md` | `docs/best-practices/principles/dry_id.md` |
-| fail, fail fast, fail-fast principle, fast | `docs/best-practices/principles/fail-fast_en.md` | `docs/best-practices/principles/fail-fast_id.md` |
+| fail, fail fast, fail fast principle, fast | `docs/best-practices/principles/fail-fast_en.md` | `docs/best-practices/principles/fail-fast_id.md` |
 | composition, composition over inheritance, inheritance, over | `docs/best-practices/principles/general/composition-over-inheritance_en.md` | `docs/best-practices/principles/general/composition-over-inheritance_id.md` |
 | configuration, convention, convention over configuration, over | `docs/best-practices/principles/general/convention-over-configuration_en.md` | `docs/best-practices/principles/general/convention-over-configuration_id.md` |
 | fail, fail fast, fail-fast principle, fast | `docs/best-practices/principles/general/fail-fast_en.md` | `docs/best-practices/principles/general/fail-fast_id.md` |
@@ -118,11 +120,11 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | dip, isp, lsp, ocp | `docs/best-practices/principles/solid_en.md` | `docs/best-practices/principles/solid_id.md` |
 | yagni, yagni principle | `docs/best-practices/principles/yagni_en.md` | `docs/best-practices/principles/yagni_id.md` |
 | analytics, analytics & big data | `docs/ecosystem/aws/analytics_en.md` | `docs/ecosystem/aws/analytics_id.md` |
-| backup, backup & recovery | `docs/ecosystem/aws/backup_en.md` | `docs/ecosystem/aws/backup_id.md` |
+| backup, backup & recovery (aws) | `docs/ecosystem/aws/backup_en.md` | `docs/ecosystem/aws/backup_id.md` |
 | aws compute, aws compute services, compute, ec2 | `docs/ecosystem/aws/compute_en.md` | `docs/ecosystem/aws/compute_id.md` |
 | aurora, aws database services, database, dynamodb | `docs/ecosystem/aws/database_en.md` | `docs/ecosystem/aws/database_id.md` |
 | cicd aws, codedeploy, codepipeline, deployment | `docs/ecosystem/aws/deployment_en.md` | `docs/ecosystem/aws/deployment_id.md` |
-| computing, edge, edge computing | `docs/ecosystem/aws/edge-computing_en.md` | `docs/ecosystem/aws/edge-computing_id.md` |
+| computing, edge, edge computing, edge computing (aws) | `docs/ecosystem/aws/edge-computing_en.md` | `docs/ecosystem/aws/edge-computing_id.md` |
 | driven, event, event driven, event driven & messaging services | `docs/ecosystem/aws/event-driven_en.md` | `docs/ecosystem/aws/event-driven_id.md` |
 | aws iot services, iot | `docs/ecosystem/aws/iot_en.md` | `docs/ecosystem/aws/iot_id.md` |
 | learning, machine, machine learning | `docs/ecosystem/aws/machine-learning_en.md` | `docs/ecosystem/aws/machine-learning_id.md` |
@@ -149,6 +151,7 @@ Auto-generated. Regenerate: `node scripts/build-index.mjs`
 | docker, docker swarm, swarm | `docs/technologies/infrastructure/docker-swarm_en.md` | `docs/technologies/infrastructure/docker-swarm_id.md` |
 | container, docker, dockerfile, oci image | `docs/technologies/infrastructure/docker_en.md` | `docs/technologies/infrastructure/docker_id.md` |
 | elastic, elasticsearch, elk, elk stack | `docs/technologies/infrastructure/elk-stack_en.md` | `docs/technologies/infrastructure/elk-stack_id.md` |
+| go, go plugin runtimes, plugin, runtimes | `docs/technologies/infrastructure/go-plugin-runtimes_en.md` | `docs/technologies/infrastructure/go-plugin-runtimes_id.md` |
 | grafana | `docs/technologies/infrastructure/grafana_en.md` | `docs/technologies/infrastructure/grafana_id.md` |
 | helm | `docs/technologies/infrastructure/helm_en.md` | `docs/technologies/infrastructure/helm_id.md` |
 | envoy sidecar, istio, service mesh | `docs/technologies/infrastructure/istio_en.md` | `docs/technologies/infrastructure/istio_id.md` |

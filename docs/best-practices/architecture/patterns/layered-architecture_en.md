@@ -53,4 +53,4 @@ In a web app, presentation handles HTML rendering, application processes user re
 
 ## Links
 
-For separation of concerns, see [Coding Rules](../../coding-rules.md). For testing layers, check [Infrastructure README](../../infra/README.md).
+For separation of concerns, see [Coding Rules](../../principles/code-quality/clean-code_en.md). For testing layers, check [Infrastructure README](../../practices/integration/test-driven-development_en.md).

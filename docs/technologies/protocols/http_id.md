@@ -297,30 +297,12 @@ DELETE /api/cart/items/123
 // 204: Item deleted, no content
 ```
 
-## Integrasi dengan Ecommerce
+## Terkait
 
-Protokol HTTP fundamental untuk sistem ecommerce:
+- [gRPC](grpc_id.md)
+- [GraphQL](graphql_id.md)
+- [WebSocket](websocket_id.md)
 
-- **Komunikasi API**: Katalog produk, pemrosesan order, gateway pembayaran
-- **Aplikasi Web**: Interface pengguna untuk shopping cart, flow checkout
-- **Microservices**: Komunikasi inter-service di arsitektur terdistribusi
-- **Integrasi CDN**: Content delivery untuk gambar, video, asset statis
-- **Aplikasi Mobile**: Konsumsi API untuk native mobile ecommerce apps
-- **Integrasi Third-party**: Payment processor, shipping APIs, sistem inventory
+## Referensi
 
-### Headers Spesifik Ecommerce
-
-```http
-# Security headers
-Strict-Transport-Security: max-age=31536000
-Content-Security-Policy: default-src 'self'
-X-Frame-Options: DENY
-
-# Performance headers
-Cache-Control: public, max-age=3600
-Accept-Encoding: gzip, deflate, br
-
-# Ecommerce-specific
-X-CSRF-Token: abc123
-X-Requested-With: XMLHttpRequest
-```
+- [RFC 9110 — HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)

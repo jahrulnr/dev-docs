@@ -103,10 +103,18 @@ volumes:
 - Monitor kesehatan swarm dan performa
 - Rencanakan high availability dengan multiple managers
 
-## Integrasi dengan Ecommerce
+## Kasus penggunaan khas
 
-Docker Swarm dapat digunakan untuk:
-- Orkestrasi microservices di platform ecommerce
-- Mengelola database dan cache containerized
-- Mengimplementasikan blue-green deployments
-- Scaling services berdasarkan pola trafik
+- Cluster container skala kecil-menengah tanpa kompleksitas Kubernetes penuh
+- Rolling update dan scaling service di stack Docker-native
+- Deployment edge dengan kebutuhan orchestration sederhana
+- Migrasi bertahap dari Compose single-host ke orchestration multi-node
+
+## Terkait
+
+- [Docker](docker_id.md)
+- [Kubernetes](kubernetes_id.md)
+
+## Referensi
+
+- [Docker Swarm Documentation](https://docs.docker.com/engine/swarm/)

@@ -125,4 +125,4 @@ type EventStore interface {
 
 ## Links
 
-For combining with CQRS, see [CQRS](../integration/cqrs_en.md). For event-driven architecture, check [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). For domain modeling, refer to [Clean Architecture](../../architecture/clean-architecture_en.md).
+For combining with CQRS, see [CQRS](../integration/cqrs_en.md). For event-driven architecture, check [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). For domain modeling, refer to [Clean Architecture](../../../architecture/patterns/clean-architecture_en.md).

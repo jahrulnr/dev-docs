@@ -99,18 +99,18 @@ ingress:
 - Gunakan helm lint untuk validasi chart
 - Simpan charts di version control
 
-## Integrasi dengan Ecommerce
-
-Helm essential untuk deployment ecommerce:
-- Packaging seluruh stack microservices
-- Mengelola deployment database dan cache
-- Mengimplementasikan canary deployments dengan traffic splitting
-- Standardisasi setup monitoring dan logging
-- Enable self-service deployments untuk tim development
-
 ## Perbandingan dengan Kustomize
 
 - **Approach**: Helm gunakan templating; Kustomize gunakan overlays
 - **Kompleksitas**: Helm dukung logic lebih kompleks; Kustomize lebih sederhana
 - **Ekosistem**: Helm punya ekosistem chart lebih besar
 - **Learning**: Kustomize punya learning curve lebih gentle untuk use case basic
+
+## Terkait
+
+- [Kubernetes](kubernetes_id.md)
+- [Docker](docker_id.md)
+
+## Referensi
+
+- [Helm Documentation](https://helm.sh/docs/)

@@ -125,4 +125,4 @@ type EventStore interface {
 
 ## Tautan
 
-Untuk menggabungkan dengan CQRS, lihat [CQRS](../integration/cqrs_id.md). Untuk arsitektur event-driven, periksa [Event-Driven Architecture](../../ecosystem/aws/event-driven_id.md). Untuk pemodelan domain, lihat [Clean Architecture](../../architecture/clean-architecture_id.md).
+Untuk menggabungkan dengan CQRS, lihat [CQRS](../integration/cqrs_id.md). Untuk arsitektur event-driven, periksa [Event-Driven Architecture](../../ecosystem/aws/event-driven_id.md). Untuk pemodelan domain, lihat [Clean Architecture](../../../architecture/patterns/clean-architecture_id.md).

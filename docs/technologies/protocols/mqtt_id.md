@@ -224,103 +224,20 @@ order-status-changes
 - Gunakan binary payloads jika memungkinkan
 - Optimalkan topic subscriptions dengan wildcards
 
-## Integrasi dengan Ecommerce
+## Kasus penggunaan umum
 
-MQTT sangat berharga untuk platform ecommerce yang menangani real-time inventory, order processing, dan fitur IoT-enabled:
+- Telemetri sensor IoT dan channel perintah device
+- Klien mobile di jaringan terbatas atau tidak stabil
+- Monitoring industri dan agregasi edge-to-cloud
+- Pelacakan armada dan pembaruan status aset
+- Otomasi smart-building dan integrasi SCADA
 
-- **Tracking Inventory Real-time**: Update level stock instant across warehouse
-- **Notifikasi Status Order**: Update proses order live ke customer
-- **Integrasi Perangkat IoT**: Connected scales, smart shelves, automated checkout
-- **Monitoring Supply Chain**: Track shipments dan logistics secara real-time
-- **Dynamic Pricing**: Penyesuaian harga real-time berdasarkan demand/supply
-- **Deteksi Fraud**: Monitor pola transaksi mencurigakan
-- **Analytics Perilaku Customer**: Track interaksi dan preferensi user
-- **Replenishment Otomatis**: Smart ordering ketika stock menipis
-- **Sinkronisasi Multi-channel**: Jaga inventory online dan in-store tetap sync
+## Terkait
 
-### Arsitektur MQTT Ecommerce
+- [AMQP](amqp_id.md)
+- [WebSocket](websocket_id.md)
+- [RabbitMQ](../infrastructure/rabbitmq_id.md)
 
-```
-┌─────────────────┐    MQTT    ┌─────────────────┐
-│   IoT Devices   │◄─────────►│   MQTT Broker   │
-│   (Sensors,     │           │   (EMQX/        │
-│    Smart Shelves)│           │    Mosquitto)   │
-└─────────────────┘           └─────────────────┘
-                                 │
-                    ┌────────────┼────────────┐
-                    ▼            ▼            ▼
-         ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-         │  Inventory      │ │   Order         │ │   Analytics     │
-         │  Service        │ │   Service       │ │   Service       │
-         │                 │ │                 │ │                 │
-         └─────────────────┘ └─────────────────┘ └─────────────────┘
-                    ▲            ▲            ▲
-                    └────────────┼────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │   WebSocket    │
-                    │   Gateway      │
-                    └─────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │   Web Clients   │
-                    │   (Real-time    │
-                    │    Dashboard)   │
-                    └─────────────────┘
-```
+## Referensi
 
-### Common Ecommerce MQTT Topics
-
-```javascript
-// Inventory Management
-{
-  "topic": "ecommerce/inventory/PROD-123/stock",
-  "payload": {
-    "productId": "PROD-123",
-    "warehouseId": "WH-001",
-    "quantity": 150,
-    "reserved": 5,
-    "available": 145,
-    "lastUpdated": "2024-01-15T14:30:00Z"
-  }
-}
-
-// Order Processing
-{
-  "topic": "ecommerce/orders/ORD-456/status",
-  "payload": {
-    "orderId": "ORD-456",
-    "status": "shipped",
-    "trackingNumber": "1Z999AA1234567890",
-    "estimatedDelivery": "2024-01-18",
-    "timestamp": "2024-01-15T15:45:00Z"
-  }
-}
-
-// Payment Events
-{
-  "topic": "ecommerce/payments/PAY-789/processed",
-  "payload": {
-    "paymentId": "PAY-789",
-    "orderId": "ORD-456",
-    "amount": 299.99,
-    "currency": "USD",
-    "method": "credit_card",
-    "status": "completed",
-    "timestamp": "2024-01-15T15:40:00Z"
-  }
-}
-
-// Customer Notifications
-{
-  "topic": "ecommerce/notifications/user-101/alerts",
-  "payload": {
-    "userId": "user-101",
-    "type": "order_update",
-    "title": "Order Shipped!",
-    "message": "Your order ORD-456 has been shipped",
-    "priority": "normal",
-    "timestamp": "2024-01-15T15:45:00Z"
-  }
-}
-```
+- [MQTT Version 5.0 Specification](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html)

@@ -91,18 +91,19 @@ resource "aws_db_instance" "default" {
 - Update providers dan versi Terraform secara teratur
 - Gunakan variables dan locals untuk fleksibilitas konfigurasi
 
-## Integrasi dengan Ecommerce
-
-Terraform berharga untuk infrastruktur ecommerce:
-- Provisioning resource compute scalable untuk lonjakan trafik
-- Mengelola database dan storage untuk katalog produk
-- Setup CDN dan load balancer untuk distribusi global
-- Membuat networking aman untuk pemrosesan pembayaran
-- Mengotomasi pipeline deployment dengan perubahan infrastruktur
-
 ## Perbandingan dengan CloudFormation
 
 - **Multi-cloud**: Terraform dukung multiple provider; CloudFormation AWS-only
 - **Bahasa**: HCL vs JSON/YAML
 - **Manajemen State**: Terraform punya built-in state; CloudFormation gunakan stacks
 - **Komunitas**: Terraform punya ekosistem dan dukungan komunitas lebih luas
+
+## Terkait
+
+- [Kubernetes](kubernetes_id.md)
+- [Helm](helm_id.md)
+- [Docker](docker_id.md)
+
+## Referensi
+
+- [Terraform Documentation](https://developer.hashicorp.com/terraform/docs)

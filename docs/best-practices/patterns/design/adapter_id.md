@@ -1,41 +1,67 @@
-# Pola Adapter
-## Gambaran Umum
+# Adapter
 
-Adapter mengubah antarmuka suatu kelas menjadi antarmuka yang diharapkan klien, memungkinkan interoperabilitas antar antarmuka yang tidak kompatibel tanpa memodifikasi kode yang ada. Pola ini memungkinkan integrasi yang fleksibel dengan komponen eksternal.
+## Overview
 
-## Kapan digunakan
-- Mengintegrasikan sistem legacy atau pustaka pihak ketiga dengan API berbeda.
-- Menyediakan antarmuka internal stabil sambil mengadaptasi berbagai implementasi vendor.
+**Adapter** mengonversi *interface* sebuah *class* atau modul menjadi *interface* lain yang diharapkan *client*. Komponen yang tidak kompatibel bisa bekerja bersama tanpa mengubah kode sumber—membungkus SDK pihak ketiga, API *legacy*, atau model data asing di balik *port* yang sudah dipahami aplikasi Anda.
 
-## Panduan Implementasi
-- Implementasikan antarmuka target dan pegang referensi ke adaptee.
-- Buat adapter tipis: terjemahkan pemanggilan dan adaptasi struktur data.
-- Pisahkan adapter per titik integrasi untuk menjaga tanggung jawab jelas.
+Adapter adalah perekat struktural. **Object adapter** mengomposisi *adaptee* dan menerjemahkan panggilan; **class adapter** (kurang umum di Go) memakai embedding/pewarisan. Adapter sering muncul di batas **hexagonal architecture**: `PostgresUserRepo` mengadaptasi baris driver SQL ke `User` domain; `StripePaymentAdapter` memetakan *webhook* provider ke *event* internal.
 
-## Contoh (Gaya Go)
+Jangan samakan Adapter dengan Facade (menyederhanakan banyak panggilan menjadi satu) atau Decorator (*interface* sama, perilaku tambahan). Tugas Adapter adalah **rekonsiliasi interface**.
+
+## How it works
+
+1. Identifikasi *interface* **Target** yang diharapkan kode *client*.
+2. Bungkus **Adaptee** (API tidak kompatibel yang ada) dalam tipe **Adapter** yang mengimplementasikan Target.
+3. Terjemahkan panggilan metode: petakan tipe, kode *error*, model paginasi, dan penamaan.
+4. Injeksikan *adapter* di tempat Target diperlukan.
+
+Jaga logika terjemahan tetap tipis; aturan domain tetap di luar *adapter*. Uji *adapter* dengan *fixture* rekaman dari *adaptee* nyata jika memungkinkan.
+
+## When to use
+
+- Mengintegrasikan *library* pihak ketiga atau *legacy* yang API-nya tidak cocok dengan *port* Anda.
+- Migrasi bertahap: implementasi lama dan baru berbagi satu *interface* Target.
+- Pengujian: sediakan *adapter* in-memory yang mengimplementasikan *port* yang sama.
+
+## When not to use
+
+- Anda mengontrol kedua sisi dan bisa mengubah API langsung—perbaiki sumber alih-alih *glue* permanen.
+- Ketidakcocokan bersifat perilaku, bukan *interface*—mungkin butuh *domain service* lebih kaya, bukan *adapter* tipis.
+- Banyak concern ortogonal (*cache* + terjemahan + auth)—pisahkan ke rantai *decorator* + *adapter*.
+
+## Trade-offs
+
+| Pros | Cons |
+| --- | --- |
+| Reuse tanpa mengubah *adaptee* | Lapisan terjemahan bisa tertinggal dari pembaruan SDK |
+| *Port* bersih untuk inti aplikasi | Risiko konsep *adaptee* bocor lewat Target |
+| Memungkinkan migrasi inkremental | Indireksi ekstra dan bug pemetaan |
+
+## Example
+
+`LegacyPrinter` mengekspos `PrintText(s string)`. Aplikasi Anda mengharapkan `DocumentRenderer.Render(doc Document)`. `PrinterAdapter` mengimplementasikan `DocumentRenderer` dan memanggil `PrintText(doc.PlainText())`.
+
 ```go
-// Target interface
-type PaymentProcessor interface {
-    Charge(amount int) error
+type DocumentRenderer interface {
+    Render(doc Document) error
 }
 
-// Adaptee
-type LegacyGateway struct{}
-func (LegacyGateway) SendPayment(cents int) error { /*...*/ return nil }
+type PrinterAdapter struct {
+    legacy *LegacyPrinter
+}
 
-// Adapter
-type LegacyAdapter struct{ g LegacyGateway }
-func (a LegacyAdapter) Charge(amount int) error {
-    return a.g.SendPayment(amount)
+func (a PrinterAdapter) Render(doc Document) error {
+    return a.legacy.PrintText(doc.PlainText())
 }
 ```
 
-## Kelebihan / Kekurangan
-- Kelebihan: Mendukung reuse, mengisolasi logika integrasi.
-- Kekurangan: Menambah kelas dan overhead translasi.
+## Related
 
-## Pola Terkait
-Facade, Proxy
+- [Facade](../design/facade_id.md) — menyederhanakan *subsystem*; Adapter menerjemahkan *interface*
+- [Decorator](../design/decorator_id.md) — *interface* sama, perilaku ekstra
+- [Ports and adapters (hexagonal)](https://alistair.cockburn.us/hexagonal-architecture/) — konteks arsitektural
 
-## Referensi
-- Gamma dkk., "Design Patterns".
+## References
+
+- Gamma et al. — *Design Patterns*, bab Adapter
+- *Anti-corruption layer* dalam domain-driven design

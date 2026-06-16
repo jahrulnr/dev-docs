@@ -91,18 +91,19 @@ resource "aws_db_instance" "default" {
 - Regularly update providers and Terraform version
 - Use variables and locals for configuration flexibility
 
-## Integration with Ecommerce
-
-Terraform is valuable for ecommerce infrastructure:
-- Provisioning scalable compute resources for traffic spikes
-- Managing databases and storage for product catalogs
-- Setting up CDN and load balancers for global distribution
-- Creating secure networking for payment processing
-- Automating deployment pipelines with infrastructure changes
-
 ## Comparison with CloudFormation
 
 - **Multi-cloud**: Terraform supports multiple providers; CloudFormation is AWS-only
 - **Language**: HCL vs JSON/YAML
 - **State Management**: Terraform has built-in state; CloudFormation uses stacks
 - **Community**: Terraform has broader ecosystem and community support
+
+## Related
+
+- [Kubernetes](kubernetes_en.md)
+- [Helm](helm_en.md)
+- [Docker](docker_en.md)
+
+## References
+
+- [Terraform Documentation](https://developer.hashicorp.com/terraform/docs)

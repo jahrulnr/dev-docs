@@ -1,22 +1,50 @@
-# Pola Chain of Responsibility
-## Gambaran Umum
+# Chain of Responsibility
 
-Chain of Responsibility memungkinkan beberapa handler berkesempatan memproses sebuah permintaan dengan merangkainya; permintaan diteruskan sampai ada handler yang menanganinya. Pola ini memungkinkan pemrosesan permintaan yang fleksibel dan terpisah.
+## Overview
 
-## Kapan digunakan
-- Ketika beberapa komponen dapat menangani permintaan dan Anda ingin memisahkan pengirim dari penerima.
-- Untuk pipeline pemrosesan seperti validasi dan enrich.
+**Chain of Responsibility** meneruskan request sepanjang rantai handler. Setiap handler memproses request atau meneruskannya ke link berikutnya. Sender tidak tahu handler mana yang akhirnya bertindak—memisahkan producer dari consumer.
 
-## Panduan Implementasi
-- Definisikan interface Handler dengan metode yang menangani atau meneruskan request.
-- Buat chain dengan menghubungkan handler atau menggunakan pola middleware.
+Pola ini muncul di HTTP middleware stack, logging pipeline (filter by level), eskalasi tiket support, dan UI event bubbling. Fleksibilitas komposisi ditukar dengan routing yang kurang eksplisit.
 
-## Contoh
-Rantai middleware HTTP di mana setiap middleware dapat menangani atau meneruskan request.
+## How it works
 
-## Kelebihan / Kekurangan
-- Kelebihan: Fleksibel, mendukung komposisi.
-- Kekurangan: Alur dapat sulit dilacak saat debugging.
+1. Definisikan interface `Handler`: `Handle(request)` return handled atau pass-to-next.
+2. Hubungkan handler berurutan (linked list, slice, atau middleware wrapper).
+3. Chain berhenti saat handler memproses request atau chain habis (kasus unhandled harus didefinisikan).
 
-## Referensi
-- Literatur pola desain umum.
+Di web framework, middleware adalah bentuk dominan: setiap layer membungkus `http.Handler` berikutnya.
+
+## When to use
+
+- Banyak objek mungkin menangani request dan set-nya bisa berubah di runtime.
+- Ingin menambah/menghapus processing step tanpa mengedit sender.
+- Tahap processing opsional atau berurutan (validation → auth → business logic).
+
+## When not to use
+
+- Tepat satu handler harus selalu jalan—pakai direct dispatch.
+- Urutan sulit dilacak dan debugging chain mahal untuk tim Anda.
+- Chain dalam dengan logic berat—pertimbangkan pipeline dengan nama stage eksplisit dan observability.
+
+## Trade-offs
+
+| Pros | Cons |
+| --- | --- |
+| Loose coupling, open for extension | Flow sulit ditrace dan di-debug |
+| Stage composable (middleware) | Request bisa sampai akhir chain tanpa ditangani |
+| Single Responsibility per handler | Overhead performa jika chain panjang |
+
+## Example
+
+HTTP middleware: CORS → authentication → rate limit → handler. Setiap middleware menulis response atau memanggil `next.ServeHTTP(w, r)`.
+
+Logging: pesan masuk ke `DebugHandler`; jika level terlalu rendah, diteruskan ke `InfoHandler`, lalu `Warn`, lalu `Error`.
+
+## Related
+
+- [Decorator](../design/decorator_id.md)
+- Middleware di stack `net/http`, Gin, Echo, Chi
+
+## References
+
+- Gamma dkk. — *Design Patterns*, Chain of Responsibility

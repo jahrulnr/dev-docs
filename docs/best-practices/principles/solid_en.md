@@ -56,4 +56,4 @@ With DIP (Loose Coupling):
 
 ## Links
 
-For examples, see [Coding Rules](../../coding-rules.md).
+For examples, see [Coding Rules](../../principles/code-quality/clean-code_en.md).

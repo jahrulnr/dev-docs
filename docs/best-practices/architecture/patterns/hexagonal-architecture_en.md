@@ -62,4 +62,4 @@ In a payment system, the core handles "process payment" logic. A port defines "s
 
 ## Links
 
-For more on dependency inversion, see [SOLID Principles](../README.md#solid-principles). For interface examples, check [Coding Rules](../../coding-rules.md).
+For more on dependency inversion, see [SOLID Principles](../../principles/solid_en.md). For interface examples, check [Coding Rules](../../principles/code-quality/clean-code_en.md).

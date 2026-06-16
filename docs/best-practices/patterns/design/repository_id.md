@@ -63,4 +63,4 @@ func (r SqlUserRepository) Save(user User) error {
 
 ## Tautan
 
-Untuk pola arsitektural terkait, lihat [CQRS](../architectural/cqrs_en.md). Untuk model domain, periksa [Coding Rules](../../coding-rules.md).
+Untuk pola arsitektural terkait, lihat [CQRS](../integration/cqrs_id.md). Untuk model domain, periksa [Coding Rules](../../principles/code-quality/clean-code_id.md).

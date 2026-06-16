@@ -53,4 +53,4 @@ Di aplikasi web, presentasi menangani rendering HTML, aplikasi memproses permint
 
 ## Tautan
 
-Untuk pemisahan kepentingan, lihat [Aturan Coding](../../coding-rules.md). Untuk pengujian lapisan, periksa [Infrastructure README](../../infra/README.md).
+Untuk pemisahan kepentingan, lihat [Aturan Coding](../../principles/code-quality/clean-code_id.md). Untuk pengujian lapisan, periksa [Infrastructure README](../../practices/integration/test-driven-development_id.md).

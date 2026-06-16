@@ -69,4 +69,4 @@ func (c CreditCardFactory) CreateProcessor() PaymentProcessor {
 
 ## Links
 
-For related architectural patterns, see [Clean Architecture](../architecture/clean-architecture_en.md). For domain models, check [Coding Rules](../../coding-rules.md).
+For related architectural patterns, see [Clean Architecture](../../architecture/patterns/clean-architecture_en.md). For domain models, check [Coding Rules](../../principles/code-quality/clean-code_en.md).

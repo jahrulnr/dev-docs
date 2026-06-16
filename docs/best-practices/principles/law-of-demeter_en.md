@@ -2,26 +2,62 @@
 
 ## Overview
 
-The Law of Demeter (LoD) limits object interactions to "close" friends, reducing coupling. Named after the Demeter Project, it promotes encapsulation.
+The **Law of Demeter** (LoD), or "principle of least knowledge," says a module should talk only to its immediate friends—not strangers. In practice: avoid long chains of getters that reach through object graphs (`order.getCustomer().getAddress().getZip()`), which couple callers to distant internal structure.
 
-A method can only call methods on itself, its parameters, its attributes, or objects it creates/instantiates. Avoid "train wrecks" like `a.b.c.d()`.
+LoD encourages **narrow interfaces** and **tell, don't ask**: ask an object to perform work with its own data instead of pulling internals out to manipulate elsewhere. Violations ("train wrecks") make refactors painful—changing `Address` breaks code that never should have depended on it.
 
-Benefits: More maintainable, adaptable code; fewer cascading changes.
+LoD is a guideline, not dogma. DTOs, mappers, and query layers sometimes need multiple fields; contain that knowledge in one place rather than spreading reach-through calls.
 
-## When to Use
+## Key ideas
 
-In OOP to prevent tight dependencies; when refactoring legacy code with deep chains.
+- Methods on a class should use only: itself, parameters, objects it creates, its direct components.
+- Prefer domain methods (`order.shipToZip()`) over exposing deep object graphs.
+- Facades and application services coordinate without leaking every entity getter.
+- In Go, small interfaces at call sites reduce temptation to reach into structs.
 
-## How to Implement
+## When to use
 
-Restructure to use direct references or delegation (e.g., instead of `customer.getAddress().getCity()`, have `customer.getCity()`). Only talk to your "neighbors"—don't reach through others.
+- Domain models where encapsulation protects invariants.
+- APIs stabilizing module boundaries between teams.
+- Refactoring legacy code with fragile dependency chains.
 
+## When not to use
+
+- Reporting or analytics that legitimately aggregate many fields—use a dedicated read model or projection.
+- Serialization layers that must map full object trees—keep mapping localized.
+- Performance-critical paths where measured profiling shows delegation overhead (rare).
+
+## Trade-offs
+
+| Following LoD | Cost |
+| --- | --- |
+| Looser coupling, safer refactors | More wrapper methods or services |
+| Clearer ownership of behavior | Can feel verbose for simple data carriers |
+| Hides internal graph changes | Indirection for readers unfamiliar with domain |
+
+## Example
+
+Avoid:
+
+```go
+zip := order.Customer.Address.Zip // train wreck
 ```
-Violation: [A] --> [B] --> [C] --> [D] (Chain)
 
-Compliance: [A] --> [B] (Direct or delegate)
+Prefer:
+
+```go
+zip, err := order.ShippingZip()
 ```
 
-## Links
+`Order` delegates to owned `Customer`/`Address` internally; callers stay stable if address storage changes.
 
-For encapsulation, see [Coding Rules](../../coding-rules.md).
+## Related
+
+- [Separation of Concerns](separation-of-concerns_en.md) — limit what each module knows
+- [Facade](../patterns/design/facade_en.md) — stable entry points over subsystems
+- [SOLID](solid_en.md) — especially encapsulation and interface segregation
+
+## References
+
+- Lieberherr et al. — original Law of Demeter (Northeastern University, 1987)
+- Hunt & Thomas — *The Pragmatic Programmer*, "Tell, Don't Ask"

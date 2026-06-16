@@ -79,10 +79,20 @@ CMD ["npm", "start"]
 - Tag images with version numbers
 - Regularly update base images for security
 
-## Integration with Ecommerce
+## Typical use cases
 
-In ecommerce applications, Docker is commonly used to:
-- Containerize microservices (order service, payment service)
-- Run databases in containers for development
-- Create consistent CI/CD pipelines
-- Deploy applications to Kubernetes clusters
+- Packaging applications with reproducible runtime environments
+- Local development parity with production deployments
+- CI/CD build, test, and artifact pipelines
+- Building images consumed by Kubernetes or Docker Swarm
+- Isolating service dependencies in microservice stacks
+
+## Related
+
+- [Kubernetes](kubernetes_en.md)
+- [Docker Swarm](docker-swarm_en.md)
+- [containerd](containerd_en.md)
+
+## References
+
+- [Docker Documentation](https://docs.docker.com/)

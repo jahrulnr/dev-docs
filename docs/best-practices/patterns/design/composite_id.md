@@ -1,22 +1,71 @@
 # Composite
-## Gambaran Umum
 
-Composite menggabungkan objek menjadi struktur pohon untuk merepresentasikan hierarki bagian‑keseluruhan dan memungkinkan klien memperlakukan objek tunggal dan komposit secara seragam. Pola ini sangat berguna untuk membangun struktur hierarki di mana operasi pada keseluruhan harus konsisten dengan operasi pada bagian-bagiannya.
+## Overview
 
-## Kapan digunakan
-- Untuk struktur hirarki seperti komponen UI atau sistem file.
-- Ketika klien harus memperlakukan komposit dan leaf sama.
+**Composite** menyusun objek menjadi struktur *tree* untuk merepresentasikan hierarki *part-whole*. *Client* memperlakukan objek tunggal (*leaf*) dan kumpulan objek (*composite*) melalui *interface* yang sama, sehingga operasi pada *subtree* berperilaku seperti operasi pada satu *node*.
 
-## Panduan Implementasi
-- Definisikan antarmuka `Component` yang diimplementasikan leaf dan composite.
-- `Composite` menyimpan children dan mendelegasikan operasi.
+Pola ini muncul di *UI component tree*, API *filesystem*, bagan organisasi, dan struktur dokumen (bagian yang berisi paragraf). Composite menghilangkan *branching logic* dari pemanggil: alih-alih `if isLeaf { ... } else { for child ... }` tersebar di banyak tempat, satu panggilan `Render()` atau `Size()` pada *root* sudah menyebar dengan benar.
 
-## Contoh
-Sistem file dengan `File` dan `Directory` yang mengimplementasikan antarmuka yang sama.
+Pola ini menukar presisi tipe dengan keseragaman. Tidak setiap operasi masuk akal untuk setiap tipe *node*; *interface* harus dipilih agar *leaf* dan *composite* sama-sama mendukung kontrak—atau *composite* hanya mendelegasikan ke anak yang relevan.
 
-## Kelebihan / Kekurangan
-- Kelebihan: Menyederhanakan penanganan struktur pohon.
-- Kekurangan: Dapat memperumit keamanan tipe dan menampilkan operasi yang tidak valid pada leaf.
+## How it works
 
-## Referensi
-- Gamma dkk., "Design Patterns".
+1. Definisikan *interface* **Component** dengan operasi yang dipakai *leaf* dan *composite* (mis. `Draw()`, `GetPrice()`).
+2. **Leaf** mengimplementasikan Component secara langsung dengan perilaku terminal.
+3. **Composite** menyimpan koleksi *child* Component dan mengimplementasikan Component dengan mendelegasikan ke anak (sering rekursif).
+4. *Client* hanya berinteraksi dengan *interface* Component, tanpa tahu apakah instance adalah *leaf* atau *composite*.
+
+Opsional: *composite* mengekspos `Add`/`Remove` untuk membangun *tree*; beberapa desain memisahkan mutasi *tree* ke *builder* agar *interface* Component tetap minimal.
+
+## When to use
+
+- Domain secara alami hierarkis dan *client* harus mengabaikan perbedaan satu item vs kumpulan.
+- Operasi harus berlaku rekursif (jumlah berat, *render tree*, validasi *subtree*).
+- Anda ingin menambah tipe komponen baru tanpa mengubah kode traversal di *client*.
+
+## When not to use
+
+- *Leaf* dan *composite* butuh API yang sangat berbeda—memaksa *interface* bersama menghasilkan metode kosong atau menyesatkan.
+- *Type safety* kritis dan Anda tidak bisa toleran terhadap `interface{}` atau pengecekan *runtime* untuk operasi yang tidak didukung.
+- Struktur datar; *list* atau *map* sederhana sudah cukup.
+
+## Trade-offs
+
+| Pros | Cons |
+| --- | --- |
+| Kode *client* seragam untuk *tree* | *Interface* bersama bisa terlalu luas atau bocor |
+| Mudah menambah tipe *leaf*/*composite* | Sulit membatasi operasi hanya untuk *leaf* |
+| Cocok untuk algoritma rekursif | *Tree* dalam bisa menyembunyikan biaya performa |
+
+## Example
+
+Editor grafis: *interface* `Shape` dengan `Draw()`. `Circle` dan `Rectangle` adalah *leaf*. `Group` adalah *composite* yang menyimpan `[]Shape` dan menggambar setiap anak. *Canvas* memanggil `root.Draw()` baik `root` satu bentuk maupun *group* bersarang.
+
+```go
+type Shape interface {
+    Draw() string
+}
+
+type Group struct {
+    children []Shape
+}
+
+func (g Group) Draw() string {
+    var out string
+    for _, c := range g.children {
+        out += c.Draw()
+    }
+    return out
+}
+```
+
+## Related
+
+- [Decorator](../design/decorator_id.md) — membungkus satu objek; Composite mengagregasi banyak
+- [Facade](../design/facade_id.md) — menyederhanakan *subsystem*; Composite memodelkan struktur
+- [Iterator](https://en.wikipedia.org/wiki/Iterator_pattern) — sering dipakai untuk menelusuri *composite tree*
+
+## References
+
+- Gamma, Helm, Johnson, Vlissides — *Design Patterns* (GoF), bab Composite
+- Umum di *framework* UI (*React component tree*, *scene graph*)

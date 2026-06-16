@@ -2,35 +2,67 @@
 
 ## Overview
 
-Singleton ensures a class has a single instance and provides a global access point. Use sparingly—often better solved via dependency injection. This pattern is useful for managing shared resources but can lead to tight coupling and testing difficulties if overused.
+The **Singleton** pattern ensures a class has only one instance and provides a global point of access to it. Typical motivations include coordinating access to a shared resource (configuration registry, connection pool facade, hardware device) or amortizing expensive initialization.
+
+Singleton is among the most **misused** patterns. Global mutable state complicates testing, hides dependencies, and encourages implicit coupling. Modern guidance often prefers **dependency injection** of a single shared instance configured at application startup rather than `GetInstance()` calls scattered through the codebase.
+
+When Singleton is appropriate, treat it as a **scoped singleton** (one instance per process or per request context), make initialization thread-safe, and avoid business logic inside the singleton type.
+
+## How it works
+
+1. Hide constructors (private or package-level) so external code cannot `new` arbitrary instances.
+2. Expose a static/global accessor (`Instance()`, `sync.Once` in Go) that lazily or eagerly creates the sole instance.
+3. Optionally subclass or interface-wrap the singleton for testing (provide a reset hook only in tests).
+
+In Go, package-level `var` with `sync.Once` is idiomatic when a true single instance is required. Many teams instead pass interfaces via constructors and use `wire`/`fx` for composition root wiring.
 
 ## When to use
-- Shared resources that are expensive to create (connection pools, caches).
-- Cases where a single coordination point is required.
 
-## Implementation Guidance
-- Prefer dependency injection over global singletons for testability.
-- Ensure thread-safe initialization (e.g., sync.Once in Go) and avoid mutable global state.
+- Exactly one instance must exist by policy (OS resource, global config loader).
+- The cost of creating the object is high and reuse is always desired.
+- You need a narrow, documented global registry with no hidden mutations.
 
-## Example (Go)
+## When not to use
+
+- For convenience—to avoid passing dependencies (use DI).
+- When unit tests need alternate implementations (interfaces + injection).
+- In distributed systems—each process has its own instance; cluster-wide singleton needs external coordination (DB lock, leader election).
+
+## Trade-offs
+
+| Pros | Cons |
+| --- | --- |
+| Controlled single instance | Hidden global dependencies |
+| Lazy init can defer cost | Thread-safety and lifecycle complexity |
+| Familiar pattern for legacy codebases | Hard to test in isolation |
+
+## Example
+
+Thread-safe lazy init in Go:
+
 ```go
 var (
-    cfg *Config
-    once sync.Once
+    instance *Config
+    once     sync.Once
 )
 
-func GetConfig() *Config {
-    once.Do(func() { cfg = loadConfig() })
-    return cfg
+func ConfigInstance() *Config {
+    once.Do(func() {
+        instance = loadConfig()
+    })
+    return instance
 }
 ```
 
-## Pros / Cons
-- Pros: Simple access to shared resources.
-- Cons: Hidden dependencies, harder testing, can lead to tight coupling.
+Prefer: `func NewServer(cfg Config, db DB) *Server` with `cfg` built once in `main()`.
 
-## Pitfalls
-- Avoid making business logic depend on singletons; inject dependencies instead to preserve testability.
+## Related
+
+- [Factory Method](../design/factory-method_en.md) — creation patterns; Singleton restricts cardinality
+- [Abstract Factory](../design/abstract-factory_en.md) — families of objects; avoid singleton factories without need
+- [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) — preferred alternative for testability
 
 ## References
-- Design patterns and language-specific best practices.
+
+- Gamma et al. — *Design Patterns*, Singleton chapter
+- Critical views: "Singleton considered harmful" in testing literature; Go community preference for explicit wiring

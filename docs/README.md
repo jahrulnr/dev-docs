@@ -36,7 +36,7 @@ Infrastructure tools and communication protocols:
 
 ## Contributing
 
-- Follow the [coding rules](../README.md#coding-rules) for consistency
+- Follow [AGENTS.md](../AGENTS.md) for writing style, bilingual pairs, and corpus quality bar
 - Update documentation for architectural changes
 - Use GitHub/GitLab issues for feedback and suggestions
 

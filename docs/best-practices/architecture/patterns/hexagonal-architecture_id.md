@@ -62,4 +62,4 @@ Di sistem pembayaran, inti menangani logika "proses pembayaran". Port mendefinis
 
 ## Tautan
 
-Untuk lebih lanjut tentang inversi dependensi, lihat [Prinsip SOLID](../README.md#solid-principles). Untuk contoh antarmuka, periksa [Aturan Coding](../../coding-rules.md).
+Untuk lebih lanjut tentang inversi dependensi, lihat [Prinsip SOLID](../../principles/solid_id.md). Untuk contoh antarmuka, periksa [Aturan Coding](../../principles/code-quality/clean-code_id.md).

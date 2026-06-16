@@ -102,6 +102,21 @@ Full keyword map: [routing-table.md](routing-table.md) or [index.json](index.jso
 
 When generating or reviewing code, read applicable **principles** first (`docs/best-practices/principles/`), then **patterns**, then technology-specific docs. Docs enforce DDD, clean architecture, TDD, zero-trust input validation.
 
+## New or updated documentation (lifecycle)
+
+Do not assert "current" facts from training memory. Use **`doc-authoring`** for the full chain:
+
+| Step | Skill |
+| --- | --- |
+| Plan | `doc-research-plan` |
+| Research | `github-landscape-research` |
+| Validate | `doc-research-validate` |
+| Write | `doc-write` |
+| Review | `doc-self-review` |
+| Index | `node scripts/build-index.mjs` |
+
+Quick lookup of existing topics stays in **this** skill only.
+
 ## Index maintenance
 
 After adding or renaming docs under `docs/`:

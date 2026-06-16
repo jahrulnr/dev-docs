@@ -48,4 +48,4 @@ Di sistem blog, command menangani "buat posting" (tulis), query menangani "dafta
 
 ## Tautan
 
-Untuk pola event-driven, lihat [Event-Driven Architecture](../../infra/aws/event-driven_en.md). Untuk model domain, periksa [Aturan Coding](../../coding-rules.md).
+Untuk pola event-driven, lihat [Event-Driven Architecture](../../architecture/styles/event-driven-architecture_id.md). Untuk model domain, periksa [Aturan Coding](../../principles/code-quality/clean-code_id.md).

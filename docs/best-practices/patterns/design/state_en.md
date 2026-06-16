@@ -1,26 +1,68 @@
-# State Pattern
+# State
+
 ## Overview
 
-State lets an object change its behavior when its internal state changes by delegating behavior to state objects. It simplifies conditional logic and groups state-specific behavior. This pattern improves maintainability by separating state-specific behavior.
+The **State** pattern lets an object alter its behavior when its internal state changes; the object appears to change its class. Each state is encapsulated in its own type implementing a common interface, and the context delegates behavior to the current state object instead of switching on enums or flags.
+
+State machines appear everywhere: TCP connections (CLOSED, ESTABLISHED, …), order workflows (pending → paid → shipped), media players (playing, paused, stopped), and UI modes (edit vs view). Without the pattern, a single class accumulates `switch state` branches that are hard to extend and test.
+
+State differs from **Strategy**: Strategy is usually configured once from outside for an algorithm variant; State transitions are often internal and tied to domain events. Both replace conditional logic with polymorphism.
+
+## How it works
+
+1. Define a **State** interface with methods representing context behavior (`HandleRequest()`, `Next()`).
+2. Implement one concrete state class per allowable state.
+3. The **Context** holds a reference to the current State and forwards calls to it.
+4. States may transition the context by calling `context.SetState(newState)` when rules permit.
+
+Transitions can be table-driven (map from event + state → next state) for clarity in complex machines.
 
 ## When to use
-- When behavior depends on an object's state and transitions are well-defined.
-- When avoiding large switch/case or if/else branches improves clarity.
 
-## Implementation Guidance
-- Define a State interface with methods for state-specific behavior and transition logic.
-- Implement ConcreteState types and delegate from the Context to current State.
-- Encapsulate transition logic in states or in a central state machine to keep flows explicit.
+- Behavior depends on state and you have many transitions or states.
+- `switch`/`if` chains on status codes grow with every new state.
+- States share little code and deserve separate types with focused tests.
 
-## Example (Pseudo)
-`Connection` context delegates `Send()` to current state: `Connected`, `Reconnecting`, or `Disconnected`.
+## When not to use
 
-## Pros / Cons
-- Pros: Cleaner separation of state behaviors, easier testing of individual states.
-- Cons: More classes and potential complexity in transition management.
+- Only two or three simple states with stable rules—a small enum and functions may suffice.
+- States differ only by data, not behavior—store state as data, not polymorphic types.
+- Distributed workflows spanning services—model with explicit workflow engines or event sourcing, not a single in-memory State graph alone.
 
-## Pitfalls
-- Keep transition logic clear to avoid state explosion; use diagrams or tables for complex workflows.
+## Trade-offs
+
+| Pros | Cons |
+| --- | --- |
+| Localizes state-specific logic | More types and wiring |
+| Open/closed for new states | Transition matrix can be hard to visualize |
+| Easier unit testing per state | Risk of invalid transitions if not guarded |
+
+## Example
+
+A `Turnstile` context delegates to `Locked` or `Unlocked` state. `Coin()` in `Locked` unlocks; `Push()` in `Unlocked` locks after admitting one person.
+
+```go
+type TurnstileState interface {
+    Coin(t *Turnstile)
+    Push(t *Turnstile)
+}
+
+type Locked struct{}
+func (Locked) Coin(t *Turnstile) { t.setState(Unlocked{}) }
+
+type Turnstile struct {
+    state TurnstileState
+}
+func (t *Turnstile) Coin() { t.state.Coin(t) }
+```
+
+## Related
+
+- [Strategy](../design/strategy_en.md) — interchangeable algorithms; State models lifecycle
+- [Command](../design/command_en.md) — can trigger state transitions as side effects
+- [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) (conceptual foundation)
 
 ## References
-- Gamma et al., "Design Patterns".
+
+- Gamma et al. — *Design Patterns*, State chapter
+- Explicit state machines in telecom, protocols, and workflow engines

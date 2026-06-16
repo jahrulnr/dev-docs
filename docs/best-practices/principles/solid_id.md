@@ -56,4 +56,4 @@ Dengan DIP (Kopling Longgar):
 
 ## Tautan
 
-Untuk contoh, lihat [Aturan Coding](../../coding-rules.md).
+Untuk contoh, lihat [Aturan Coding](../../principles/code-quality/clean-code_id.md).

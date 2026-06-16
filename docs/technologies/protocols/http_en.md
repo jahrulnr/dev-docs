@@ -297,30 +297,12 @@ DELETE /api/cart/items/123
 // 204: Item deleted, no content
 ```
 
-## Integration with Ecommerce
+## Related
 
-HTTP protocols are fundamental to ecommerce systems:
+- [gRPC](grpc_en.md)
+- [GraphQL](graphql_en.md)
+- [WebSocket](websocket_en.md)
 
-- **API Communication**: Product catalogs, order processing, payment gateways
-- **Web Applications**: User interfaces for shopping carts, checkout flows
-- **Microservices**: Inter-service communication in distributed architectures
-- **CDN Integration**: Content delivery for images, videos, static assets
-- **Mobile Apps**: API consumption for native mobile ecommerce apps
-- **Third-party Integrations**: Payment processors, shipping APIs, inventory systems
+## References
 
-### Ecommerce-Specific Headers
-
-```http
-# Security headers
-Strict-Transport-Security: max-age=31536000
-Content-Security-Policy: default-src 'self'
-X-Frame-Options: DENY
-
-# Performance headers
-Cache-Control: public, max-age=3600
-Accept-Encoding: gzip, deflate, br
-
-# Ecommerce-specific
-X-CSRF-Token: abc123
-X-Requested-With: XMLHttpRequest
-```
+- [RFC 9110 — HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)

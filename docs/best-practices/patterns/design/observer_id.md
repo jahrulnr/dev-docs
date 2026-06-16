@@ -94,4 +94,4 @@ func (c *CurrentConditionsDisplay) Update(temp, hum, pres float64) {
 
 ## Tautan
 
-Untuk pola arsitektural terkait, lihat [Clean Architecture](../architecture/clean-architecture_en.md). Untuk pola berbasis event, periksa [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). Untuk prinsip coding, lihat [SOLID Principles](../../principles/solid_en.md).
+Untuk pola arsitektural terkait, lihat [Clean Architecture](../../architecture/patterns/clean-architecture_id.md). Untuk pola berbasis event, periksa [Event-Driven Architecture](../../ecosystem/aws/event-driven_en.md). Untuk prinsip coding, lihat [SOLID Principles](../../principles/solid_en.md).
