@@ -19,44 +19,49 @@ const BLOB = `https://github.com/${REPO}/blob/${BRANCH}`;
 
 const index = JSON.parse(readFileSync(join(ROOT, 'index.json'), 'utf8'));
 
-/** Pascal-case words from slug segments (drops leading best-practices). */
-function slugSegments(slug) {
-  const parts = slug.split('/');
-  const trimmed = parts[0] === 'best-practices' ? parts.slice(1) : parts;
-  return trimmed.flatMap((seg) => seg.split('-').filter(Boolean));
-}
-
-function baseWikiName(slug) {
-  return slugSegments(slug)
+function segmentLabel(seg) {
+  return seg
+    .split('-')
+    .filter(Boolean)
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join('-');
+    .join(' ');
 }
 
-/** Assign unique wiki page names; disambiguate collisions with parent segment. */
-function buildWikiNameMap(entries) {
-  const byBase = new Map();
-  for (const e of entries) {
-    const base = baseWikiName(e.slug);
-    if (!byBase.has(base)) byBase.set(base, []);
-    byBase.get(base).push(e);
-  }
+/** Path segments for hierarchy (drops best-practices prefix). */
+function wikiPathParts(slug) {
+  const parts = slug.split('/');
+  if (parts[0] === 'best-practices') return parts.slice(1);
+  if (parts[0] === 'ecosystem') return ['ecosystem', ...parts.slice(1)];
+  if (parts[0] === 'technologies') return parts;
+  return parts;
+}
 
-  const map = new Map(); // slug -> { en, id }
-  for (const [base, group] of byBase) {
-    if (group.length === 1) {
-      map.set(group[0].slug, { en: base, id: `${base}-id` });
-      continue;
+/**
+ * Wiki page name: "Architecture Patterns - Bff" (space within group, " - " before leaf).
+ * GitHub Wiki does not allow "/" in page names — use " - " not " / ".
+ */
+function hierarchicalWikiName(entry) {
+  const parts = wikiPathParts(entry.slug);
+  if (parts.length === 1) return entry.title;
+  const parents = parts.slice(0, -1).map(segmentLabel).join(' ');
+  const leaf = segmentLabel(parts[parts.length - 1]);
+  return `${parents} - ${leaf}`;
+}
+
+/** Assign unique wiki page names; disambiguate collisions with slug suffix. */
+function buildWikiNameMap(entries) {
+  const map = new Map();
+  const seen = new Map();
+
+  for (const e of entries) {
+    let base = hierarchicalWikiName(e);
+    const count = seen.get(base) ?? 0;
+    if (count > 0) {
+      const suffix = e.slug.split('/').pop();
+      base = `${base} (${segmentLabel(suffix)})`;
     }
-    for (const e of group) {
-      const segs = slugSegments(e.slug);
-      const leaf = segs[segs.length - 1];
-      const parent = segs.length > 1 ? segs[segs.length - 2] : '';
-      const prefix = parent
-        ? parent.charAt(0).toUpperCase() + parent.slice(1)
-        : segs[0].charAt(0).toUpperCase() + segs[0].slice(1);
-      const name = `${prefix}-${leaf.charAt(0).toUpperCase() + leaf.slice(1)}`;
-      map.set(e.slug, { en: name, id: `${name}-id` });
-    }
+    seen.set(hierarchicalWikiName(e), count + 1);
+    map.set(e.slug, { en: base, id: `${base}-id` });
   }
   return map;
 }
@@ -207,8 +212,8 @@ function buildSidebar(lang) {
   }
 
   const lines = lang === 'id'
-    ? ['### [EN](_Sidebar) · Bahasa Indonesia', '', '**[Home-id](Home-id)**', '']
-    : ['### English · [ID](_Sidebar-id)', '', '**[Home](Home)**', ''];
+    ? ['### [EN](_Sidebar) · Bahasa Indonesia', '']
+    : ['### English · [ID](_Sidebar-id)', ''];
 
   const sortedKeys = [...groups.keys()].sort();
   for (const key of sortedKeys) {

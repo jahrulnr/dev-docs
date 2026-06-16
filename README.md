@@ -117,9 +117,9 @@ On push to `master`, [`.github/workflows/wiki.yml`](.github/workflows/wiki.yml) 
 2. `node scripts/export-wiki.mjs` → `wiki-export/` (gitignored)
 3. `scripts/push-wiki.sh` → pushes to `dev-docs.wiki` using `GITHUB_TOKEN`
 
-**One-time setup:**
+**Wiki page names:** hierarchical `Architecture Patterns - Bff` (not `/` — GitHub Wiki forbids slashes in titles). Sidebar link text uses doc titles; Home is the wiki landing page only (not duplicated in `_Sidebar`).
 
-1. Repo **Settings → Features → Wikis** → enable.
+**One-time setup:**
 2. Create one manual wiki page (e.g. `Home`) so the `dev-docs.wiki` git repo exists.
 3. If the workflow push step fails with auth errors, add secret **`WIKI_TOKEN`** (fine-grained or classic PAT with **Contents: Read and write** on this repo). The workflow prefers `WIKI_TOKEN` over `GITHUB_TOKEN`.
 
