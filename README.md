@@ -117,7 +117,7 @@ On push to `master`, [`.github/workflows/wiki.yml`](.github/workflows/wiki.yml) 
 2. `node scripts/export-wiki.mjs` → `wiki-export/` (gitignored)
 3. `scripts/push-wiki.sh` → pushes to `dev-docs.wiki` using `GITHUB_TOKEN`
 
-**Wiki page names:** hierarchical `Architecture Patterns - Bff` (not `/` — GitHub Wiki forbids slashes in titles). Sidebar link text uses doc titles; Home is the wiki landing page only (not duplicated in `_Sidebar`).
+**Wiki page names:** hierarchical `Architecture Patterns - Bff` (not `/` — GitHub Wiki forbids slashes in titles). Link targets use spaces (`Sidebar id`, `… Bff id`). Indonesian nav page: `Sidebar-id` (not `_Sidebar-id` — conflicts with Gollum).
 
 **One-time setup:**
 2. Create one manual wiki page (e.g. `Home`) so the `dev-docs.wiki` git repo exists.
