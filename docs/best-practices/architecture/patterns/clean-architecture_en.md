@@ -6,7 +6,7 @@ Clean Architecture is a software design philosophy created by Robert C. Martin (
 
 The key principle is the "dependency rule": Inner layers should not depend on outer layers. Instead, dependencies point inward, promoting testability, maintainability, and flexibility. It's particularly useful for complex applications and aligns with SOLID principles and Domain-Driven Design (DDD).
 
-## Key Components
+## Key components
 
 Clean Architecture divides the application into four main layers:
 
@@ -38,26 +38,48 @@ Clean Architecture divides the application into four main layers:
 +---------------------+
 ```
 
-## When to Use
+## When to use
 
 Choose Clean Architecture for:
 
 - Complex applications with evolving requirements, where you need to swap technologies (e.g., changing from SQL to NoSQL databases).
 - Teams that prioritize long-term maintainability and testability.
 - Projects using DDD, where the domain model is central.
-- Avoid in very simple apps where the overhead of layers adds unnecessary complexity.
 
-## Implementation Guide
+## When not to use
+
+- Very small applications where the extra layers and indirection slow down delivery.
+- Teams that do not have (or cannot maintain) a clear boundary discipline; the pattern is easy to “half-apply” and end up with more complexity.
+- Codebases where “domain logic” is minimal and most work is CRUD plumbing (you may still borrow ideas like dependency inversion, but keep the structure lightweight).
+
+## Implementation guide
 
 1. **Organize Code by Layers**: Create folders like `domain/` (entities), `application/` (use cases), `infrastructure/` (adapters and drivers).
 2. **Apply Dependency Inversion**: Use interfaces in inner layers (e.g., `UserRepository` interface in domain, implemented in infrastructure).
 3. **Keep Dependencies Inward**: Inner layers don't import outer ones. Use dependency injection to wire them.
 4. **Test from the Inside Out**: Start testing entities and use cases with mocks for outer layers.
 
+## Trade-offs
+
+- **More types and wiring**: You often introduce more interfaces, DTOs, and mapping code.
+- **Boundary discipline required**: If the dependency rule is not enforced (imports go the wrong direction), you lose the benefits.
+- **Friction with frameworks**: Some frameworks encourage annotations/ORM entities everywhere; keep framework-specific concerns in outer layers.
+
 ## Examples
 
 In an e-commerce app, the `Order` entity (domain) handles core rules like "orders must have items." The `PlaceOrder` use case (application) orchestrates this. A `OrderController` (adapter) handles HTTP requests, and `OrderRepository` (infrastructure) saves to a database.
 
+## Related
+
+- `docs/best-practices/principles/solid_en.md`
+- `docs/best-practices/architecture/patterns/hexagonal-architecture_en.md`
+- `docs/best-practices/architecture/patterns/onion-architecture_en.md`
+- `docs/best-practices/architecture/patterns/ddd_en.md`
+
 ## Links
 
 For more on SOLID principles, see [SOLID Principles](../../principles/solid_en.md). For DDD examples, check [Coding Rules](../../principles/code-quality/clean-code_en.md).
+
+## References
+
+- Robert C. Martin, “The Clean Architecture” (concept overview and dependency rule).

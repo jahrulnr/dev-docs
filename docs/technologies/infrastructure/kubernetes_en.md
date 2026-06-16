@@ -60,16 +60,16 @@ kubectl exec -it <pod-name> -- /bin/bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-app
+  name: web-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ecommerce
+      app: web-app
   template:
     metadata:
       labels:
-        app: ecommerce
+        app: web-app
     spec:
       containers:
       - name: app
@@ -86,10 +86,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ecommerce-service
+  name: web-app
 spec:
   selector:
-    app: ecommerce
+    app: web-app
   ports:
   - port: 80
     targetPort: 8080

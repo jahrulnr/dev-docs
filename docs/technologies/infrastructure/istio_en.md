@@ -57,34 +57,34 @@ kubectl label namespace default istio-injection=enabled
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-api
+  name: api-service
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ecommerce-api
+      app: api-service
   template:
     metadata:
       labels:
-        app: ecommerce-api
+        app: api-service
         version: v1
     spec:
       containers:
       - name: api
-        image: ecommerce/api:latest
+        image: example/api:latest
         ports:
         - containerPort: 8080
         env:
         - name: SERVICE_NAME
-          value: "ecommerce-api"
+          value: "api-service"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ecommerce-api
+  name: api-service
 spec:
   selector:
-    app: ecommerce-api
+    app: api-service
   ports:
   - name: http
     port: 8080
@@ -98,10 +98,10 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: ecommerce-api
+  name: api-service
 spec:
   hosts:
-  - ecommerce-api
+  - api-service
   http:
   - match:
     - headers:
@@ -109,7 +109,7 @@ spec:
           regex: ".*Mobile.*"
     route:
     - destination:
-        host: ecommerce-api
+        host: api-service
         subset: mobile-optimized
   - match:
     - headers:
@@ -117,15 +117,15 @@ spec:
           exact: "true"
     route:
     - destination:
-        host: ecommerce-api
+        host: api-service
         subset: canary
   - route:  # Default route
     - destination:
-        host: ecommerce-api
+        host: api-service
         subset: stable
       weight: 90
     - destination:
-        host: ecommerce-api
+        host: api-service
         subset: canary
       weight: 10
 ```
@@ -137,9 +137,9 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: ecommerce-api
+  name: api-service
 spec:
-  host: ecommerce-api
+  host: api-service
   subsets:
   - name: stable
     labels:
@@ -172,7 +172,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: ecommerce-gateway
+  name: api-gateway
 spec:
   selector:
     istio: ingressgateway
@@ -182,39 +182,39 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "api.ecommerce.com"
+    - "api.example.com"
   - port:
       number: 443
       name: https
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: ecommerce-tls
+      credentialName: example-tls
     hosts:
-    - "api.ecommerce.com"
+    - "api.example.com"
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: ecommerce-gateway-vs
+  name: api-gateway-vs
 spec:
   hosts:
-  - "api.ecommerce.com"
+  - "api.example.com"
   gateways:
-  - ecommerce-gateway
+  - api-gateway
   http:
   - match:
     - uri:
         prefix: "/api/v1"
     route:
     - destination:
-        host: ecommerce-api
+        host: api-service
   - match:
     - uri:
         prefix: "/api/v2"
     route:
     - destination:
-        host: ecommerce-api-v2
+        host: api-service-v2
 ```
 
 ### Service-to-Service Authentication
@@ -250,12 +250,12 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: ecommerce-api-policy
+  name: api-service-policy
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: ecommerce-api
+      app: api-service
   action: ALLOW
   rules:
   - from:
@@ -287,10 +287,10 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: ecommerce-api-fault
+  name: api-service-fault
 spec:
   hosts:
-  - ecommerce-api
+  - api-service
   http:
   - fault:
       delay:
@@ -303,14 +303,14 @@ spec:
         httpStatus: 503
     route:
     - destination:
-        host: ecommerce-api
+        host: api-service
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: ecommerce-api-circuit-breaker
+  name: api-service-circuit-breaker
 spec:
-  host: ecommerce-api
+  host: api-service
   trafficPolicy:
     connectionPool:
       tcp:
@@ -343,12 +343,12 @@ spec:
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
-  name: ecommerce-api-tracing
+  name: api-service-tracing
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: ecommerce-api
+      app: api-service
   tracing:
   - providers:
     - name: "jaeger"
@@ -369,12 +369,12 @@ spec:
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
-  name: ecommerce-metrics
+  name: mesh-metrics
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: ecommerce-api
+      app: api-service
   metrics:
   - providers:
     - name: "prometheus"
@@ -400,17 +400,17 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
-  name: external-ecommerce-api
+  name: external-api-service
 spec:
   hosts:
-  - api.cluster2.ecommerce.com
+  - api.cluster2.example.com
   ports:
   - number: 443
     name: https
     protocol: HTTPS
   resolution: DNS
   endpoints:
-  - address: api.cluster2.ecommerce.com
+  - address: api.cluster2.example.com
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -418,7 +418,7 @@ metadata:
   name: cross-cluster-routing
 spec:
   hosts:
-  - api.ecommerce.com
+  - api.example.com
   http:
   - match:
     - headers:
@@ -426,23 +426,23 @@ spec:
           exact: "cluster2"
     route:
     - destination:
-        host: api.cluster2.ecommerce.com
+        host: api.cluster2.example.com
   - route:
     - destination:
-        host: ecommerce-api
+        host: api-service
 ```
 
 ### E-commerce Specific Configuration
 
 ```yaml
-# ecommerce-traffic-management.yaml
+# traffic-management.yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: ecommerce-traffic-management
+  name: traffic-management
 spec:
   hosts:
-  - api.ecommerce.com
+  - api.example.com
   http:
   # Route mobile traffic to optimized service
   - match:
@@ -451,7 +451,7 @@ spec:
           regex: ".*(Mobile|iPhone|Android).*"  
     route:
     - destination:
-        host: ecommerce-api-mobile
+        host: api-service-mobile
   # A/B testing for checkout flow
   - match:
     - uri:
@@ -461,14 +461,14 @@ spec:
           regex: "ab-test-group=A"
     route:
     - destination:
-        host: ecommerce-checkout
+        host: checkout-service
         subset: version-a
   - match:
     - uri:
         prefix: "/checkout"
     route:
     - destination:
-        host: ecommerce-checkout
+        host: checkout-service
         subset: version-b
   # Rate limiting for search API
   - match:
@@ -476,24 +476,24 @@ spec:
         prefix: "/search"
     route:
     - destination:
-        host: ecommerce-search
+        host: search-service
     timeout: 3s
   # Default routing
   - route:
     - destination:
-        host: ecommerce-api
+        host: api-service
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: ecommerce-policies
+  name: api-policies
 spec:
-  host: ecommerce-api
+  host: api-service
   trafficPolicy:
     loadBalancer:
       consistentHash:
         httpCookie:
-          name: ecommerce-session
+          name: app-session
           ttl: 300s
     connectionPool:
       http:
@@ -615,10 +615,10 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: ecommerce-api
+      app: api-service
   jwtRules:
-  - issuer: "https://accounts.ecommerce.com"
-    jwksUri: "https://accounts.ecommerce.com/.well-known/jwks.json"
+  - issuer: "https://accounts.example.com"
+    jwksUri: "https://accounts.example.com/.well-known/jwks.json"
     forwardOriginalToken: true
 ```
 

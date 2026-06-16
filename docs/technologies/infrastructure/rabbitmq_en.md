@@ -48,9 +48,9 @@ def publish_order():
     channel = connection.channel()
 
     # Declare exchange and queue
-    channel.exchange_declare(exchange='ecommerce_orders', exchange_type='direct')
+    channel.exchange_declare(exchange='app_orders', exchange_type='direct')
     channel.queue_declare(queue='order_processing', durable=True)
-    channel.queue_bind(exchange='ecommerce_orders', queue='order_processing', routing_key='new_order')
+    channel.queue_bind(exchange='app_orders', queue='order_processing', routing_key='new_order')
 
     order_data = {
         'order_id': 'ORD-12345',
@@ -64,7 +64,7 @@ def publish_order():
     }
 
     channel.basic_publish(
-        exchange='ecommerce_orders',
+        exchange='app_orders',
         routing_key='new_order',
         body=json.dumps(order_data),
         properties=pika.BasicProperties(
@@ -126,7 +126,7 @@ def setup_topic_exchange():
     channel = connection.channel()
 
     # Declare topic exchange
-    channel.exchange_declare(exchange='ecommerce_events', exchange_type='topic')
+    channel.exchange_declare(exchange='app_events', exchange_type='topic')
 
     # Declare queues for different consumers
     channel.queue_declare(queue='inventory_updates', durable=True)
@@ -135,13 +135,13 @@ def setup_topic_exchange():
     channel.queue_declare(queue='analytics_events', durable=True)
 
     # Bind queues with routing patterns
-    channel.queue_bind(exchange='ecommerce_events', queue='inventory_updates',
+    channel.queue_bind(exchange='app_events', queue='inventory_updates',
                       routing_key='order.inventory.*')
-    channel.queue_bind(exchange='ecommerce_events', queue='payment_processing',
+    channel.queue_bind(exchange='app_events', queue='payment_processing',
                       routing_key='order.payment.*')
-    channel.queue_bind(exchange='ecommerce_events', queue='shipping_notifications',
+    channel.queue_bind(exchange='app_events', queue='shipping_notifications',
                       routing_key='order.shipping.*')
-    channel.queue_bind(exchange='ecommerce_events', queue='analytics_events',
+    channel.queue_bind(exchange='app_events', queue='analytics_events',
                       routing_key='order.*.analytics')
 
     connection.close()
@@ -159,7 +159,7 @@ def publish_inventory_event():
     }
 
     channel.basic_publish(
-        exchange='ecommerce_events',
+        exchange='app_events',
         routing_key='order.inventory.update',
         body=json.dumps(event_data)
     )
@@ -471,7 +471,7 @@ def get_node_info():
         print()
 
 def create_user():
-    url = 'http://localhost:15672/api/users/ecommerce_user'
+    url = 'http://localhost:15672/api/users/app_user'
     auth = ('admin', 'admin123')
     data = {
         'password': 'secure_password',

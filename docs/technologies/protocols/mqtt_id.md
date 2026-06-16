@@ -38,7 +38,7 @@ const mqtt = require('mqtt');
 
 // Connect ke broker
 const client = mqtt.connect('mqtt://broker.hivemq.com', {
-    clientId: 'ecommerce-client-' + Math.random().toString(16).substr(2, 8),
+    clientId: 'my-app-client-' + Math.random().toString(16).substr(2, 8),
     clean: true,
     connectTimeout: 4000,
     reconnectPeriod: 1000,
@@ -49,14 +49,14 @@ client.on('connect', function () {
     console.log('Terhubung ke MQTT broker');
     
     // Subscribe ke topics
-    client.subscribe('ecommerce/inventory/+', { qos: 1 }, function (err) {
+    client.subscribe('example/inventory/+', { qos: 1 }, function (err) {
         if (!err) {
             console.log('Subscribed ke inventory topics');
         }
     });
     
     // Publish pesan
-    client.publish('ecommerce/orders', JSON.stringify({
+    client.publish('example/orders', JSON.stringify({
         orderId: 'ORD-12345',
         status: 'confirmed',
         timestamp: new Date().toISOString()
@@ -86,7 +86,7 @@ client.on('reconnect', function() {
 
 // Publish inventory update
 function publishInventoryUpdate(productId, newStock) {
-    const topic = `ecommerce/inventory/${productId}`;
+    const topic = `example/inventory/${productId}`;
     const message = JSON.stringify({
         productId: productId,
         stock: newStock,
@@ -132,7 +132,7 @@ import time
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Terhubung ke MQTT Broker!")
-        client.subscribe("ecommerce/+/status")
+        client.subscribe("example/+/status")
     else:
         print(f"Gagal connect, return code {rc}")
 
@@ -141,12 +141,12 @@ def on_message(client, userdata, msg):
     
     try:
         data = json.loads(msg.payload.decode())
-        process_ecommerce_event(msg.topic, data)
+        process_example_event(msg.topic, data)
     except json.JSONDecodeError:
         print("Invalid JSON diterima")
 
 # Create MQTT client
-client = mqtt.Client("ecommerce-monitor")
+client = mqtt.Client("my-app-monitor")
 client.on_connect = on_connect
 client.on_message = on_message
 
@@ -161,7 +161,7 @@ def publish_system_status():
         "uptime": time.time(),
         "active_connections": 150
     }
-    client.publish("ecommerce/services/inventory", json.dumps(status), qos=1)
+    client.publish("example/services/inventory", json.dumps(status), qos=1)
 
 # Start the loop
 client.loop_start()
@@ -192,14 +192,14 @@ except KeyboardInterrupt:
 
 ```
 # Hierarki topic yang baik
-ecommerce/orders/created
-ecommerce/orders/ORD-12345/status
-ecommerce/inventory/product-456/stock
-ecommerce/payments/PAY-789/completed
-ecommerce/notifications/user-101/alerts
+example/orders/created
+example/orders/ORD-12345/status
+example/inventory/product-456/stock
+example/payments/PAY-789/completed
+example/notifications/user-101/alerts
 
 # Hindari topic flat
-ecommerce-updates
+example-updates
 inventory-changes
 order-status-changes
 ```

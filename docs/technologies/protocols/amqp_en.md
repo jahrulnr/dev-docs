@@ -46,7 +46,7 @@ async function publishOrderMessage() {
         const channel = await connection.createChannel();
         
         // Declare exchange
-        const exchange = 'ecommerce.orders';
+        const exchange = 'example.orders';
         await channel.assertExchange(exchange, 'direct', { durable: true });
         
         // Declare queue
@@ -75,7 +75,7 @@ async function publishOrderMessage() {
                 persistent: true,
                 messageId: 'ORD-12345',
                 timestamp: new Date(),
-                userId: 'ecommerce-app',
+                userId: 'my-app',
                 headers: {
                     'source': 'web-app',
                     'priority': 'normal'
@@ -107,7 +107,7 @@ async function startOrderConsumer() {
         const connection = await amqp.connect('amqp://localhost');
         const channel = await connection.createChannel();
         
-        const exchange = 'ecommerce.orders';
+        const exchange = 'example.orders';
         const queue = 'order.processing';
         
         // Ensure exchange and queue exist
@@ -179,7 +179,7 @@ def publish_inventory_update():
         channel = connection.channel()
         
         # Declare exchange
-        channel.exchange_declare(exchange='ecommerce.inventory', 
+        channel.exchange_declare(exchange='example.inventory', 
                                exchange_type='topic', 
                                durable=True)
         
@@ -188,7 +188,7 @@ def publish_inventory_update():
         queue_name = result.method.queue
         
         # Bind queue
-        channel.queue_bind(exchange='ecommerce.inventory', 
+        channel.queue_bind(exchange='example.inventory', 
                          queue=queue_name, 
                          routing_key='inventory.product.*')
         
@@ -206,7 +206,7 @@ def publish_inventory_update():
         
         # Publish message
         channel.basic_publish(
-            exchange='ecommerce.inventory',
+            exchange='example.inventory',
             routing_key='inventory.product.PROD-123',
             body=json.dumps(inventory_message),
             properties=pika.BasicProperties(
@@ -244,82 +244,10 @@ publish_inventory_update()
 - Implement proper connection pooling
 - Configure appropriate prefetch limits
 - Use correlation IDs for request-reply patterns
-
-### Exchange Types and Routing
-
-```
-# Direct Exchange: Exact routing key match
-- Routing: order.created → order.processing queue
-- Use case: Specific message types to specific consumers
-
-# Topic Exchange: Pattern-based routing
-- Routing: inventory.product.PROD-123 → queues with pattern inventory.product.*
-- Use case: Category-based message filtering
-
-# Fanout Exchange: Broadcast to all bound queues
-- Routing: All messages to all bound queues regardless of routing key
-- Use case: Broadcasting notifications to multiple services
-
-# Headers Exchange: Routing based on message headers
-- Routing: Messages with header x-service: payment → payment queues
-- Use case: Complex routing logic based on multiple criteria
-```
-
-### Reliability Patterns
-
-```javascript
-// Circuit Breaker Pattern
-class ReliablePublisher {
-    constructor() {
-        this.connection = null;
-        this.channel = null;
-        this.isConnected = false;
-    }
-    
-    async connect() {
-        try {
-            this.connection = await amqp.connect('amqp://localhost');
-            this.channel = await this.connection.createChannel();
-            this.isConnected = true;
-            
-            // Handle connection loss
-            this.connection.on('error', (err) => {
-                console.error('Connection error:', err);
-                this.isConnected = false;
-                this.reconnect();
-            });
-            
-        } catch (error) {
-            console.error('Failed to connect:', error);
-            setTimeout(() => this.connect(), 5000);
-        }
-    }
-    
-    async publishWithRetry(exchange, routingKey, message, maxRetries = 3) {
-        for (let attempt = 1; attempt <= maxRetries; attempt++) {
-            try {
-                if (!this.isConnected) {
-                    await this.connect();
-                }
-                
-                await this.channel.publish(exchange, routingKey, 
-                    Buffer.from(JSON.stringify(message)), 
-                    { persistent: true });
-                
-                return true;
-            } catch (error) {
-                console.error(`Publish attempt ${attempt} failed:`, error);
-                
-                if (attempt === maxRetries) {
-                    throw error;
-                }
-                
-                await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
-            }
-        }
-    }
-}
-```
+- **Direct exchange**: exact routing key match (e.g. `order.created` → processing queue)
+- **Topic exchange**: pattern routing (e.g. `inventory.product.*`)
+- **Fanout exchange**: broadcast to all bound queues
+- **Headers exchange**: route on message header attributes
 
 ## Common use cases
 

@@ -72,7 +72,7 @@ public class EcommerceOrderProducer {
             """;
 
         ProducerRecord<String, String> record = new ProducerRecord<>(
-            "ecommerce-orders",
+            "orders",
             "ORD-12345",
             orderEvent
         );
@@ -111,7 +111,7 @@ public class OrderProcessingConsumer {
         props.put("enable.auto.commit", false);
 
         Consumer<String, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Collections.singletonList("ecommerce-orders"));
+        consumer.subscribe(Collections.singletonList("orders"));
 
         try {
             while (true) {
@@ -160,7 +160,7 @@ public class OrderAnalyticsStream {
         StreamsBuilder builder = new StreamsBuilder();
 
         // Stream order
-        KStream<String, String> orders = builder.stream("ecommerce-orders");
+        KStream<String, String> orders = builder.stream("orders");
 
         // Hitung revenue berdasarkan produk
         KTable<String, Double> productRevenue = orders
@@ -206,15 +206,15 @@ connector.class=io.confluent.connect.jdbc.JdbcSourceConnector
 tasks.max=1
 
 # Koneksi database
-connection.url=jdbc:postgresql://localhost:5432/ecommerce
-connection.user=ecommerce_user
-connection.password=ecommerce_password
+connection.url=jdbc:postgresql://localhost:5432/appdb
+connection.user=app_user
+connection.password=app_password
 
 # Tabel untuk monitoring
 table.whitelist=orders,order_items,customers
 
 # Mapping topic
-topic.prefix=ecommerce-
+topic.prefix=app-
 
 # Konfigurasi polling
 mode=timestamp
@@ -235,7 +235,7 @@ connector.class=io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
 tasks.max=1
 
 # Topics untuk sink
-topics=ecommerce-orders,ecommerce-customers
+topics=orders,customers
 
 # Koneksi Elasticsearch
 connection.url=http://localhost:9200
@@ -293,7 +293,7 @@ public class AvroOrderProducer {
         order.put("timestamp", System.currentTimeMillis());
 
         ProducerRecord<String, GenericRecord> record =
-            new ProducerRecord<>("ecommerce-orders-avro", "ORD-12345", order);
+            new ProducerRecord<>("orders-avro", "ORD-12345", order);
 
         producer.send(record);
         producer.close();

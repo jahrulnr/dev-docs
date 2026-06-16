@@ -101,7 +101,7 @@ upstream api_backend {
 
 server {
     listen 80;
-    server_name api.ecommerce.com;
+    server_name api.example.com;
 
     # Security headers
     add_header X-Frame-Options DENY;
@@ -149,12 +149,12 @@ server {
 
 ```nginx
 # Advanced load balancing configuration
-upstream ecommerce_app {
+upstream app_upstream {
     ip_hash;  # Session persistence
-    server app1.ecommerce.com:8080 weight=5 max_fails=3 fail_timeout=30s;
-    server app2.ecommerce.com:8080 weight=5 max_fails=3 fail_timeout=30s;
-    server app3.ecommerce.com:8080 weight=2 max_fails=3 fail_timeout=30s;
-    server backup.ecommerce.com:8080 backup;
+    server app1.example.com:8080 weight=5 max_fails=3 fail_timeout=30s;
+    server app2.example.com:8080 weight=5 max_fails=3 fail_timeout=30s;
+    server app3.example.com:8080 weight=2 max_fails=3 fail_timeout=30s;
+    server backup.example.com:8080 backup;
 
     # Health check (requires nginx-plus or openresty)
     check interval=3000 rise=2 fall=5 timeout=1000 type=http;
@@ -164,10 +164,10 @@ upstream ecommerce_app {
 
 server {
     listen 80;
-    server_name www.ecommerce.com;
+    server_name www.example.com;
 
     location / {
-        proxy_pass http://ecommerce_app;
+        proxy_pass http://app_upstream;
         proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
 
         # Sticky sessions alternative
@@ -183,7 +183,7 @@ server {
     }
 
     location @proxy {
-        proxy_pass http://ecommerce_app;
+        proxy_pass http://app_upstream;
     }
 }
 ```
@@ -194,11 +194,11 @@ server {
 # SSL configuration with modern security
 server {
     listen 443 ssl http2;
-    server_name secure.ecommerce.com;
+    server_name secure.example.com;
 
     # SSL certificate configuration
-    ssl_certificate /etc/ssl/certs/ecommerce.crt;
-    ssl_certificate_key /etc/ssl/private/ecommerce.key;
+    ssl_certificate /etc/ssl/certs/example.crt;
+    ssl_certificate_key /etc/ssl/private/example.key;
     ssl_session_timeout 1d;
     ssl_session_cache shared:MozTLS:10m;
     ssl_session_tickets off;
@@ -226,7 +226,7 @@ server {
 # HTTP to HTTPS redirect
 server {
     listen 80;
-    server_name secure.ecommerce.com;
+    server_name secure.example.com;
     return 301 https://$server_name$request_uri;
 }
 ```
@@ -235,7 +235,7 @@ server {
 
 ```nginx
 # Microcaching for dynamic content
-proxy_cache_path /tmp/nginx_cache levels=1:2 keys_zone=ecommerce_cache:10m max_size=1g
+proxy_cache_path /tmp/nginx_cache levels=1:2 keys_zone=app_cache:10m max_size=1g
                  inactive=60m use_temp_path=off;
 
 upstream app_backend {
@@ -245,10 +245,10 @@ upstream app_backend {
 
 server {
     listen 80;
-    server_name api.ecommerce.com;
+    server_name api.example.com;
 
     # Cache settings
-    proxy_cache ecommerce_cache;
+    proxy_cache app_cache;
     proxy_cache_valid 200 302 10m;
     proxy_cache_valid 404 1m;
     proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
@@ -305,7 +305,7 @@ limit_conn conn_limit_per_server 1000;
 
 server {
     listen 80;
-    server_name api.ecommerce.com;
+    server_name api.example.com;
 
     # Apply rate limiting
     limit_req zone=api burst=20 nodelay;
@@ -361,8 +361,8 @@ server {
 # WebSocket configuration for real-time features
 upstream websocket_backend {
     ip_hash;
-    server ws1.ecommerce.com:8080;
-    server ws2.ecommerce.com:8080;
+    server ws1.example.com:8080;
+    server ws2.example.com:8080;
 }
 
 map $http_upgrade $connection_upgrade {
@@ -372,7 +372,7 @@ map $http_upgrade $connection_upgrade {
 
 server {
     listen 80;
-    server_name ws.ecommerce.com;
+    server_name ws.example.com;
 
     location /ws {
         proxy_pass http://websocket_backend;
@@ -408,7 +408,7 @@ server {
 lua_package_path "/etc/nginx/lua/?.lua;;";
 
 upstream auth_service {
-    server auth.ecommerce.com:8080;
+    server auth.example.com:8080;
 }
 
 upstream user_service {
@@ -425,7 +425,7 @@ upstream order_service {
 
 server {
     listen 80;
-    server_name api.ecommerce.com;
+    server_name api.example.com;
 
     # Shared dictionary for rate limiting
     lua_shared_dict api_limits 10m;
@@ -498,7 +498,7 @@ server {
 # Video streaming configuration
 server {
     listen 80;
-    server_name streaming.ecommerce.com;
+    server_name streaming.example.com;
 
     # Security headers
     add_header X-Frame-Options DENY;

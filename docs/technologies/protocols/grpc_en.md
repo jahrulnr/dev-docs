@@ -38,11 +38,11 @@ gRPC supports multiple programming languages and provides four types of service 
 ```protobuf
 syntax = "proto3";
 
-package ecommerce.v1;
+package example.orders.v1;
 
 option java_multiple_files = true;
-option java_package = "com.example.ecommerce.v1";
-option java_outer_classname = "EcommerceProto";
+option java_package = "com.example.example.orders.v1";
+option java_outer_classname = "OrdersProto";
 
 // Import standard types
 import "google/protobuf/timestamp.proto";
@@ -151,7 +151,7 @@ import (
     "net"
     "time"
 
-    pb "github.com/example/ecommerce/v1"
+    pb "github.com/example/orders/v1"
     "google.golang.org/grpc"
     "google.golang.org/grpc/codes"
     "google.golang.org/grpc/status"
@@ -219,7 +219,7 @@ const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 
 // Load protobuf definition
-const packageDefinition = protoLoader.loadSync('ecommerce.proto', {
+const packageDefinition = protoLoader.loadSync('orders.proto', {
     keepCase: true,
     longs: String,
     enums: String,
@@ -227,269 +227,19 @@ const packageDefinition = protoLoader.loadSync('ecommerce.proto', {
     oneofs: true
 });
 
-const ecommerceProto = grpc.loadPackageDefinition(packageDefinition).ecommerce.v1;
+const ordersProto = grpc.loadPackageDefinition(packageDefinition).example.orders.v1;
 
 // Create client
-const productClient = new ecommerceProto.ProductService(
+const productClient = new ordersProto.ProductService(
     'localhost:50051',
     grpc.credentials.createInsecure()
 );
 
-// Unary RPC - Get Product
-function getProduct(productId) {
-    return new Promise((resolve, reject) => {
-        productClient.GetProduct({ product_id: productId }, (error, response) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(response);
-            }
-        });
-    });
-}
-
-// Server Streaming - Stream Inventory Updates
-function streamInventoryUpdates() {
-    const call = inventoryClient.StreamInventoryUpdates({});
-    
-    call.on('data', (product) => {
-        console.log('Inventory update:', product);
-    });
-    
-    call.on('end', () => {
-        console.log('Stream ended');
-    });
-    
-    call.on('error', (error) => {
-        console.error('Stream error:', error);
-    });
-}
-
-// Client Streaming - Bulk Update Inventory
-function bulkUpdateInventory(updates) {
-    return new Promise((resolve, reject) => {
-        const call = inventoryClient.BulkUpdateInventory((error, response) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(response);
-            }
-        });
-        
-        // Send multiple updates
-        updates.forEach(update => {
-            call.write(update);
-        });
-        
-        call.end();
-    });
-}
-
-// Bidirectional Streaming - Real-time Order Processing
-function processOrdersRealtime() {
-    const call = orderClient.ProcessOrdersRealtime();
-    
-    // Send orders
-    const orders = [
-        { customer_id: 'CUST-001', items: [{ product_id: 'PROD-001', quantity: 2 }] },
-        { customer_id: 'CUST-002', items: [{ product_id: 'PROD-002', quantity: 1 }] }
-    ];
-    
-    orders.forEach(order => {
-        call.write(order);
-    });
-    
-    // Receive processing updates
-    call.on('data', (update) => {
-        console.log('Order processing update:', update);
-    });
-    
-    call.on('end', () => {
-        console.log('Bidirectional stream ended');
-    });
-    
-    // End the stream after sending all orders
-    setTimeout(() => {
-        call.end();
-    }, 1000);
-}
-
-// Usage example
-async function main() {
-    try {
-        const product = await getProduct('PROD-001');
-        console.log('Product:', product);
-        
-        // Start streaming inventory updates
-        streamInventoryUpdates();
-        
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-main();
-```
-
-### Python gRPC Client with Interceptors
-
-```python
-import grpc
-import ecommerce_pb2 as pb
-import ecommerce_pb2_grpc as pb_grpc
-from datetime import datetime
-
-class LoggingInterceptor(grpc.UnaryUnaryClientInterceptor,
-                        grpc.UnaryStreamClientInterceptor,
-                        grpc.StreamUnaryClientInterceptor,
-                        grpc.StreamStreamClientInterceptor):
-    
-    def intercept_unary_unary(self, continuation, client_call_details, request):
-        print(f"Making unary call to {client_call_details.method}")
-        start_time = datetime.now()
-        response = continuation(client_call_details, request)
-        end_time = datetime.now()
-        print(f"Call completed in {(end_time - start_time).total_seconds()}s")
-        return response
-
-def create_order_with_retry(stub, order_request, max_retries=3):
-    for attempt in range(max_retries):
-        try:
-            response = stub.CreateOrder(order_request)
-            return response
-        except grpc.RpcError as e:
-            if e.code() == grpc.StatusCode.UNAVAILABLE and attempt < max_retries - 1:
-                print(f"Attempt {attempt + 1} failed, retrying...")
-                time.sleep(2 ** attempt)  # Exponential backoff
-                continue
-            raise e
-
-def main():
-    # Create channel with interceptor
-    with grpc.insecure_channel('localhost:50051') as channel:
-        intercept_channel = grpc.intercept_channel(channel, LoggingInterceptor())
-        
-        # Create stub
-        order_stub = pb_grpc.OrderServiceStub(intercept_channel)
-        
-        # Create order request
-        order_request = pb.CreateOrderRequest(
-            customer_id="CUST-123",
-            items=[
-                pb.OrderItem(
-                    product_id="PROD-001",
-                    quantity=2,
-                    unit_price=29.99
-                )
-            ],
-            shipping_address=pb.ShippingAddress(
-                street="123 Main St",
-                city="Anytown",
-                state="CA",
-                zip_code="12345",
-                country="USA"
-            )
-        )
-        
-        try:
-            order = create_order_with_retry(order_stub, order_request)
-            print(f"Order created: {order.id}")
-            
-        except grpc.RpcError as e:
-            print(f"gRPC error: {e.code()} - {e.details()}")
-
-if __name__ == '__main__':
-    main()
-```
-
-## Best Practices
-
-- Use Protocol Buffers effectively with proper field numbering
-- Implement proper error handling with gRPC status codes
-- Use streaming RPCs appropriately for different use cases
-- Implement authentication and authorization
-- Configure connection pooling and load balancing
-- Use interceptors for cross-cutting concerns
-- Implement proper timeout and deadline handling
-- Use compression for large messages
-- Monitor gRPC services with metrics and tracing
-- Version your APIs properly with package names
-
-### Error Handling Patterns
-
-```go
-// Proper error handling in gRPC services
-func (s *orderServiceServer) CreateOrder(ctx context.Context, req *pb.CreateOrderRequest) (*pb.Order, error) {
-    // Validate request
-    if req.CustomerId == "" {
-        return nil, status.Error(codes.InvalidArgument, "customer_id is required")
-    }
-    
-    if len(req.Items) == 0 {
-        return nil, status.Error(codes.InvalidArgument, "at least one item is required")
-    }
-    
-    // Check inventory
-    for _, item := range req.Items {
-        available, err := s.checkInventory(item.ProductId, item.Quantity)
-        if err != nil {
-            return nil, status.Error(codes.Internal, "inventory check failed")
-        }
-        if !available {
-            return nil, status.Errorf(codes.FailedPrecondition, 
-                "insufficient inventory for product %s", item.ProductId)
-        }
-    }
-    
-    // Create order
-    order, err := s.createOrderInDB(req)
-    if err != nil {
-        return nil, status.Error(codes.Internal, "failed to create order")
-    }
-    
-    return order, nil
-}
-```
-
-### Load Balancing and Service Discovery
-
-```yaml
-# Kubernetes service for gRPC load balancing
-apiVersion: v1
-kind: Service
-metadata:
-  name: ecommerce-grpc-service
-spec:
-  selector:
-    app: ecommerce-service
-  ports:
-  - port: 50051
-    targetPort: 50051
-  type: ClusterIP
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ecommerce-service
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: ecommerce-service
-  template:
-    metadata:
-      labels:
-        app: ecommerce-service
-    spec:
-      containers:
-      - name: ecommerce-service
-        image: ecommerce-service:latest
-        ports:
-        - containerPort: 50051
-        env:
-        - name: GRPC_SERVER_PORT
-          value: "50051"
+// Unary RPC — get product by ID
+productClient.GetProduct({ product_id: 'PROD-001' }, (error, product) => {
+    if (error) console.error(error);
+    else console.log('Product:', product);
+});
 ```
 
 ## gRPC vs REST
