@@ -77,9 +77,13 @@ function wikiPage(slug, lang) {
   return lang === 'id' ? n.id : n.en;
 }
 
-/** Link target for markdown — GitHub Wiki resolves hyphens as spaces; `-id` → ` id`. */
-function wikiLink(page) {
-  return page.replace(/-id$/, ' id');
+/**
+ * Markdown link destination for a wiki page.
+ * Must be URL-safe because many pages contain spaces.
+ */
+function wikiHref(page) {
+  // Encode spaces and other URL-unsafe characters; keep it as a wiki-relative target.
+  return encodeURIComponent(page);
 }
 
 /** Resolve internal markdown link targets to wiki page names. */
@@ -117,7 +121,7 @@ function buildLinkResolver(entries) {
             : normalized.includes('_id')
               ? r.id
               : r.en;
-        const target = wikiLink(page);
+        const target = wikiHref(page);
         return hash ? `${target}#${hash}` : target;
       }
     }
@@ -129,7 +133,7 @@ function buildLinkResolver(entries) {
         const entry = entries.find((e) => e.slug === slug);
         if (entry) {
           const page = wikiPage(slug, m[2] === 'id' ? 'id' : 'en');
-          const target = wikiLink(page);
+          const target = wikiHref(page);
           return hash ? `${target}#${hash}` : target;
         }
       }
@@ -155,9 +159,9 @@ function addLangBanner(content, slug, lang) {
   const enPage = wikiPage(slug, 'en');
   const idPage = wikiPage(slug, 'id');
   if (lang === 'id') {
-    return `> **English:** [${enPage}](${wikiLink(enPage)})\n\n${content}`;
+    return `> **English:** [${enPage}](${wikiHref(enPage)})\n\n${content}`;
   }
-  return `> **Bahasa Indonesia:** [${idPage}](${wikiLink(idPage)})\n\n${content}`;
+  return `> **Bahasa Indonesia:** [${idPage}](${wikiHref(idPage)})\n\n${content}`;
 }
 
 function pillarLabel(pillar, subpillar) {
@@ -198,7 +202,7 @@ _Sync otomatis dari \`master\` via GitHub Actions._
 
 Bilingual technical knowledge base (EN / ID) for architecture, patterns, cloud, and infrastructure.
 
-> **Bahasa Indonesia:** [Home-id](${wikiLink('Home-id')})
+> **Bahasa Indonesia:** [Home-id](Home-id)
 
 ## Navigation
 
@@ -223,7 +227,7 @@ function buildSidebar(lang) {
 
   const lines = lang === 'id'
     ? [`### [EN](_Sidebar) · Bahasa Indonesia`, '']
-    : [`### English · [ID](${wikiLink(SIDEBAR_ID_PAGE)})`, ''];
+    : [`### English · [ID](${wikiHref(SIDEBAR_ID_PAGE)})`, ''];
 
   const sortedKeys = [...groups.keys()].sort();
   for (const key of sortedKeys) {
@@ -233,7 +237,7 @@ function buildSidebar(lang) {
     const items = groups.get(key).sort((a, b) => a.title.localeCompare(b.title));
     for (const e of items) {
       const page = wikiPage(e.slug, lang);
-      lines.push(`- [${e.title}](${wikiLink(page)})`);
+      lines.push(`- [${e.title}](${wikiHref(page)})`);
     }
     lines.push('');
   }
