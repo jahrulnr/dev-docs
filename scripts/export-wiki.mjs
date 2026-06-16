@@ -82,6 +82,11 @@ function wikiLink(page) {
   return page.replace(/-id$/, ' id');
 }
 
+/** Markdown destination wrapper: required when the target contains spaces. */
+function mdDest(target) {
+  return target.includes(' ') ? `<${target}>` : target;
+}
+
 /** Resolve internal markdown link targets to wiki page names. */
 function buildLinkResolver(entries) {
   const rules = [];
@@ -155,9 +160,9 @@ function addLangBanner(content, slug, lang) {
   const enPage = wikiPage(slug, 'en');
   const idPage = wikiPage(slug, 'id');
   if (lang === 'id') {
-    return `> **English:** [${enPage}](${wikiLink(enPage)})\n\n${content}`;
+    return `> **English:** [${enPage}](${mdDest(wikiLink(enPage))})\n\n${content}`;
   }
-  return `> **Bahasa Indonesia:** [${idPage}](${wikiLink(idPage)})\n\n${content}`;
+  return `> **Bahasa Indonesia:** [${idPage}](${mdDest(wikiLink(idPage))})\n\n${content}`;
 }
 
 function pillarLabel(pillar, subpillar) {
@@ -223,7 +228,7 @@ function buildSidebar(lang) {
 
   const lines = lang === 'id'
     ? [`### [EN](_Sidebar) · Bahasa Indonesia`, '']
-    : [`### English · [ID](${wikiLink(SIDEBAR_ID_PAGE)})`, ''];
+    : [`### English · [ID](${mdDest(wikiLink(SIDEBAR_ID_PAGE))})`, ''];
 
   const sortedKeys = [...groups.keys()].sort();
   for (const key of sortedKeys) {
@@ -233,7 +238,7 @@ function buildSidebar(lang) {
     const items = groups.get(key).sort((a, b) => a.title.localeCompare(b.title));
     for (const e of items) {
       const page = wikiPage(e.slug, lang);
-      lines.push(`- [${e.title}](${wikiLink(page)})`);
+      lines.push(`- [${e.title}](${mdDest(wikiLink(page))})`);
     }
     lines.push('');
   }
